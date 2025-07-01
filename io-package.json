@@ -1,0 +1,81 @@
+{
+  "common": {
+    "name": "weathersense",
+    "version": "1.0.0",
+    "news": {
+      "1.0.0": {
+        "en": "First release",
+        "de": "Erstes Release"
+      }
+    },
+    "titleLang": {
+      "en": "WeatherSense",
+      "de": "WeatherSense"
+    },
+    "desc": {
+      "en": "Read in data from WeatherSense",
+      "de": "Daten von WeatherSense einlesen"
+    },
+    "authors": [
+      "Daniel Luginbühl <webmaster@ltspiceusers.ch>"
+    ],
+    "keywords": [
+      "weather",
+      "sense",
+      "weathersense",
+      "ioBroker.weathersense"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "weathersense.png",
+    "enabled": false,
+    "extIcon": "https://raw.githubusercontent.com/ltspicer/ioBroker.weathersense/main/admin/weathersense.png",
+    "readme": "https://github.com/ltspicer/ioBroker.weathersense/blob/main/README.md",
+    "loglevel": "info",
+    "tier": 3,
+    "mode": "schedule",
+    "schedule": "*/5 * * * *",
+    "allowInit": true,
+    "type": "metering",
+    "compact": true,
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=5.0.19"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.4.10"
+      }
+    ],
+    "installedFrom": "file:/opt/iobroker/ioBroker.weathersense"
+  },
+  "encryptedNative": [
+    "passwort",
+    "mqtt_pass"
+  ],
+  "protectedNative": [
+    "passwort",
+    "mqtt_pass"
+  ],
+  "native": {
+    "username": "",
+    "passwort": "",
+    "mqtt_active": false,
+    "broker_address": "0.0.0.0",
+    "mqtt_user": "",
+    "mqtt_pass": "",
+    "mqtt_port": "1883",
+    "sensor_id": "1",
+    "storeJson": false,
+    "storeDir": "/home/iobroker"
+  }
+}

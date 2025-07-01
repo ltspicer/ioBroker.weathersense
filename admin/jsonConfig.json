@@ -1,0 +1,118 @@
+{
+  "i18n": true,
+  "type": "panel",
+  "items": {
+    "username": {
+      "type": "text",
+      "label": "WeatherSense username (email)",
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "passwort": {
+      "type": "text",
+      "label": "WeatherSense password",
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "mqtt_active": {
+      "type": "checkbox",
+      "label": "Use MQTT",
+      "default": false,
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "celsius": {
+      "type": "checkbox",
+      "label": "°C (unchecked = °F)",
+      "default": true,
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "broker_address": {
+      "type": "text",
+      "label": "MQTT broker IP address",
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "mqtt_port": {
+      "type": "number",
+      "label": "MQTT port",
+      "default": 1883,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "mqtt_user": {
+      "type": "text",
+      "label": "MQTT user",
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "mqtt_pass": {
+      "type": "text",
+      "label": "MQTT password",
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "sensor_id": {
+      "type": "number",
+      "label": "Sensor ID (1-20)",
+      "default": 1,
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "storeJson": {
+      "type": "checkbox",
+      "label": "Save Json file",
+      "default": false,
+      "newLine": true,
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    },
+    "storeDir": {
+      "type": "text",
+      "label": "Folder for JSON file",
+      "default": "/home/iobroker",
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
+    }
+  }
+}
