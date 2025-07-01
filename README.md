@@ -24,8 +24,7 @@ The data can also be sent via MQTT.
 
 
 ## Changelog
-
-### 1.0.0
+### 1.0.0 (2025-07-01)
 
 - Initial release
 
