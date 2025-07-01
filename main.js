@@ -12,7 +12,7 @@ const crypto = require("crypto");
 const https = require("https");
 const path = require("path");
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 axios.defaults.timeout = 2000;
 
@@ -476,11 +476,11 @@ class WeatherSense extends utils.Adapter {
         const content = devdata?.content || {};
         const sensor_data = content.sensorDatas || [];
 
-        let luftdruck = content.atmos;
+        const luftdruck = content.atmos;
         let temp_innen = this.findValue(sensor_data, 1, 0);
-        let feuchte_innen = this.findValue(sensor_data, 2, 0);
+        const feuchte_innen = this.findValue(sensor_data, 2, 0);
         let temp_aussen = this.findValue(sensor_data, 1, 2);
-        let feuchte_aussen = this.findValue(sensor_data, 2, 2);
+        const feuchte_aussen = this.findValue(sensor_data, 2, 2);
 
         const skipCombinations = new Set(["1_0", "1_2", "2_0", "2_2"]);
 
