@@ -77,9 +77,9 @@ class WeatherSense extends utils.Adapter {
 
         try {
             const instObj = await this.getForeignObjectAsync(`system.adapter.${this.namespace}`);
-            if (instObj && instObj.common && instObj.common.schedule && instObj.common.schedule === "*/5 * * * *") {
-                instObj.common.schedule = `*/${Math.floor(Math.random() * 6)} * * * *`;
-                this.log.info(`Default schedule found and adjusted to spread calls better over the full hour!`);
+            if (instObj && instObj.common && instObj.common.schedule && instObj.common.schedule === "*/10 * * * *") {
+                instObj.common.schedule = `*/${(Math.floor(Math.random() * 5) + 3)} * * * *`;
+                this.log.info(`Default schedule found and adjusted to spread calls better over 3-7 minutes!`);
                 await this.setForeignObjectAsync(`system.adapter.${this.namespace}`, instObj);
                 this.terminate ? this.terminate() : process.exit(0);
                 return;

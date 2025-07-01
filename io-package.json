@@ -37,7 +37,7 @@
     "loglevel": "info",
     "tier": 3,
     "mode": "schedule",
-    "schedule": "*/5 * * * *",
+    "schedule": "*/10 * * * *",
     "allowInit": true,
     "type": "metering",
     "compact": true,
