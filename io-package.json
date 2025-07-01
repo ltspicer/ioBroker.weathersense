@@ -55,8 +55,7 @@
       {
         "admin": ">=7.4.10"
       }
-    ],
-    "installedFrom": "file:/opt/iobroker/ioBroker.weathersense"
+    ]
   },
   "encryptedNative": [
     "passwort",
