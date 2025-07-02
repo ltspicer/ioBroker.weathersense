@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:ltspicer/ioBroker.weathersense.git"
+    "url": "https://github.com/ltspicer/ioBroker.weathersense"
   },
   "engines": {
     "node": ">= 20"
