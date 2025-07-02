@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "news": {
+      "1.0.2": {
+        "en": "New release because SSH troubles in dev portal",
+        "de": "Neue Veröffentlichung, weil SSH Probleme im dev Portal",
+        "ru": "Новый релиз из-за проблем с SSH на портале dev",
+        "pt": "Nova versão porque SSH problemas no portal dev",
+        "nl": "Nieuwe release omdat SSH problemen heeft in dev portal",
+        "fr": "Nouvelle version parce que SSH dérange dans le portail dev",
+        "it": "Nuova release perché problemi SSH nel portale dev",
+        "es": "Nuevo lanzamiento porque problemas SSH en el portal dev",
+        "pl": "Nowe wydanie ponieważ SSH problemy w portalu dev",
+        "uk": "Новий реліз через SSH клопоти на порталі dev",
+        "zh-cn": "Dev 门户网站中由于 SSH 麻烦而新建发布"
+      },
       "1.0.1": {
         "en": "Code cleanups",
         "de": "Aufräumen von Codes",
