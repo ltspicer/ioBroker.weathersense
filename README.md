@@ -10,12 +10,17 @@
 
 **Tests:** ![Test and Release](https://github.com/ltspicer/ioBroker.weathersense/workflows/Test%20and%20Release/badge.svg)
 
-## weathersense adapter for ioBroker
+## WeatherSense adapter for ioBroker
 
 WeatherSense is a cloud for weather stations. This adapter reads data from the WeatherSense server.
 
 See: https://play.google.com/store/apps/details?id=com.emax.weahter&hl=de_CH
 
+Some WiFi weather stations use the WeatherSense Cloud.
+
+For example, this WiFi weather station from Ideoon (Pearl):
+
+![Screenshot](https://github.com/ltspicer/WeatherSense/blob/main/wetterstation.png)
 
 ## Use:
 Simply enter your WeatherSense account login details (email and password).
