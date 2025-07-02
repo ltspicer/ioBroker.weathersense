@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "news": {
+      "1.0.1": {
+        "en": "Code cleanups",
+        "de": "Aufräumen von Codes",
+        "ru": "Очистка кода",
+        "pt": "Limpeza de código",
+        "nl": "Code opruiming",
+        "fr": "Nettoyage du code",
+        "it": "Pulizia del codice",
+        "es": "Limpieza del código",
+        "pl": "Czyszczenie kodu",
+        "uk": "Чистка коду",
+        "zh-cn": "代码清理"
+      },
       "1.0.0": {
         "en": "First release",
         "de": "Erstes Release"
