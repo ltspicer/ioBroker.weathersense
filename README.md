@@ -29,6 +29,12 @@ The data can also be sent via MQTT.
 
 
 ## Changelog
+
+
+### **WORK IN PROGRESS**
+
+- New release because SSH troubles in dev portal
+
 ### 1.0.1 (2025-07-02)
 
 - Code cleanups
