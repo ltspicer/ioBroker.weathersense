@@ -69,6 +69,7 @@
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint .",
     "translate": "translate-adapter",
+    "build": "build-adapter",
     "release": "release-script",
     "dev": "dev-server"
   },

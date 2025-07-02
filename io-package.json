@@ -18,16 +18,43 @@
       },
       "1.0.0": {
         "en": "First release",
-        "de": "Erstes Release"
+        "de": "Erstes Release",
+        "ru": "Первый релиз",
+        "pt": "Primeiro lançamento",
+        "nl": "Eerste release",
+        "fr": "Première sortie",
+        "it": "Prima versione",
+        "es": "Primer lanzamiento",
+        "pl": "Pierwsze wydanie",
+        "uk": "Перший випуск",
+        "zh-cn": "第一版"
       }
     },
     "titleLang": {
       "en": "WeatherSense",
-      "de": "WeatherSense"
+      "de": "WeatherSense",
+      "ru": "Вытекающая сторона",
+      "pt": "WeatherSense",
+      "nl": "Weerstand",
+      "fr": "Weathersense",
+      "it": "Ambienti",
+      "es": "WeatherSense",
+      "pl": "Weathersense",
+      "uk": "Weathersense",
+      "zh-cn": "风雨"
     },
     "desc": {
       "en": "Read in data from WeatherSense",
-      "de": "Daten von WeatherSense einlesen"
+      "de": "Daten von WeatherSense einlesen",
+      "ru": "Читать в данных из Weathersense",
+      "pt": "Leia os dados de WeatherSense",
+      "nl": "Lees in gegevens van WeatherSense",
+      "fr": "Lire dans les données de Weathersense",
+      "it": "Leggi i dati da Weathersense",
+      "es": "Leer en datos de WeatherSense",
+      "pl": "Odczytane dane z Weathersense",
+      "uk": "Прочитайте в даних Weathersense",
+      "zh-cn": "阅读Weathersense的数据"
     },
     "authors": [
       "Daniel Luginbühl <webmaster@ltspiceusers.ch>"

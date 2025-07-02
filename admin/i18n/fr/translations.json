@@ -1,0 +1,13 @@
+{
+    "heizoel24-mex adapter settings": "Paramètres de l'adaptateur pour WEATHERSENSE",
+    "username": "Nom d'utilisateur Weathersense (e-mail)",
+    "passwort": "Mot de passe WEATHERSENSE",
+    "mqtt_active": "Utiliser MQTT",
+    "broker_address": "Adresse IP du courtier MQTT",
+    "mqtt_user": "Utilisateur MQTT",
+    "mqtt_pass": "Mot de passe MQTT",
+    "mqtt_port": "Port MQTT",
+    "sensor_id": "ID du capteur (1-20)",
+    "storeJson": "Enregistrer JSON",
+    "storeDir": "Dossier pour le fichier json"
+}

@@ -1,0 +1,13 @@
+{
+    "heizoel24-mex adapter settings": "Weathersense的适配器设置",
+    "username": "Weathersense用户名（电子邮件）",
+    "passwort": "Weathersense密码",
+    "mqtt_active": "使用MQTT",
+    "broker_address": "MQTT代理IP地址",
+    "mqtt_user": "MQTT用户",
+    "mqtt_pass": "MQTT密码",
+    "mqtt_port": "MQTT端口",
+    "sensor_id": "传感器ID（1-20）",
+    "storeJson": "保存JSON",
+    "storeDir": "JSON文件的文件夹"
+}
