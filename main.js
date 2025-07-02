@@ -328,16 +328,15 @@ class WeatherSense extends utils.Adapter {
 
 
     // Funktion zum Erzeugen des MD5-Hashes
-    hashPassword(pw, key) {
-        const combined = pw + key;
+    hashPassword(pw) {
+        const combined = pw + "emax@pwd123";
         return crypto.createHash("md5").update(combined, "utf8").digest("hex").toUpperCase();
     }
 
     // Login-Funktion
     async login(USERNAME, PASSWORD) {
-        const MD5_KEY = "emax@pwd123";
         const LOGIN_URL = "https://47.52.149.125/V1.0/account/login";
-        const hashed_pw = this.hashPassword(PASSWORD, MD5_KEY);
+        const hashed_pw = this.hashPassword(PASSWORD);
 
         const headers = {
             "Content-Type": "application/json; charset=utf-8",
