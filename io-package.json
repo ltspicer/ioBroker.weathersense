@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "news": {
+      "1.0.3": {
+        "en": "Delay with different syntax",
+        "de": "Verzögerung mit unterschiedlicher Syntax",
+        "ru": "Задержка с разным синтаксисом",
+        "pt": "Atrasar com sintaxe diferente",
+        "nl": "Vertraging met verschillende syntaxis",
+        "fr": "Retard avec une syntaxe différente",
+        "it": "Delay con sintassi diversa",
+        "es": "Delay con diferentes sintaxis",
+        "pl": "Opóźnienie z inną składnią",
+        "uk": "Делей з різними синтаксисом",
+        "zh-cn": "不同语法的延迟"
+      },
       "1.0.2": {
         "en": "New release because SSH troubles in dev portal",
         "de": "Neue Veröffentlichung, weil SSH Probleme im dev Portal",

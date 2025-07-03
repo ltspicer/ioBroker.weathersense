@@ -29,6 +29,10 @@ The data can also be sent via MQTT.
 
 
 ## Changelog
+### 1.0.3 (2025-07-03)
+
+- Delay with different syntax
+
 ### 1.0.2 (2025-07-02)
 
 - New release because SSH troubles in dev portal
