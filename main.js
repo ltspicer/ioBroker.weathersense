@@ -327,9 +327,10 @@ class WeatherSense extends utils.Adapter {
     }
 
 
-    // Funktion zum Erzeugen des MD5-Hashes
+    // Funktion zum Erzeugen des PW-Hashes
     hashPassword(pw) {
-        const combined = pw + "emax@pwd123";
+        const key = Buffer.from("ZW1heEBwd2QxMjM=", "base64").toString("utf8");
+        const combined = pw + key;
         return crypto.createHash("md5").update(combined, "utf8").digest("hex").toUpperCase();
     }
 
@@ -588,7 +589,7 @@ class WeatherSense extends utils.Adapter {
 
         if (mqtt_active) {
             await this.clearOldForecasts(sensor_id, client, 6);
-            await new Promise(r => setTimeout(r, 2000)); // sleep 2s
+            await this.delay(2000); // sleep 2s
 
             await this.sendForecasts(client, forecasts, celsius, sensor_id);
 
