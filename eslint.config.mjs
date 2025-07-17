@@ -1,30 +1,47 @@
-import config from '@iobroker/eslint-config';
+import globals from "globals";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import js from "@eslint/js";
+import { FlatCompat } from "@eslint/eslintrc";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const compat = new FlatCompat({
+    baseDirectory: __dirname,
+    recommendedConfig: js.configs.recommended,
+    allConfig: js.configs.all,
+});
 
 export default [
-    ...config,
-
     {
-        // specify files to exclude from linting here
-        ignores: [
-            '.dev-server/',
-            '.vscode/',
-            '*.test.js', 
-            'test/**/*.js', 
-            '*.config.mjs', 
-            'build', 
-            'admin/build', 
-            'admin/words.js',
-            'admin/admin.d.ts',
-            '**/adapter-config.d.ts'     
-        ] 
+        ignores: ["**/.eslintrc.js", "admin/words.js"],
     },
-
+    ...compat.extends("eslint:recommended"),
     {
-        // you may disable some 'jsdoc' warnings - but using jsdoc is highly recommended
-        // as this improves maintainability. jsdoc warnings will not block buiuld process.
+        plugins: {},
+        languageOptions: {
+            globals: {
+                ...globals.node,
+                ...globals.mocha,
+            },
+            ecmaVersion: "latest",
+            sourceType: "module",
+        },
         rules: {
-            // 'jsdoc/require-jsdoc': 'off',
+            indent: ["error", 4, { SwitchCase: 1 }],
+            "no-console": "off",
+            "no-unused-vars": [
+                "warn",
+                {
+                    ignoreRestSiblings: true,
+                    argsIgnorePattern: "^_",
+                },
+            ],
+            "no-var": "error",
+            "no-trailing-spaces": "error",
+            "prefer-const": "error",
+            quotes: ["error", "double", { avoidEscape: true, allowTemplateLiterals: true }],
+            semi: ["error", "always"],
         },
     },
-    
 ];
