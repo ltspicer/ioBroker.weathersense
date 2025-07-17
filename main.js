@@ -91,13 +91,13 @@ class WeatherSense extends utils.Adapter {
         this.log.debug("MQTT active: " + mqtt_active);
         this.log.debug("MQTT port: " + mqtt_port);
 
-        // Forecast Channel anlegen
-        const forecastChannelId = `${sensor_id}.forecast`;
+        // deviceId nach ioBroker Schema: namespace.sensor_id (z.B. "weathersense.0.1")
+        const deviceId = `${this.namespace}.${sensor_id}`;
 
         try {
-            const dataReceived = await this.main(client, username, passwort, mqtt_active, sensor_id, storeJson, storeDir, celsius, forecastChannelId);
+            const dataReceived = await this.main(client, username, passwort, mqtt_active, sensor_id, storeJson, storeDir, celsius, `${deviceId}.forecast`);
 
-            const systemStateId = `${sensor_id}.DataReceived`;
+            const systemStateId = `${deviceId}.DataReceived`;
             await this.setObjectNotExistsAsync(systemStateId, {
                 type: "state",
                 common: {
@@ -114,14 +114,23 @@ class WeatherSense extends utils.Adapter {
 
                 await this.setStateAsync(systemStateId, { val: true, ack: true });
 
-                // DevData Channel anlegen
-                const devDataChannelId = `${sensor_id}.devdata`;
+                // Device anlegen (falls noch nicht vorhanden)
+                await this.setObjectNotExistsAsync(deviceId, {
+                    type: "device",
+                    common: { name: `Device ${sensor_id}` },
+                    native: {},
+                });
+
+                // DevData Channel unter Device
+                const devDataChannelId = `${deviceId}.devdata`;
                 await this.setObjectNotExistsAsync(devDataChannelId, {
                     type: "channel",
                     common: { name: "DevData" },
                     native: {},
                 });
 
+                // Forecast Channel unter Device
+                const forecastChannelId = `${deviceId}.forecast`;
                 await this.setObjectNotExistsAsync(forecastChannelId, {
                     type: "channel",
                     common: { name: "Forecast" },
@@ -131,7 +140,7 @@ class WeatherSense extends utils.Adapter {
                 const tempUnit = celsius ? "°C" : "°F";
                 this.log.debug(`Unit: ${tempUnit}`);
 
-                // Bekannte Items
+                // Bekannte Items anlegen und setzen
                 const fixedItems = [
                     { id: "atmospheric_pressure", type: "number", role: "value.pressure", unit: "hPa" },
                     { id: "indoor_temp", type: "number", role: "value.temperature", unit: tempUnit },
@@ -140,7 +149,6 @@ class WeatherSense extends utils.Adapter {
                     { id: "outdoor_humidity", type: "number", role: "value.humidity", unit: "%" },
                 ];
 
-                // Zuerst die festen Items anlegen und setzen
                 for (const item of fixedItems) {
                     const id = `${devDataChannelId}.${item.id}`;
                     await this.setObjectNotExistsAsync(id, {
@@ -162,14 +170,12 @@ class WeatherSense extends utils.Adapter {
                     }
                 }
 
-                // Jetzt alle zusätzlichen dynamischen Keys aus this.contentDevData durchgehen
+                // Zusätzliche dynamische Keys aus contentDevData
                 for (const key of Object.keys(this.contentDevData || {})) {
-                    // Schon behandelt?
                     if (fixedItems.find(item => item.id === key)) continue;
 
                     const val = this.contentDevData[key];
 
-                    // Typ und Rolle
                     const common = {
                         name: key,
                         type: typeof val === "number" ? "number" : "string",
@@ -336,7 +342,7 @@ class WeatherSense extends utils.Adapter {
 
     // Login-Funktion
     async login(USERNAME, PASSWORD) {
-        const LOGIN_URL = "https://47.52.149.125/V1.0/account/login";
+        const LOGIN_URL = "https://emaxlife.net/V1.0/account/login";
         const hashed_pw = this.hashPassword(PASSWORD);
 
         const headers = {

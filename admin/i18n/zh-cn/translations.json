@@ -1,5 +1,5 @@
 {
-    "heizoel24-mex adapter settings": "Weathersense的适配器设置",
+    "weathersense adapter settings": "Weathersense的适配器设置",
     "username": "Weathersense用户名（电子邮件）",
     "passwort": "Weathersense密码",
     "mqtt_active": "使用MQTT",

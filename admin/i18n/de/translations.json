@@ -1,5 +1,5 @@
 {
-    "heizoel24-mex adapter settings": "Adaptereinstellungen für WeatherSense",
+    "weathersense adapter settings": "Adaptereinstellungen für WeatherSense",
     "username": "WeatherSense Username (Email)",
     "passwort": "WeatherSense Passwort",
     "mqtt_active": "MQTT benutzen",

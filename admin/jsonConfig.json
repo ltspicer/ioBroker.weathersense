@@ -107,7 +107,7 @@
     "storeDir": {
       "type": "text",
       "label": "Folder for JSON file",
-      "default": "/home/iobroker",
+      "default": "/home/pi",
       "xs": 12,
       "sm": 12,
       "md": 6,

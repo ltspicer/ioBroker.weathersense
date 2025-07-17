@@ -141,6 +141,6 @@
     "mqtt_port": "1883",
     "sensor_id": "1",
     "storeJson": false,
-    "storeDir": "/home/iobroker"
+    "storeDir": "/home/pi"
   }
 }
