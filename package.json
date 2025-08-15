@@ -12,7 +12,8 @@
     "ioBroker",
     "weathersense",
     "weather",
-    "sense"
+    "sense",
+    "ioBroker"
   ],
   "repository": {
     "type": "git",
