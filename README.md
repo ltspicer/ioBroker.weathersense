@@ -29,6 +29,13 @@ The data can also be sent via MQTT.
 
 
 ## Changelog
+
+
+### **WORK IN PROGRESS**
+
+- More data output
+- Cleaner type & channel output
+
 ### 1.0.3 (2025-07-03)
 
 - Delay with different syntax

@@ -81,8 +81,8 @@ class WeatherSense extends utils.Adapter {
         try {
             const instObj = await this.getForeignObjectAsync(`system.adapter.${this.namespace}`);
             if (instObj && instObj.common && instObj.common.schedule && instObj.common.schedule === '*/10 * * * *') {
-                instObj.common.schedule = `*/${Math.floor(Math.random() * 5) + 3} * * * *`;
-                this.log.info(`Default schedule found and adjusted to spread calls better over 3-7 minutes!`);
+                instObj.common.schedule = `*/${Math.floor(Math.random() * 3) + 6} * * * *`;
+                this.log.info(`Default schedule found and adjusted to spread calls better over 6-9 minutes!`);
                 await this.setForeignObjectAsync(`system.adapter.${this.namespace}`, instObj);
                 this.terminate ? this.terminate() : process.exit(0);
                 return;
@@ -94,11 +94,10 @@ class WeatherSense extends utils.Adapter {
         this.log.debug(`MQTT active: ${mqtt_active}`);
         this.log.debug(`MQTT port: ${mqtt_port}`);
 
-        // deviceId nach ioBroker Schema: namespace.sensor_id (z.B. "weathersense.0.1")
         const deviceId = `${this.namespace}.${sensor_id}`;
 
         try {
-            const dataReceived = await this.main(
+            const mainResult = await this.main(
                 client,
                 username,
                 passwort,
@@ -109,6 +108,9 @@ class WeatherSense extends utils.Adapter {
                 celsius,
                 `${deviceId}.forecast`,
             );
+
+            const dataReceived = mainResult.dataReceived;
+            const devdata = mainResult.devdata;
 
             const systemStateId = `${deviceId}.DataReceived`;
             await this.setObjectNotExistsAsync(systemStateId, {
@@ -126,99 +128,138 @@ class WeatherSense extends utils.Adapter {
             if (dataReceived === true) {
                 await this.setStateAsync(systemStateId, { val: true, ack: true });
 
-                // Device anlegen (falls noch nicht vorhanden)
-                await this.setObjectNotExistsAsync(deviceId, {
-                    type: 'device',
-                    common: { name: `Device ${sensor_id}` },
-                    native: {},
-                });
-
-                // DevData Channel unter Device
-                const devDataChannelId = `${deviceId}.devdata`;
-                await this.setObjectNotExistsAsync(devDataChannelId, {
-                    type: 'channel',
-                    common: { name: 'DevData' },
-                    native: {},
-                });
-
-                // Forecast Channel unter Device
-                const forecastChannelId = `${deviceId}.forecast`;
-                await this.setObjectNotExistsAsync(forecastChannelId, {
-                    type: 'channel',
-                    common: { name: 'Forecast' },
-                    native: {},
-                });
-
+                const devDataChannelId = `${deviceId}.devData`;
                 const tempUnit = celsius ? '°C' : '°F';
-                this.log.debug(`Unit: ${tempUnit}`);
 
-                // Bekannte Items anlegen und setzen
-                const fixedItems = [
-                    { id: 'atmospheric_pressure', type: 'number', role: 'value.pressure', unit: 'hPa' },
-                    { id: 'indoor_temp', type: 'number', role: 'value.temperature', unit: tempUnit },
-                    { id: 'indoor_humidity', type: 'number', role: 'value.humidity', unit: '%' },
-                    { id: 'outdoor_temp', type: 'number', role: 'value.temperature', unit: tempUnit },
-                    { id: 'outdoor_humidity', type: 'number', role: 'value.humidity', unit: '%' },
-                ];
-
-                for (const item of fixedItems) {
-                    const id = `${devDataChannelId}.${item.id}`;
-                    await this.setObjectNotExistsAsync(id, {
-                        type: 'state',
-                        common: {
-                            name: item.id,
-                            type: item.type,
-                            role: item.role,
-                            unit: item.unit,
-                            read: true,
-                            write: false,
-                        },
-                        native: {},
-                    });
-
-                    const val = this.contentDevData ? this.contentDevData[item.id] : null;
-                    if (val != null) {
-                        await this.setStateAsync(id, { val: val, ack: true });
+                // Alle Werte aus devdata (außer content)
+                for (const [key, value] of Object.entries(devdata)) {
+                    if (key === "content") continue;
+                    if (value !== null && value !== undefined) {
+                        const id = `${devDataChannelId}.${key}`;
+                        await this.setObjectNotExistsAsync(id, {
+                            type: typeof value === 'number' ? 'state' : 'state',
+                            common: {
+                                name: key,
+                                type: typeof value,
+                                role: 'value',
+                                unit: '',
+                                read: true,
+                                write: false,
+                            },
+                            native: {},
+                        });
+                        await this.setStateAsync(id, { val: value, ack: true });
                     }
                 }
 
-                // Zusätzliche dynamische Keys aus contentDevData
-                for (const key of Object.keys(this.contentDevData || {})) {
-                    if (fixedItems.find(item => item.id === key)) {
-                        continue;
+                // Alle Werte aus devdata.content
+                const content = devdata.content || {};
+                for (const [key, value] of Object.entries(content)) {
+                    if (value !== null && value !== undefined && key !== "sensorDatas") {
+                        const id = `${devDataChannelId}.${key}`;
+                        await this.setObjectNotExistsAsync(id, {
+                            type: typeof value === 'number' ? 'state' : 'state',
+                            common: {
+                                name: key,
+                                type: typeof value,
+                                role: 'value',
+                                unit: '',
+                                read: true,
+                                write: false,
+                            },
+                            native: {},
+                        });
+                        await this.setStateAsync(id, { val: value, ack: true });
+                    }
+                }
+
+                // Alle Sensoren aus devdata.content.sensorDatas
+                const sensor_data = content.sensorDatas || [];
+                for (const s of sensor_data) {
+                    const type_ = s.type;
+                    const channel = s.channel;
+                    const cur_val = s.curVal;
+                    const high_val = s.hihgVal;
+                    const low_val = s.lowVal;
+
+                    let prefix = "";
+                    if (type_ === 1) prefix = "-Temp";
+                    if (type_ === 2) prefix = "-Hum";
+
+                    const key = `Type${type_}-Channel${channel}${prefix}`;
+                    const base = `${devDataChannelId}.${key}`;
+
+                    // current
+                    if (cur_val !== null && cur_val !== undefined && cur_val !== 65535 && cur_val !== 255) {
+                        const id = `${base}.current`;
+                        await this.setObjectNotExistsAsync(id, {
+                            type: 'state',
+                            common: {
+                                name: 'current',
+                                type: 'number',
+                                role: prefix === "-Temp" ? 'value.temperature' : (prefix === "-Hum" ? 'value.humidity' : 'value'),
+                                unit: prefix === "-Temp" ? tempUnit : (prefix === "-Hum" ? '%' : ''),
+                                read: true,
+                                write: false,
+                            },
+                            native: {},
+                        });
+                        await this.setStateAsync(id, { val: this.c_f_berechnen(cur_val, prefix, celsius), ack: true });
+                    }
+                    // high
+                    if (high_val !== null && high_val !== undefined && high_val !== 65535 && high_val !== 255) {
+                        const id = `${base}.high`;
+                        await this.setObjectNotExistsAsync(id, {
+                            type: 'state',
+                            common: {
+                                name: 'high',
+                                type: 'number',
+                                role: prefix === "-Temp" ? 'value.temperature' : (prefix === "-Hum" ? 'value.humidity' : 'value'),
+                                unit: prefix === "-Temp" ? tempUnit : (prefix === "-Hum" ? '%' : ''),
+                                read: true,
+                                write: false,
+                            },
+                            native: {},
+                        });
+                        await this.setStateAsync(id, { val: this.c_f_berechnen(high_val, prefix, celsius), ack: true });
+                    }
+                    // low
+                    if (low_val !== null && low_val !== undefined && low_val !== 65535 && low_val !== 255) {
+                        const id = `${base}.low`;
+                        await this.setObjectNotExistsAsync(id, {
+                            type: 'state',
+                            common: {
+                                name: 'low',
+                                type: 'number',
+                                role: prefix === "-Temp" ? 'value.temperature' : (prefix === "-Hum" ? 'value.humidity' : 'value'),
+                                unit: prefix === "-Temp" ? tempUnit : (prefix === "-Hum" ? '%' : ''),
+                                read: true,
+                                write: false,
+                            },
+                            native: {},
+                        });
+                        await this.setStateAsync(id, { val: this.c_f_berechnen(low_val, prefix, celsius), ack: true });
                     }
 
-                    const val = this.contentDevData[key];
-
-                    const common = {
-                        name: key,
-                        type: typeof val === 'number' ? 'number' : 'string',
-                        role: 'value',
-                        unit: '',
-                        read: true,
-                        write: false,
-                    };
-
-                    if (key.includes('temp')) {
-                        common.role = 'value.temperature';
-                        common.unit = tempUnit;
-                    } else if (key.includes('humidity')) {
-                        common.role = 'value.humidity';
-                        common.unit = '%';
-                    } else if (key.includes('pressure')) {
-                        common.role = 'value.pressure';
-                        common.unit = 'hPa';
+                    // dev*-Keys im Sensorobjekt
+                    for (const [k, v] of Object.entries(s)) {
+                        if (k.startsWith("dev") && v !== null && v !== undefined && !(typeof v === 'object' && Object.keys(v).length === 0)) {
+                            const id = `${base}.${k}`;
+                            await this.setObjectNotExistsAsync(id, {
+                                type: 'state',
+                                common: {
+                                    name: k,
+                                    type: typeof v,
+                                    role: 'value',
+                                    unit: '',
+                                    read: true,
+                                    write: false,
+                                },
+                                native: {},
+                            });
+                            await this.setStateAsync(id, { val: v, ack: true });
+                        }
                     }
-
-                    const id = `${devDataChannelId}.${key}`;
-
-                    await this.setObjectNotExistsAsync(id, {
-                        type: 'state',
-                        common,
-                        native: {},
-                    });
-
-                    await this.setStateAsync(id, { val: val, ack: true });
                 }
             } else {
                 this.log.error('Error loading data in main()');
@@ -236,9 +277,9 @@ class WeatherSense extends utils.Adapter {
         }
     }
 
+    // MQTT senden
     async sendMqtt(sensor_id, mqtt_active, client, topic, wert) {
         if (mqtt_active) {
-            // Wenn wert nicht String ist, in String umwandeln (auch null und undefined abfangen)
             if (typeof wert !== 'string') {
                 wert = wert !== null && wert !== undefined ? wert.toString() : '';
             }
@@ -246,12 +287,22 @@ class WeatherSense extends utils.Adapter {
         }
     }
 
+    // °F nach °C umwandeln, falls notwendig
+    c_f_berechnen(temp, prefix, celsius) {
+        if (celsius && prefix === "-Temp") {
+            if (temp !== null && temp !== undefined) {
+                temp = ((temp - 32) / 1.8).toFixed(1);
+            }
+        }
+        return temp;
+    }
+
+    // Forecast Datenpunkte erstellen und schreiben
     async createOrUpdateForecastDPs(forecastChannelId, forecasts, celsius) {
         if (!forecasts || !forecastChannelId) {
             return;
         }
 
-        // Struktur der Forecast-Items pro Tag
         const forecastItems = [
             { id: 'day', type: 'string', role: 'value', unit: '' },
             { id: 'date', type: 'string', role: 'value', unit: '' },
@@ -267,7 +318,7 @@ class WeatherSense extends utils.Adapter {
             }
 
             for (const item of forecastItems) {
-                const id = `${forecastChannelId}.${i}.${item.id}`;
+                const id = `${forecastChannelId}.day_${i}.${item.id}`;
                 await this.setObjectNotExistsAsync(id, {
                     type: 'state',
                     common: {
@@ -297,6 +348,7 @@ class WeatherSense extends utils.Adapter {
         }
     }
 
+    // Forecasts per MQTT senden
     async sendForecasts(client, forecasts, celsius, sensor_id) {
         if (!client || !forecasts) {
             return;
@@ -308,8 +360,8 @@ class WeatherSense extends utils.Adapter {
                 continue;
             }
 
-            await this.sendMqtt(sensor_id, true, client, `forecast/${i}/day`, forecast.day || '');
-            await this.sendMqtt(sensor_id, true, client, `forecast/${i}/date`, forecast.date || '');
+            await this.sendMqtt(sensor_id, true, client, `forecast/day_${i}/day`, forecast.day || '');
+            await this.sendMqtt(sensor_id, true, client, `forecast/day_${i}/date`, forecast.date || '');
 
             let tempHigh = forecast.high;
             let tempLow = forecast.low;
@@ -323,20 +375,22 @@ class WeatherSense extends utils.Adapter {
                 tempLow = tempLow != null ? Number(tempLow) : 0;
             }
 
-            await this.sendMqtt(sensor_id, true, client, `forecast/${i}/high`, tempHigh);
-            await this.sendMqtt(sensor_id, true, client, `forecast/${i}/low`, tempLow);
-            await this.sendMqtt(sensor_id, true, client, `forecast/${i}/text`, forecast.text || '');
+            await this.sendMqtt(sensor_id, true, client, `forecast/day_${i}/high`, tempHigh);
+            await this.sendMqtt(sensor_id, true, client, `forecast/day_${i}/low`, tempLow);
+            await this.sendMqtt(sensor_id, true, client, `forecast/day_${i}/text`, forecast.text || '');
         }
     }
 
+    // Alte MQTT Datenpunkte auf Subscriber löschen
     async clearOldForecasts(sensor_id, client, maxDays = 6) {
         for (let i = 0; i < maxDays; i++) {
             for (const key of ['day', 'date', 'high', 'low', 'text']) {
-                await this.sendMqtt(sensor_id, true, client, `forecast/${i}/${key}`, '');
+                await this.sendMqtt(sensor_id, true, client, `forecast/day_${i}/${key}`, '');
             }
         }
     }
 
+    // Debugausgabe formatieren
     printAllKeys(d, prefix = '') {
         if (typeof d === 'object' && d !== null && !Array.isArray(d)) {
             for (const [k, v] of Object.entries(d)) {
@@ -349,11 +403,6 @@ class WeatherSense extends utils.Adapter {
         } else {
             this.log.debug(`${prefix}: ${d}`);
         }
-    }
-
-    findValue(sensor_data, type, channel) {
-        const entry = sensor_data.find(item => item.type === type && item.channel === channel);
-        return entry ? entry.curVal : null;
     }
 
     // Funktion zum Erzeugen des PW-Hashes
@@ -403,8 +452,8 @@ class WeatherSense extends utils.Adapter {
         return null;
     }
 
+    // Realtime Daten holen
     async devData(token) {
-        // Realtime Daten holen
         this.log.debug('getRealtime data...');
 
         const url = 'https://emaxlife.net/V1.0/weather/devData/getRealtime';
@@ -436,8 +485,8 @@ class WeatherSense extends utils.Adapter {
         }
     }
 
+    // Forecast Daten holen
     async foreCast(token) {
-        // Forecast holen
         this.log.debug('getForecast data...');
 
         const url = 'https://emaxlife.net/V1.0/weather/netData/getForecast';
@@ -487,7 +536,7 @@ class WeatherSense extends utils.Adapter {
                 await this.sendMqtt(sensor_id, mqtt_active, client, 'dataReceived', 'false');
                 client.end();
             }
-            return false;
+            return { dataReceived: false };
         }
 
         if (storeJson) {
@@ -499,146 +548,51 @@ class WeatherSense extends utils.Adapter {
         this.log.debug('devData JSON:');
         this.printAllKeys(devdata);
 
-        const content = devdata?.content || {};
-        const sensor_data = content.sensorDatas || [];
-
-        const luftdruck = content.atmos;
-        let temp_innen = this.findValue(sensor_data, 1, 0);
-        const feuchte_innen = this.findValue(sensor_data, 2, 0);
-        let temp_aussen = this.findValue(sensor_data, 1, 2);
-        const feuchte_aussen = this.findValue(sensor_data, 2, 2);
-
-        const skipCombinations = new Set(['1_0', '1_2', '2_0', '2_2']);
-
-        if (celsius) {
-            if (temp_innen != null) {
-                temp_innen = ((temp_innen - 32) / 1.8).toFixed(1);
-            }
-            if (temp_aussen != null) {
-                temp_aussen = ((temp_aussen - 32) / 1.8).toFixed(1);
-            }
-        }
-
         if (mqtt_active) {
-            const error_code = devdata.error;
-
-            if (error_code != null) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/error', error_code);
-            }
-            if (content.devTime) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/devtime', content.devTime);
-            }
-            if (content.updateTime) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/updateTime', content.updateTime);
-            }
-            if (content.deviceMac) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/deviceMac', content.deviceMac);
-            }
-            if (content.devTimezone != null) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/devTimezone', content.devTimezone);
-            }
-            if (content.wirelessStatus != null) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/wirelessStatus', content.wirelessStatus);
-            }
-            if (content.powerStatus != null) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/powerStatus', content.powerStatus);
-            }
-            if (content.weatherStatus != null) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/weatherStatus', content.weatherStatus);
-            }
-            if (luftdruck != null) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/atmospheric_pressure', luftdruck);
-            }
-            if (temp_innen != null) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/indoor_temp', temp_innen);
-            }
-            if (feuchte_innen != null) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/indoor_humidity', feuchte_innen);
-            }
-            if (temp_aussen != null) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/outdoor_temp', temp_aussen);
-            }
-            if (feuchte_aussen != null) {
-                this.sendMqtt(sensor_id, mqtt_active, client, 'devData/outdoor_humidity', feuchte_aussen);
+            for (const [key, value] of Object.entries(devdata)) {
+                if (key === "content") continue;
+                if (value !== null && value !== undefined) {
+                    this.sendMqtt(sensor_id, mqtt_active, client, `devData/${key}`, value);
+                }
             }
 
-            // >>> Zusätzliche dynamische Sensoren ausgeben:
+            const content = devdata.content || {};
+            for (const [key, value] of Object.entries(content)) {
+                if (value !== null && value !== undefined) {
+                    this.sendMqtt(sensor_id, mqtt_active, client, `devData/${key}`, value);
+                }
+            }
+
+            const sensor_data = content.sensorDatas || [];
+
             for (const s of sensor_data) {
-                const { type, channel, curVal, hihgVal, lowVal, ...rest } = s;
-                const key = `${type}_${channel}`;
-                if (skipCombinations.has(key)) {
-                    continue;
-                }
-                const base = `devData/sensor_${type}_${channel}`;
+                const type_ = s.type;
+                const channel = s.channel;
+                const cur_val = s.curVal;
+                const high_val = s.hihgVal;
+                const low_val = s.lowVal;
 
-                if (curVal != null && curVal !== 65535) {
-                    await this.sendMqtt(sensor_id, mqtt_active, client, `${base}/current`, curVal);
+                let prefix = "";
+                if (type_ === 1) prefix = "-Temp";
+                if (type_ === 2) prefix = "-Hum";
+
+                const key = `Type${type_}-Channel${channel}${prefix}`;
+                const base = `devData/${key}`;
+
+                if (cur_val !== null && cur_val !== undefined && cur_val !== 65535 && cur_val !== 255) {
+                    this.sendMqtt(sensor_id, mqtt_active, client, `${base}/current`, this.c_f_berechnen(cur_val, prefix, celsius));
                 }
-                if (hihgVal != null && hihgVal !== 65535) {
-                    await this.sendMqtt(sensor_id, mqtt_active, client, `${base}/high`, hihgVal);
+                if (high_val !== null && high_val !== undefined && high_val !== 65535 && high_val !== 255) {
+                    this.sendMqtt(sensor_id, mqtt_active, client, `${base}/high`, this.c_f_berechnen(high_val, prefix, celsius));
                 }
-                if (lowVal != null && lowVal !== 65535) {
-                    await this.sendMqtt(sensor_id, mqtt_active, client, `${base}/low`, lowVal);
+                if (low_val !== null && low_val !== undefined && low_val !== 65535 && low_val !== 255) {
+                    this.sendMqtt(sensor_id, mqtt_active, client, `${base}/low`, this.c_f_berechnen(low_val, prefix, celsius));
                 }
 
-                for (const [nestedKey, nestedVal] of Object.entries(rest)) {
-                    if (nestedVal && typeof nestedVal === 'object') {
-                        const entries = Object.entries(nestedVal);
-
-                        if (entries.length === 0) {
-                            // Leeres Objekt → Platzhalter senden
-                            const topic = `${base}/${nestedKey}`;
-                            await this.sendMqtt(sensor_id, mqtt_active, client, topic, 'n/a');
-                            this.log.debug(`Send MQTT: ${topic}: n/a (empty object)`);
-                        } else {
-                            // Inhaltliches Objekt → Einzeldaten senden
-                            for (const [k, v] of entries) {
-                                if (v != null) {
-                                    const topic = `${base}/${nestedKey}/${k}`;
-                                    await this.sendMqtt(sensor_id, mqtt_active, client, topic, v);
-                                    this.log.debug(`Send MQTT: ${topic}: ${v}`);
-                                }
-                            }
-                        }
+                for (const [k, v] of Object.entries(s)) {
+                    if (k.startsWith("dev") && v !== null && v !== undefined && !(typeof v === 'object' && Object.keys(v).length === 0)) {
+                        this.sendMqtt(sensor_id, mqtt_active, client, `${base}/${k}`, v);
                     }
-                }
-            }
-        }
-
-        // Basiswerte setzen
-        this.contentDevData = {
-            atmospheric_pressure: luftdruck,
-            indoor_temp: temp_innen,
-            indoor_humidity: feuchte_innen,
-            outdoor_temp: temp_aussen,
-            outdoor_humidity: feuchte_aussen,
-        };
-
-        // Zusätzliche Sensoren ergänzen (alle type/channel Kombinationen)
-        for (const s of sensor_data) {
-            const { type, channel, curVal, hihgVal, lowVal, ...rest } = s;
-            const key = `${type}_${channel}`;
-            if (skipCombinations.has(key)) {
-                continue;
-            } // Überspringen, wenn schon bekannt
-
-            const keyBase = `sensor_${type}_${channel}`;
-
-            if (curVal != null && curVal !== 65535) {
-                this.contentDevData[`${keyBase}_current`] = curVal;
-            }
-            if (hihgVal != null && hihgVal !== 65535) {
-                this.contentDevData[`${keyBase}_high`] = hihgVal;
-            }
-            if (lowVal != null && lowVal !== 65535) {
-                this.contentDevData[`${keyBase}_low`] = lowVal;
-            }
-
-            for (const [k, v] of Object.entries(rest)) {
-                if (v && typeof v === 'object' && Object.keys(v).length === 0) {
-                    this.contentDevData[`${keyBase}_${k}`] = 'n/a';
-                } else if (v != null) {
-                    this.contentDevData[`${keyBase}_${k}`] = v;
                 }
             }
         }
@@ -664,7 +618,11 @@ class WeatherSense extends utils.Adapter {
 
         await this.createOrUpdateForecastDPs(forecastChannelId, forecasts, celsius);
 
-        return true;
+        return {
+            dataReceived: true,
+            devdata,
+            forecast
+        };
     }
 
     onUnload(callback) {
