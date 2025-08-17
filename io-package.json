@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "news": {
+      "2.0.1": {
+        "en": "More data output\nCleaner type & channel output",
+        "de": "Mehr Datenausgabe\nReiniger Typ & Kanal Ausgang",
+        "ru": "Больше выходных данных\nЧистый тип и выход канала",
+        "pt": "Mais saída de dados\nTipo & saída do canal mais limpo",
+        "nl": "Meer gegevensuitvoer\nSchonere & kanaaluitvoer",
+        "fr": "Plus de données\nType et sortie du canal plus propre",
+        "it": "Più output dati\nTipo di pulizia & uscita canale",
+        "es": "Más producción de datos\nSalida del canal del tipo de limpieza",
+        "pl": "Więcej danych\nTyp czyszczenia i wyjście kanału",
+        "uk": "Більше даних\nТип очищення та вихід каналу",
+        "zh-cn": "更多数据输出\n清洁类型和频道输出( T)"
+      },
       "2.0.0": {
         "en": "More data output\nCleaner type & channel output",
         "de": "Mehr Datenausgabe\nReiniger Typ & Kanal Ausgang",
