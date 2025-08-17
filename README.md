@@ -30,8 +30,7 @@ The weather station data is stored in the weathersense data point.
 The data can also be sent via MQTT.
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 2.0.2 (2025-08-17)
 
 - Unit hPa added
 

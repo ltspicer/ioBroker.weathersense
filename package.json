@@ -1,6 +1,6 @@
 {
   "name": "iobroker.weathersense",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Read in data from WeatherSense",
   "author": {
     "name": "Daniel Luginbühl",
