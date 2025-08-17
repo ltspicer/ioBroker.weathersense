@@ -133,7 +133,9 @@ class WeatherSense extends utils.Adapter {
 
                 // Alle Werte aus devdata (außer content)
                 for (const [key, value] of Object.entries(devdata)) {
-                    if (key === "content") continue;
+                    if (key === 'content') {
+                        continue;
+                    }
                     if (value !== null && value !== undefined) {
                         const id = `${devDataChannelId}.${key}`;
                         await this.setObjectNotExistsAsync(id, {
@@ -155,7 +157,7 @@ class WeatherSense extends utils.Adapter {
                 // Alle Werte aus devdata.content
                 const content = devdata.content || {};
                 for (const [key, value] of Object.entries(content)) {
-                    if (value !== null && value !== undefined && key !== "sensorDatas") {
+                    if (value !== null && value !== undefined && key !== 'sensorDatas') {
                         const id = `${devDataChannelId}.${key}`;
                         await this.setObjectNotExistsAsync(id, {
                             type: typeof value === 'number' ? 'state' : 'state',
@@ -182,9 +184,14 @@ class WeatherSense extends utils.Adapter {
                     const high_val = s.hihgVal;
                     const low_val = s.lowVal;
 
-                    let prefix = "";
-                    if (type_ === 1) prefix = "-Temp";
-                    if (type_ === 2) prefix = "-Hum";
+                    let prefix = '';
+
+                    if (type_ === 1) {
+                        prefix = '-Temp';
+                    }
+                    if (type_ === 2) {
+                        prefix = '-Hum';
+                    }
 
                     const key = `Type${type_}-Channel${channel}${prefix}`;
                     const base = `${devDataChannelId}.${key}`;
@@ -197,8 +204,13 @@ class WeatherSense extends utils.Adapter {
                             common: {
                                 name: 'current',
                                 type: 'number',
-                                role: prefix === "-Temp" ? 'value.temperature' : (prefix === "-Hum" ? 'value.humidity' : 'value'),
-                                unit: prefix === "-Temp" ? tempUnit : (prefix === "-Hum" ? '%' : ''),
+                                role:
+                                    prefix === '-Temp'
+                                        ? 'value.temperature'
+                                        : prefix === '-Hum'
+                                          ? 'value.humidity'
+                                          : 'value',
+                                unit: prefix === '-Temp' ? tempUnit : prefix === '-Hum' ? '%' : '',
                                 read: true,
                                 write: false,
                             },
@@ -214,8 +226,13 @@ class WeatherSense extends utils.Adapter {
                             common: {
                                 name: 'high',
                                 type: 'number',
-                                role: prefix === "-Temp" ? 'value.temperature' : (prefix === "-Hum" ? 'value.humidity' : 'value'),
-                                unit: prefix === "-Temp" ? tempUnit : (prefix === "-Hum" ? '%' : ''),
+                                role:
+                                    prefix === '-Temp'
+                                        ? 'value.temperature'
+                                        : prefix === '-Hum'
+                                          ? 'value.humidity'
+                                          : 'value',
+                                unit: prefix === '-Temp' ? tempUnit : prefix === '-Hum' ? '%' : '',
                                 read: true,
                                 write: false,
                             },
@@ -231,8 +248,13 @@ class WeatherSense extends utils.Adapter {
                             common: {
                                 name: 'low',
                                 type: 'number',
-                                role: prefix === "-Temp" ? 'value.temperature' : (prefix === "-Hum" ? 'value.humidity' : 'value'),
-                                unit: prefix === "-Temp" ? tempUnit : (prefix === "-Hum" ? '%' : ''),
+                                role:
+                                    prefix === '-Temp'
+                                        ? 'value.temperature'
+                                        : prefix === '-Hum'
+                                          ? 'value.humidity'
+                                          : 'value',
+                                unit: prefix === '-Temp' ? tempUnit : prefix === '-Hum' ? '%' : '',
                                 read: true,
                                 write: false,
                             },
@@ -243,7 +265,12 @@ class WeatherSense extends utils.Adapter {
 
                     // dev*-Keys im Sensorobjekt
                     for (const [k, v] of Object.entries(s)) {
-                        if (k.startsWith("dev") && v !== null && v !== undefined && !(typeof v === 'object' && Object.keys(v).length === 0)) {
+                        if (
+                            k.startsWith('dev') &&
+                            v !== null &&
+                            v !== undefined &&
+                            !(typeof v === 'object' && Object.keys(v).length === 0)
+                        ) {
                             const id = `${base}.${k}`;
                             await this.setObjectNotExistsAsync(id, {
                                 type: 'state',
@@ -289,7 +316,7 @@ class WeatherSense extends utils.Adapter {
 
     // °F nach °C umwandeln, falls notwendig
     c_f_berechnen(temp, prefix, celsius) {
-        if (celsius && prefix === "-Temp") {
+        if (celsius && prefix === '-Temp') {
             if (temp !== null && temp !== undefined) {
                 temp = ((temp - 32) / 1.8).toFixed(1);
             }
@@ -550,7 +577,9 @@ class WeatherSense extends utils.Adapter {
 
         if (mqtt_active) {
             for (const [key, value] of Object.entries(devdata)) {
-                if (key === "content") continue;
+                if (key === 'content') {
+                    continue;
+                }
                 if (value !== null && value !== undefined) {
                     this.sendMqtt(sensor_id, mqtt_active, client, `devData/${key}`, value);
                 }
@@ -572,25 +601,52 @@ class WeatherSense extends utils.Adapter {
                 const high_val = s.hihgVal;
                 const low_val = s.lowVal;
 
-                let prefix = "";
-                if (type_ === 1) prefix = "-Temp";
-                if (type_ === 2) prefix = "-Hum";
+                let prefix = '';
+                if (type_ === 1) {
+                    prefix = '-Temp';
+                }
+                if (type_ === 2) {
+                    prefix = '-Hum';
+                }
 
                 const key = `Type${type_}-Channel${channel}${prefix}`;
                 const base = `devData/${key}`;
 
                 if (cur_val !== null && cur_val !== undefined && cur_val !== 65535 && cur_val !== 255) {
-                    this.sendMqtt(sensor_id, mqtt_active, client, `${base}/current`, this.c_f_berechnen(cur_val, prefix, celsius));
+                    this.sendMqtt(
+                        sensor_id,
+                        mqtt_active,
+                        client,
+                        `${base}/current`,
+                        this.c_f_berechnen(cur_val, prefix, celsius),
+                    );
                 }
                 if (high_val !== null && high_val !== undefined && high_val !== 65535 && high_val !== 255) {
-                    this.sendMqtt(sensor_id, mqtt_active, client, `${base}/high`, this.c_f_berechnen(high_val, prefix, celsius));
+                    this.sendMqtt(
+                        sensor_id,
+                        mqtt_active,
+                        client,
+                        `${base}/high`,
+                        this.c_f_berechnen(high_val, prefix, celsius),
+                    );
                 }
                 if (low_val !== null && low_val !== undefined && low_val !== 65535 && low_val !== 255) {
-                    this.sendMqtt(sensor_id, mqtt_active, client, `${base}/low`, this.c_f_berechnen(low_val, prefix, celsius));
+                    this.sendMqtt(
+                        sensor_id,
+                        mqtt_active,
+                        client,
+                        `${base}/low`,
+                        this.c_f_berechnen(low_val, prefix, celsius),
+                    );
                 }
 
                 for (const [k, v] of Object.entries(s)) {
-                    if (k.startsWith("dev") && v !== null && v !== undefined && !(typeof v === 'object' && Object.keys(v).length === 0)) {
+                    if (
+                        k.startsWith('dev') &&
+                        v !== null &&
+                        v !== undefined &&
+                        !(typeof v === 'object' && Object.keys(v).length === 0)
+                    ) {
                         this.sendMqtt(sensor_id, mqtt_active, client, `${base}/${k}`, v);
                     }
                 }
@@ -621,7 +677,7 @@ class WeatherSense extends utils.Adapter {
         return {
             dataReceived: true,
             devdata,
-            forecast
+            forecast,
         };
     }
 

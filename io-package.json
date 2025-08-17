@@ -1,146 +1,133 @@
 {
-  "common": {
-    "name": "weathersense",
-    "version": "1.0.3",
-    "news": {
-      "1.0.3": {
-        "en": "Delay with different syntax",
-        "de": "Verzögerung mit unterschiedlicher Syntax",
-        "ru": "Задержка с разным синтаксисом",
-        "pt": "Atrasar com sintaxe diferente",
-        "nl": "Vertraging met verschillende syntaxis",
-        "fr": "Retard avec une syntaxe différente",
-        "it": "Delay con sintassi diversa",
-        "es": "Delay con diferentes sintaxis",
-        "pl": "Opóźnienie z inną składnią",
-        "uk": "Делей з різними синтаксисом",
-        "zh-cn": "不同语法的延迟"
-      },
-      "1.0.2": {
-        "en": "New release because SSH troubles in dev portal",
-        "de": "Neue Veröffentlichung, weil SSH Probleme im dev Portal",
-        "ru": "Новый релиз из-за проблем с SSH на портале dev",
-        "pt": "Nova versão porque SSH problemas no portal dev",
-        "nl": "Nieuwe release omdat SSH problemen heeft in dev portal",
-        "fr": "Nouvelle version parce que SSH dérange dans le portail dev",
-        "it": "Nuova release perché problemi SSH nel portale dev",
-        "es": "Nuevo lanzamiento porque problemas SSH en el portal dev",
-        "pl": "Nowe wydanie ponieważ SSH problemy w portalu dev",
-        "uk": "Новий реліз через SSH клопоти на порталі dev",
-        "zh-cn": "Dev 门户网站中由于 SSH 麻烦而新建发布"
-      },
-      "1.0.1": {
-        "en": "Code cleanups",
-        "de": "Aufräumen von Codes",
-        "ru": "Очистка кода",
-        "pt": "Limpeza de código",
-        "nl": "Code opruiming",
-        "fr": "Nettoyage du code",
-        "it": "Pulizia del codice",
-        "es": "Limpieza del código",
-        "pl": "Czyszczenie kodu",
-        "uk": "Чистка коду",
-        "zh-cn": "代码清理"
-      },
-      "1.0.0": {
-        "en": "First release",
-        "de": "Erstes Release",
-        "ru": "Первый релиз",
-        "pt": "Primeiro lançamento",
-        "nl": "Eerste release",
-        "fr": "Première sortie",
-        "it": "Prima versione",
-        "es": "Primer lanzamiento",
-        "pl": "Pierwsze wydanie",
-        "uk": "Перший випуск",
-        "zh-cn": "第一版"
-      }
+    "common": {
+        "name": "weathersense",
+        "version": "1.0.3",
+        "news": {
+            "1.0.3": {
+                "en": "Delay with different syntax",
+                "de": "Verzögerung mit unterschiedlicher Syntax",
+                "ru": "Задержка с разным синтаксисом",
+                "pt": "Atrasar com sintaxe diferente",
+                "nl": "Vertraging met verschillende syntaxis",
+                "fr": "Retard avec une syntaxe différente",
+                "it": "Delay con sintassi diversa",
+                "es": "Delay con diferentes sintaxis",
+                "pl": "Opóźnienie z inną składnią",
+                "uk": "Делей з різними синтаксисом",
+                "zh-cn": "不同语法的延迟"
+            },
+            "1.0.2": {
+                "en": "New release because SSH troubles in dev portal",
+                "de": "Neue Veröffentlichung, weil SSH Probleme im dev Portal",
+                "ru": "Новый релиз из-за проблем с SSH на портале dev",
+                "pt": "Nova versão porque SSH problemas no portal dev",
+                "nl": "Nieuwe release omdat SSH problemen heeft in dev portal",
+                "fr": "Nouvelle version parce que SSH dérange dans le portail dev",
+                "it": "Nuova release perché problemi SSH nel portale dev",
+                "es": "Nuevo lanzamiento porque problemas SSH en el portal dev",
+                "pl": "Nowe wydanie ponieważ SSH problemy w portalu dev",
+                "uk": "Новий реліз через SSH клопоти на порталі dev",
+                "zh-cn": "Dev 门户网站中由于 SSH 麻烦而新建发布"
+            },
+            "1.0.1": {
+                "en": "Code cleanups",
+                "de": "Aufräumen von Codes",
+                "ru": "Очистка кода",
+                "pt": "Limpeza de código",
+                "nl": "Code opruiming",
+                "fr": "Nettoyage du code",
+                "it": "Pulizia del codice",
+                "es": "Limpieza del código",
+                "pl": "Czyszczenie kodu",
+                "uk": "Чистка коду",
+                "zh-cn": "代码清理"
+            },
+            "1.0.0": {
+                "en": "First release",
+                "de": "Erstes Release",
+                "ru": "Первый релиз",
+                "pt": "Primeiro lançamento",
+                "nl": "Eerste release",
+                "fr": "Première sortie",
+                "it": "Prima versione",
+                "es": "Primer lanzamiento",
+                "pl": "Pierwsze wydanie",
+                "uk": "Перший випуск",
+                "zh-cn": "第一版"
+            }
+        },
+        "titleLang": {
+            "en": "WeatherSense",
+            "de": "WeatherSense",
+            "ru": "Вытекающая сторона",
+            "pt": "WeatherSense",
+            "nl": "Weerstand",
+            "fr": "Weathersense",
+            "it": "Ambienti",
+            "es": "WeatherSense",
+            "pl": "Weathersense",
+            "uk": "Weathersense",
+            "zh-cn": "风雨"
+        },
+        "desc": {
+            "en": "Read in data from WeatherSense",
+            "de": "Daten von WeatherSense einlesen",
+            "ru": "Читать в данных из Weathersense",
+            "pt": "Leia os dados de WeatherSense",
+            "nl": "Lees in gegevens van WeatherSense",
+            "fr": "Lire dans les données de Weathersense",
+            "it": "Leggi i dati da Weathersense",
+            "es": "Leer en datos de WeatherSense",
+            "pl": "Odczytane dane z Weathersense",
+            "uk": "Прочитайте в даних Weathersense",
+            "zh-cn": "阅读Weathersense的数据"
+        },
+        "authors": ["Daniel Luginbühl <webmaster@ltspiceusers.ch>"],
+        "keywords": ["weather", "sense", "weathersense", "ioBroker.weathersense"],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "weathersense.png",
+        "enabled": false,
+        "extIcon": "https://raw.githubusercontent.com/ltspicer/ioBroker.weathersense/main/admin/weathersense.png",
+        "readme": "https://github.com/ltspicer/ioBroker.weathersense/blob/main/README.md",
+        "loglevel": "info",
+        "tier": 3,
+        "mode": "schedule",
+        "schedule": "*/10 * * * *",
+        "allowInit": true,
+        "type": "metering",
+        "compact": true,
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=6.0.11"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=7.6.17"
+            }
+        ]
     },
-    "titleLang": {
-      "en": "WeatherSense",
-      "de": "WeatherSense",
-      "ru": "Вытекающая сторона",
-      "pt": "WeatherSense",
-      "nl": "Weerstand",
-      "fr": "Weathersense",
-      "it": "Ambienti",
-      "es": "WeatherSense",
-      "pl": "Weathersense",
-      "uk": "Weathersense",
-      "zh-cn": "风雨"
-    },
-    "desc": {
-      "en": "Read in data from WeatherSense",
-      "de": "Daten von WeatherSense einlesen",
-      "ru": "Читать в данных из Weathersense",
-      "pt": "Leia os dados de WeatherSense",
-      "nl": "Lees in gegevens van WeatherSense",
-      "fr": "Lire dans les données de Weathersense",
-      "it": "Leggi i dati da Weathersense",
-      "es": "Leer en datos de WeatherSense",
-      "pl": "Odczytane dane z Weathersense",
-      "uk": "Прочитайте в даних Weathersense",
-      "zh-cn": "阅读Weathersense的数据"
-    },
-    "authors": [
-      "Daniel Luginbühl <webmaster@ltspiceusers.ch>"
-    ],
-    "keywords": [
-      "weather",
-      "sense",
-      "weathersense",
-      "ioBroker.weathersense"
-    ],
-    "licenseInformation": {
-      "type": "free",
-      "license": "MIT"
-    },
-    "platform": "Javascript/Node.js",
-    "icon": "weathersense.png",
-    "enabled": false,
-    "extIcon": "https://raw.githubusercontent.com/ltspicer/ioBroker.weathersense/main/admin/weathersense.png",
-    "readme": "https://github.com/ltspicer/ioBroker.weathersense/blob/main/README.md",
-    "loglevel": "info",
-    "tier": 3,
-    "mode": "schedule",
-    "schedule": "*/10 * * * *",
-    "allowInit": true,
-    "type": "metering",
-    "compact": true,
-    "connectionType": "cloud",
-    "dataSource": "poll",
-    "adminUI": {
-      "config": "json"
-    },
-    "dependencies": [
-      {
-        "js-controller": ">=6.0.11"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=7.6.17"
-      }
-    ]
-  },
-  "encryptedNative": [
-    "passwort",
-    "mqtt_pass"
-  ],
-  "protectedNative": [
-    "passwort",
-    "mqtt_pass"
-  ],
-  "native": {
-    "username": "",
-    "passwort": "",
-    "mqtt_active": false,
-    "broker_address": "0.0.0.0",
-    "mqtt_user": "",
-    "mqtt_pass": "",
-    "mqtt_port": "1883",
-    "sensor_id": "1",
-    "storeJson": false,
-    "storeDir": "/home/pi"
-  }
+    "encryptedNative": ["passwort", "mqtt_pass"],
+    "protectedNative": ["passwort", "mqtt_pass"],
+    "native": {
+        "username": "",
+        "passwort": "",
+        "mqtt_active": false,
+        "broker_address": "0.0.0.0",
+        "mqtt_user": "",
+        "mqtt_pass": "",
+        "mqtt_port": "1883",
+        "sensor_id": "1",
+        "storeJson": false,
+        "storeDir": "/home/pi"
+    }
 }

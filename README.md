@@ -1,4 +1,5 @@
 ![Logo](admin/weathersense.png)
+
 # ioBroker.weathersense
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.weathersense.svg)](https://www.npmjs.com/package/iobroker.weathersense)
@@ -23,13 +24,12 @@ For example, this WiFi weather station from Ideoon (Pearl):
 ![Screenshot](https://github.com/ltspicer/WeatherSense/blob/main/wetterstation.png)
 
 ## Use:
+
 Simply enter your WeatherSense account login details (email and password).
 The weather station data is stored in the weathersense data point.
 The data can also be sent via MQTT.
 
-
 ## Changelog
-
 
 ### **WORK IN PROGRESS**
 
@@ -53,6 +53,7 @@ The data can also be sent via MQTT.
 - Initial release
 
 ## License
+
 MIT License
 
 Copyright (c) 2025 Daniel Luginbühl <webmaster@ltspiceusers.ch>
