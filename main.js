@@ -159,13 +159,19 @@ class WeatherSense extends utils.Adapter {
                 for (const [key, value] of Object.entries(content)) {
                     if (value !== null && value !== undefined && key !== 'sensorDatas') {
                         const id = `${devDataChannelId}.${key}`;
+
+                        let unit = '';
+                        if (key === 'atmos') {
+                            unit = 'hPa';
+                        }
+
                         await this.setObjectNotExistsAsync(id, {
                             type: typeof value === 'number' ? 'state' : 'state',
                             common: {
                                 name: key,
                                 type: typeof value,
                                 role: 'value',
-                                unit: '',
+                                unit: unit,
                                 read: true,
                                 write: false,
                             },
