@@ -26,6 +26,11 @@ class WeatherSense extends utils.Adapter {
         this.on('unload', this.onUnload.bind(this));
     }
 
+    // Delay-Helferfunktion
+    delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     async onReady() {
         const username = this.config.username;
         const passwort = this.config.passwort;
@@ -39,6 +44,11 @@ class WeatherSense extends utils.Adapter {
         let sensor_id = 1;
         const storeJson = this.config.storeJson;
         const storeDir = this.config.storeDir;
+
+        // Delay 0-117s
+        const startupDelay = Math.floor(Math.random() * 118) * 1000;
+        this.log.debug(`Start cloud query after ${startupDelay / 1000} Seconds...`);
+        await this.delay(startupDelay);
 
         if (Number(sensor_in)) {
             sensor_id = parseInt(sensor_in);
