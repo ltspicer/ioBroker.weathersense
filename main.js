@@ -199,7 +199,7 @@ class WeatherSense extends utils.Adapter {
                         prefix = '-Hum';
                     }
 
-                    const key = `Type${type_}-Channel${channel}${prefix}`;
+                    const key = `Channel${channel}-Type${type_}${prefix}`;
                     const base = `${devDataChannelId}.${key}`;
 
                     // current
@@ -615,7 +615,7 @@ class WeatherSense extends utils.Adapter {
                     prefix = '-Hum';
                 }
 
-                const key = `Type${type_}-Channel${channel}${prefix}`;
+                const key = `Channel${channel}-Type${type_}${prefix}`;
                 const base = `devData/${key}`;
 
                 if (cur_val !== null && cur_val !== undefined && cur_val !== 65535 && cur_val !== 255) {
