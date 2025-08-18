@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "2.0.2",
+    "version": "3.0.0",
     "news": {
+      "3.0.0": {
+        "en": "Type and channel position swapped for more meaningful sorting",
+        "de": "Typ- und Kanalposition getauscht für eine sinnvollere Sortierung",
+        "ru": "Положение типа и канала поменялось для более значимой сортировки",
+        "pt": "Tipo e posição do canal trocados para classificação mais significativa",
+        "nl": "Type- en kanaalpositie geruild voor meer betekenisvol sorteren",
+        "fr": "Type et position du canal échangés pour un tri plus significatif",
+        "it": "Tipo e posizione del canale scambiato per una selezione più significativa",
+        "es": "Tipo y posición de canal intercambiado para una clasificación más significativa",
+        "pl": "Pozycja typu i kanału zamieniona na bardziej znaczące sortowanie",
+        "uk": "Тип і позиція каналу, що спрощуються для більш значущого сортування",
+        "zh-cn": "类型和频道位置交换,以进行更有意义的排序"
+      },
       "2.0.2": {
         "en": "Unit hPa added",
         "de": "Einheit hPa hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "Czyszczenie kodu",
         "uk": "Чистка коду",
         "zh-cn": "代码清理"
-      },
-      "1.0.0": {
-        "en": "First release",
-        "de": "Erstes Release",
-        "ru": "Первый релиз",
-        "pt": "Primeiro lançamento",
-        "nl": "Eerste release",
-        "fr": "Première sortie",
-        "it": "Prima versione",
-        "es": "Primer lanzamiento",
-        "pl": "Pierwsze wydanie",
-        "uk": "Перший випуск",
-        "zh-cn": "第一版"
       }
     },
     "titleLang": {
