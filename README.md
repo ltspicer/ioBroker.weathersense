@@ -30,8 +30,7 @@ The weather station data is stored in the weathersense data point.
 The data can also be sent via MQTT.
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 3.0.1 (2025-08-18)
 
 - Delay 0-117s added
 

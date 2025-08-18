@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "news": {
+      "3.0.1": {
+        "en": "Delay 0-117s added",
+        "de": "Verzögerung 0-117s hinzugefügt",
+        "ru": "Добавлена задержка 0-117",
+        "pt": "Atraso 0-117s adicionado",
+        "nl": "Vertraging 0-117s toegevoegd",
+        "fr": "Délai 0-117s ajoutés",
+        "it": "Ritardo 0-117s aggiunto",
+        "es": "Delay 0-117s añadidos",
+        "pl": "Dodano opóźnienie 0- 117s",
+        "uk": "Додано Delay 0-117s",
+        "zh-cn": "延迟 0-117次"
+      },
       "3.0.0": {
         "en": "Type and channel position swapped for more meaningful sorting",
         "de": "Typ- und Kanalposition getauscht für eine sinnvollere Sortierung",
@@ -80,19 +93,6 @@
         "pl": "Nowe wydanie ponieważ SSH problemy w portalu dev",
         "uk": "Новий реліз через SSH клопоти на порталі dev",
         "zh-cn": "Dev 门户网站中由于 SSH 麻烦而新建发布"
-      },
-      "1.0.1": {
-        "en": "Code cleanups",
-        "de": "Aufräumen von Codes",
-        "ru": "Очистка кода",
-        "pt": "Limpeza de código",
-        "nl": "Code opruiming",
-        "fr": "Nettoyage du code",
-        "it": "Pulizia del codice",
-        "es": "Limpieza del código",
-        "pl": "Czyszczenie kodu",
-        "uk": "Чистка коду",
-        "zh-cn": "代码清理"
       }
     },
     "titleLang": {
