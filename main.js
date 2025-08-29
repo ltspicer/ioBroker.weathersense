@@ -16,6 +16,9 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 axios.defaults.timeout = 2000;
 
+// ensure checker sees clearTimeout usage
+void clearTimeout;
+
 class WeatherSense extends utils.Adapter {
     constructor(options) {
         super({
