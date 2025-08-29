@@ -181,5 +181,13 @@
     "sensor_id": "1",
     "storeJson": false,
     "storeDir": "/home/pi"
-  }
+  },
+  "protectedNative": [
+    "passwort",
+    "mqtt_pass"
+  ],
+  "encryptedNative": [
+    "passwort",
+    "mqtt_pass"
+  ]
 }

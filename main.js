@@ -337,7 +337,7 @@ class WeatherSense extends utils.Adapter {
                 temp = ((temp - 32) / 1.8).toFixed(1);
             }
         }
-        return temp;
+        return parseFloat(temp);
     }
 
     // Forecast Datenpunkte erstellen und schreiben
