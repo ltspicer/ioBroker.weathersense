@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "news": {
+      "3.0.2": {
+        "en": "Passwords protected, clean convert string > number",
+        "de": "Passworte geschützt, sauber konvertieren String > Anzahl",
+        "ru": "Защищенные пароли, чистая строка преобразования номер",
+        "pt": "Senhas protegidas, converter texto limpo > número",
+        "nl": "Wachtwoorden beschermd, schone convert string > aantal",
+        "fr": "Mots de passe protégés, chaîne de conversion propre > Numéro",
+        "it": "Password protette, stringa di conversione pulita > numero",
+        "es": "Contraseñas protegidas, cadena de conversos limpios Número",
+        "pl": "Hasła chronione, czysty ciąg konwersji > numer",
+        "uk": "Пароль захищений, чистий конвертер рядок > кількість",
+        "zh-cn": "密码保护, 干净转换字符串 > 编号"
+      },
       "3.0.1": {
         "en": "Delay 0-117s added",
         "de": "Verzögerung 0-117s hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "Opóźnienie z inną składnią",
         "uk": "Делей з різними синтаксисом",
         "zh-cn": "不同语法的延迟"
-      },
-      "1.0.2": {
-        "en": "New release because SSH troubles in dev portal",
-        "de": "Neue Veröffentlichung, weil SSH Probleme im dev Portal",
-        "ru": "Новый релиз из-за проблем с SSH на портале dev",
-        "pt": "Nova versão porque SSH problemas no portal dev",
-        "nl": "Nieuwe release omdat SSH problemen heeft in dev portal",
-        "fr": "Nouvelle version parce que SSH dérange dans le portail dev",
-        "it": "Nuova release perché problemi SSH nel portale dev",
-        "es": "Nuevo lanzamiento porque problemas SSH en el portal dev",
-        "pl": "Nowe wydanie ponieważ SSH problemy w portalu dev",
-        "uk": "Новий реліз через SSH клопоти на порталі dev",
-        "zh-cn": "Dev 门户网站中由于 SSH 麻烦而新建发布"
       }
     },
     "titleLang": {
@@ -181,13 +181,5 @@
     "sensor_id": "1",
     "storeJson": false,
     "storeDir": "/home/pi"
-  },
-  "protectedNative": [
-    "passwort",
-    "mqtt_pass"
-  ],
-  "encryptedNative": [
-    "passwort",
-    "mqtt_pass"
-  ]
+  }
 }
