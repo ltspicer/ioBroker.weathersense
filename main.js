@@ -27,6 +27,7 @@ class WeatherSense extends utils.Adapter {
         });
         this.on('ready', this.onReady.bind(this));
         this.on('unload', this.onUnload.bind(this));
+        this._timeouts = new Set();
     }
 
     // Delay-Helferfunktion
@@ -702,6 +703,18 @@ class WeatherSense extends utils.Adapter {
 
     onUnload(callback) {
         try {
+            // Timer stoppen
+            for (const t of this._timeouts) {
+                clearTimeout(t);
+            }
+            this._timeouts.clear();
+
+            // Cronjobs stoppen
+            if (this._cronJobs) {
+                for (const job of this._cronJobs) {
+                    job.stop();
+                }
+            }
             callback();
         } catch {
             callback();
