@@ -7,10 +7,10 @@
 const utils = require('@iobroker/adapter-core');
 const axios = require('axios');
 const mqtt = require('mqtt');
-const fs = require('fs');
-const crypto = require('crypto');
-const https = require('https');
-const path = require('path');
+const fs = require('node:fs');
+const crypto = require('node:crypto');
+const https = require('node:https');
+const path = require('node:path');
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
