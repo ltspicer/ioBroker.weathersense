@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "news": {
+      "3.0.3": {
+        "en": "eslint-config & testing version updated",
+        "de": "eslint-Konfiguration und Testversion aktualisiert",
+        "ru": "Обновлены версии eslint-config и тестирования",
+        "pt": "eslint-config e versão de teste atualizadas",
+        "nl": "eslint-config & testing versie bijgewerkt",
+        "fr": "eslint-config et version de test mise à jour",
+        "it": "eslint-config & testing version updated\n\nAggiornata la versione di eslint-config e dei test.",
+        "es": "Se ha actualizado la versión de eslint-config y testing.",
+        "pl": "Zaktualizowano wersje eslint-config oraz testowania",
+        "uk": "оновлено версію eslint-config і тестування",
+        "zh-cn": "更新eslint-config和测试版本"
+      },
       "3.0.2": {
         "en": "Passwords protected, clean convert string > number",
         "de": "Passworte geschützt, sauber konvertieren String > Anzahl",
