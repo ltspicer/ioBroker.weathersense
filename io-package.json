@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "3.0.3",
+    "version": "4.0.0",
     "news": {
+      "4.0.0": {
+        "en": "\"All status OK\" flag added\nMQTT topic changed from WEATHERSENSE to WeatherSense",
+        "de": "\"All status OK\"-Flag hinzugefügt\nMQTT-Thema von WEATHERSENSE zu WeatherSense geändert",
+        "ru": "Флаг «All Status OK»\nТема MQTT изменилась с WEATHERSENSE на WeatherSense",
+        "pt": "Bandeira \"Todos os status OK\" adicionada\nO tópico MQTT mudou de Weathersense para WeatherSense",
+        "nl": "\"Alle status OK\" vlag toegevoegd\nMQTT onderwerp veranderd van WEERSENSE naar WeerSense",
+        "fr": "\"Tout le statut OK\" drapeau ajouté\nMQTT sujet changé de WEATHERSENSE à WeatherSense",
+        "it": "\"Tutto lo stato OK\" bandiera aggiunto\nL'argomento MQTT è cambiato da WEATHERSENSE a WeatherSense",
+        "es": "\"Todo el estado OK\" bandera\nTema MQTT cambió de WEATHERSENSE a WeatherSense",
+        "pl": "Dodano flagę \"All status OK\"\nTemat MQTT zmienił się z WEATHERSENSE na WeatherSense",
+        "uk": "\"Весь статус OK\" додано прапор\nТема MQTT змінилася з WEATHERSENSE до погоди",
+        "zh-cn": "添加了“ 所有状态确定” 标记\nMQTT 主题从 WEATHERSENSE 改为天气感"
+      },
       "3.0.3": {
         "en": "eslint-config & testing version updated",
         "de": "eslint-Konfiguration und Testversion aktualisiert",
@@ -80,19 +93,6 @@
         "pl": "Więcej danych\nTyp czyszczenia i wyjście kanału",
         "uk": "Більше даних\nТип очищення та вихід каналу",
         "zh-cn": "更多数据输出\n清洁类型和频道输出( T)"
-      },
-      "1.0.3": {
-        "en": "Delay with different syntax",
-        "de": "Verzögerung mit unterschiedlicher Syntax",
-        "ru": "Задержка с разным синтаксисом",
-        "pt": "Atrasar com sintaxe diferente",
-        "nl": "Vertraging met verschillende syntaxis",
-        "fr": "Retard avec une syntaxe différente",
-        "it": "Delay con sintassi diversa",
-        "es": "Delay con diferentes sintaxis",
-        "pl": "Opóźnienie z inną składnią",
-        "uk": "Делей з різними синтаксисом",
-        "zh-cn": "不同语法的延迟"
       }
     },
     "titleLang": {
