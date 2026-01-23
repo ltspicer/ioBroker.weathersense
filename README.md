@@ -32,6 +32,12 @@ The weather station data is stored in the weathersense data point.
 The data can also be sent via MQTT.
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- "All status OK" flag added
+- MQTT topic changed from WEATHERSENSE to WeatherSense
+
 ### 3.0.3 (2025-09-14)
 
 - eslint-config & testing version updated

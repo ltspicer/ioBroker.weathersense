@@ -110,6 +110,19 @@ class WeatherSense extends utils.Adapter {
 
         const deviceId = `${this.namespace}.${sensor_id}`;
 
+        const allStatesOkId = `${deviceId}.allStatesOk`;
+        await this.setObjectNotExistsAsync(allStatesOkId, {
+            type: 'state',
+            common: {
+                name: 'All states ok',
+                type: 'boolean',
+                role: 'indicator',
+                read: true,
+                write: false,
+            },
+            native: {},
+        });
+
         try {
             const mainResult = await this.main(
                 client,
@@ -170,6 +183,9 @@ class WeatherSense extends utils.Adapter {
 
                 // Alle Werte aus devdata.content
                 const content = devdata.content || {};
+
+                let status = await this.isSuccess(devdata);
+
                 for (const [key, value] of Object.entries(content)) {
                     if (value !== null && value !== undefined && key !== 'sensorDatas') {
                         const id = `${devDataChannelId}.${key}`;
@@ -308,9 +324,11 @@ class WeatherSense extends utils.Adapter {
                         }
                     }
                 }
+                await this.setStateAsync(allStatesOkId, { val: status, ack: true });
             } else {
                 this.log.error('Error loading data in main()');
                 await this.setStateAsync(systemStateId, { val: false, ack: true });
+                await this.setStateAsync(allStatesOkId, { val: false, ack: true });
             }
         } catch (error) {
             this.log.error(`Unexpected error in onReady(): ${error.message}`);
@@ -324,13 +342,42 @@ class WeatherSense extends utils.Adapter {
         }
     }
 
+    // Alle Statuswerte ok?
+    async isSuccess(data) {
+        try {
+            if (data.status !== 0) {
+                this.log.warn(`status: ${data.status}`);
+                return false;
+            }
+
+            if (data.error !== 0) {
+                this.log.warn(`error: ${data.error}`);
+                return false;
+            }
+
+            if (data.message !== 'success') {
+                this.log.warn(`message: ${data.message}`);
+                return false;
+            }
+
+            if (data.content?.powerStatus === 0) {
+                this.log.warn(`content/powerStatus: ${data.content.powerStatus}`);
+                return false;
+            }
+
+            return true;
+        } catch {
+            return false;
+        }
+    }
+
     // MQTT senden
     async sendMqtt(sensor_id, mqtt_active, client, topic, wert) {
         if (mqtt_active) {
             if (typeof wert !== 'string') {
                 wert = wert !== null && wert !== undefined ? wert.toString() : '';
             }
-            client.publish(`WEATHERSENSE/${sensor_id.toString()}/${topic}`, wert);
+            client.publish(`WeatherSense/${sensor_id.toString()}/${topic}`, wert);
         }
     }
 
@@ -571,9 +618,10 @@ class WeatherSense extends utils.Adapter {
             this.log.error('No token received');
             if (mqtt_active) {
                 await this.sendMqtt(sensor_id, mqtt_active, client, 'dataReceived', 'false');
+                await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', 'false');
                 client.end();
             }
-            return false;
+            return { dataReceived: false };
         }
         const devdata = await this.devData(token);
         const forecast = await this.foreCast(token);
@@ -581,6 +629,7 @@ class WeatherSense extends utils.Adapter {
             this.log.error('No data received');
             if (mqtt_active) {
                 await this.sendMqtt(sensor_id, mqtt_active, client, 'dataReceived', 'false');
+                await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', 'false');
                 client.end();
             }
             return { dataReceived: false };
@@ -592,8 +641,9 @@ class WeatherSense extends utils.Adapter {
             fs.writeFileSync(path.join(storeDir, 'devData.json'), json_object, 'utf-8');
         }
 
-        this.log.debug('devData JSON:');
         this.printAllKeys(devdata);
+
+        let status = await this.isSuccess(devdata);
 
         if (mqtt_active) {
             for (const [key, value] of Object.entries(devdata)) {
@@ -681,6 +731,10 @@ class WeatherSense extends utils.Adapter {
 
         this.printAllKeys(forecast);
 
+        if (status) {
+            status = await this.isSuccess(forecast);
+        }
+
         const forecasts = forecast?.content?.forecast?.forecasts || [];
 
         if (mqtt_active) {
@@ -689,12 +743,17 @@ class WeatherSense extends utils.Adapter {
 
             await this.sendForecasts(client, forecasts, celsius, sensor_id);
 
+            await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', status);
+
             client.end(); // wie client.disconnect()
         }
 
         await this.createOrUpdateForecastDPs(forecastChannelId, forecasts, celsius);
 
+        this.log.debug(`allStatesOk: ${status}`);
+
         return {
+            allStatesOk: true,
             dataReceived: true,
             devdata,
             forecast,
