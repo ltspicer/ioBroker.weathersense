@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "news": {
+      "4.0.1": {
+        "en": "Removed duplicate call to isSuccess()",
+        "de": "Entfernen Sie doppelten Aufruf zu isSuccess()",
+        "ru": "Удаленный дублированный вызов на isSuccess()",
+        "pt": "Chamada duplicada removida para isSuccess()",
+        "nl": "Verwijderde dubbele oproep naar isSuccess()",
+        "fr": "Appel dupliqué supprimé à isSuccès()",
+        "it": "Rimozione della chiamata duplicata a isSuccess()",
+        "es": "Llamada duplicada eliminada a esSuccess()",
+        "pl": "Usunięty duplikat wywołania sukcesu ()",
+        "uk": "Вилучено дублікати виклику для єSuccess()",
+        "zh-cn": "删除重复调用为 Success ()"
+      },
       "4.0.0": {
         "en": "\"All status OK\" flag added\nMQTT topic changed from WEATHERSENSE to WeatherSense",
         "de": "\"All status OK\"-Flag hinzugefügt\nMQTT-Thema von WEATHERSENSE zu WeatherSense geändert",
@@ -80,19 +93,6 @@
         "pl": "Jednostka hPa dodana",
         "uk": "Блок hPa додано",
         "zh-cn": "单位 hPa 添加"
-      },
-      "2.0.1": {
-        "en": "More data output\nCleaner type & channel output",
-        "de": "Mehr Datenausgabe\nReiniger Typ & Kanal Ausgang",
-        "ru": "Больше выходных данных\nЧистый тип и выход канала",
-        "pt": "Mais saída de dados\nTipo & saída do canal mais limpo",
-        "nl": "Meer gegevensuitvoer\nSchonere & kanaaluitvoer",
-        "fr": "Plus de données\nType et sortie du canal plus propre",
-        "it": "Più output dati\nTipo di pulizia & uscita canale",
-        "es": "Más producción de datos\nSalida del canal del tipo de limpieza",
-        "pl": "Więcej danych\nTyp czyszczenia i wyjście kanału",
-        "uk": "Більше даних\nТип очищення та вихід каналу",
-        "zh-cn": "更多数据输出\n清洁类型和频道输出( T)"
       }
     },
     "titleLang": {
