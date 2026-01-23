@@ -739,13 +739,13 @@ class WeatherSense extends utils.Adapter {
 
         if (mqtt_active) {
             await this.clearOldForecasts(sensor_id, client, 6);
-            await this.delay(2000); // sleep 2s
+
+            await this.delay(1000);
 
             await this.sendForecasts(client, forecasts, celsius, sensor_id);
-
             await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', status);
 
-            client.end(); // wie client.disconnect()
+            client.end();
         }
 
         await this.createOrUpdateForecastDPs(forecastChannelId, forecasts, celsius);
@@ -753,7 +753,7 @@ class WeatherSense extends utils.Adapter {
         this.log.debug(`allStatesOk: ${status}`);
 
         return {
-            allStatesOk: true,
+            allStatesOk: status,
             dataReceived: true,
             devdata,
             forecast,
