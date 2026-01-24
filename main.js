@@ -323,12 +323,14 @@ class WeatherSense extends utils.Adapter {
                         }
                     }
                 }
-                await this.setStateAsync(allStatesOkId, { val: status, ack: true });
+                if (status !== undefined) {
+                    await this.setStateAsync(allStatesOkId, { val: status, ack: true });
+                }
                 this.log.debug(`allStatesOk: ${status}`);
             } else {
                 this.log.error('Error loading data in main()');
                 await this.setStateAsync(systemStateId, { val: false, ack: true });
-                await this.setStateAsync(allStatesOkId, { val: false, ack: true });
+                //await this.setStateAsync(allStatesOkId, { val: false, ack: true });
             }
         } catch (error) {
             this.log.error(`Unexpected error in onReady(): ${error.message}`);
@@ -618,11 +620,11 @@ class WeatherSense extends utils.Adapter {
             this.log.error('No token received');
             if (mqtt_active) {
                 await this.sendMqtt(sensor_id, mqtt_active, client, 'dataReceived', 'false');
-                await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', 'false');
+                //await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', 'false');
                 client.end();
             }
             return {
-                allStatesOk: false,
+                //allStatesOk: false,
                 dataReceived: false,
             };
         }
@@ -632,11 +634,11 @@ class WeatherSense extends utils.Adapter {
             this.log.error('No data received');
             if (mqtt_active) {
                 await this.sendMqtt(sensor_id, mqtt_active, client, 'dataReceived', 'false');
-                await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', 'false');
+                //await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', 'false');
                 client.end();
             }
             return {
-                allStatesOk: false,
+                //allStatesOk: false,
                 dataReceived: false,
             };
         }
@@ -749,7 +751,9 @@ class WeatherSense extends utils.Adapter {
             await this.delay(1000);
 
             await this.sendForecasts(client, forecasts, celsius, sensor_id);
-            await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', status);
+            if (status !== undefined) {
+                await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', status);
+            }
 
             client.end();
         }
