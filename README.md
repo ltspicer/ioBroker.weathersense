@@ -32,8 +32,7 @@ The weather station data is stored in the weathersense data point.
 The data can also be sent via MQTT.
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 4.0.3 (2026-01-24)
 
 - Ignore set of allStatesOk if state is undefined
 

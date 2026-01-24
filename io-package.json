@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "news": {
+      "4.0.3": {
+        "en": "Ignore set of allStatesOk if state is undefined",
+        "de": "Ignorieren von AllStates Ok, wenn Zustand undefiniert ist",
+        "ru": "Игнорировать все государства Хорошо, если состояние не определено",
+        "pt": "Ignorar o conjunto de todos os estados Ok se o estado é indefinido",
+        "nl": "Alle staten negeren Oké als status ongedefinieerd is",
+        "fr": "Ignorer l'ensemble de tous les États Ok si l'état n'est pas défini",
+        "it": "Ignora insieme di tutti gli Stati Ok se lo stato non è definito",
+        "es": "Ignorar conjunto de todos los Estados Ok si el estado es indefinido",
+        "pl": "Ignoruj zbiór wszystkich stanów Ok, jeśli stan jest niezdefiniowany",
+        "uk": "Ignore набір всіх О, якщо держава не визначена",
+        "zh-cn": "忽略所有国家的一组 如果状态未定义, 则确定"
+      },
       "4.0.2": {
         "en": "DP renamed from allStatesOk to AllStatesOk",
         "de": "DP umbenannt von allStates Ok zu AllStates Ok",
@@ -80,19 +93,6 @@
         "pl": "Dodano opóźnienie 0- 117s",
         "uk": "Додано Delay 0-117s",
         "zh-cn": "延迟 0-117次"
-      },
-      "3.0.0": {
-        "en": "Type and channel position swapped for more meaningful sorting",
-        "de": "Typ- und Kanalposition getauscht für eine sinnvollere Sortierung",
-        "ru": "Положение типа и канала поменялось для более значимой сортировки",
-        "pt": "Tipo e posição do canal trocados para classificação mais significativa",
-        "nl": "Type- en kanaalpositie geruild voor meer betekenisvol sorteren",
-        "fr": "Type et position du canal échangés pour un tri plus significatif",
-        "it": "Tipo e posizione del canale scambiato per una selezione più significativa",
-        "es": "Tipo y posición de canal intercambiado para una clasificación más significativa",
-        "pl": "Pozycja typu i kanału zamieniona na bardziej znaczące sortowanie",
-        "uk": "Тип і позиція каналу, що спрощуються для більш значущого сортування",
-        "zh-cn": "类型和频道位置交换,以进行更有意义的排序"
       }
     },
     "titleLang": {
