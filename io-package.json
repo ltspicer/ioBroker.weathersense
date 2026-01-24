@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "news": {
+      "4.0.2": {
+        "en": "DP renamed from allStatesOk to AllStatesOk",
+        "de": "DP umbenannt von allStates Ok zu AllStates Ok",
+        "ru": "DP переименовали из всех штатов Хорошо для всех штатов Хорошо",
+        "pt": "DP renomeado de todos osEstados Ok para todos os estados Está bem",
+        "nl": "DP hernoemd vanuit allStates Oké naar alle staten Goed",
+        "fr": "DP rebaptisé de tous les États D'accord pour tous les États Très bien",
+        "it": "DP rinominato da allStates Ok a AllStates Ok",
+        "es": "DP renombrado de todos los Estados Ok a todos los estados Ok",
+        "pl": "DP przemianowany ze wszystkich państw Ok to AllStates Ok",
+        "uk": "DP перейменовано з всіх Ok до AllStates Навігація",
+        "zh-cn": "从所有国家改名为 DP 向所有国家报告 还好"
+      },
       "4.0.1": {
         "en": "Removed duplicate call to isSuccess()",
         "de": "Entfernen Sie doppelten Aufruf zu isSuccess()",
@@ -80,19 +93,6 @@
         "pl": "Pozycja typu i kanału zamieniona na bardziej znaczące sortowanie",
         "uk": "Тип і позиція каналу, що спрощуються для більш значущого сортування",
         "zh-cn": "类型和频道位置交换,以进行更有意义的排序"
-      },
-      "2.0.2": {
-        "en": "Unit hPa added",
-        "de": "Einheit hPa hinzugefügt",
-        "ru": "Единица hPa добавлена",
-        "pt": "Unidade hPa adicionada",
-        "nl": "Eenheid hPa toegevoegd",
-        "fr": "Unité hPa ajoutée",
-        "it": "Ulteriori informazioni",
-        "es": "Unidad de resultados",
-        "pl": "Jednostka hPa dodana",
-        "uk": "Блок hPa додано",
-        "zh-cn": "单位 hPa 添加"
       }
     },
     "titleLang": {
