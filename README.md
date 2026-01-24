@@ -32,6 +32,11 @@ The weather station data is stored in the weathersense data point.
 The data can also be sent via MQTT.
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- DP renamed from allStatesOk to AllStatesOk
+
 ### 4.0.1 (2026-01-23)
 
 - Removed duplicate call to isSuccess()

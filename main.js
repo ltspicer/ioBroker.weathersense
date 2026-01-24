@@ -110,7 +110,7 @@ class WeatherSense extends utils.Adapter {
 
         const deviceId = `${this.namespace}.${sensor_id}`;
 
-        const allStatesOkId = `${deviceId}.allStatesOk`;
+        const allStatesOkId = `${deviceId}.AllStatesOk`;
         await this.setObjectNotExistsAsync(allStatesOkId, {
             type: 'state',
             common: {
