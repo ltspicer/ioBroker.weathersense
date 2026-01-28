@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.0.3",
+    "version": "4.1.0",
     "news": {
+      "4.1.0": {
+        "en": "Better Admin menu",
+        "de": "Besseres Admin Menü",
+        "ru": "Лучшее меню администратора",
+        "pt": "Melhor menu de administração",
+        "nl": "Beter Admin menu",
+        "fr": "Meilleur menu Admin",
+        "it": "Menu migliore di amministrazione",
+        "es": "Mejor menú de Admin",
+        "pl": "Lepsze menu admin",
+        "uk": "Меню адміністратора",
+        "zh-cn": "更好的管理菜单"
+      },
       "4.0.3": {
         "en": "Ignore set of allStatesOk if state is undefined",
         "de": "Ignorieren von AllStates Ok, wenn Zustand undefiniert ist",
@@ -80,19 +93,6 @@
         "pl": "Hasła chronione, czysty ciąg konwersji > numer",
         "uk": "Пароль захищений, чистий конвертер рядок > кількість",
         "zh-cn": "密码保护, 干净转换字符串 > 编号"
-      },
-      "3.0.1": {
-        "en": "Delay 0-117s added",
-        "de": "Verzögerung 0-117s hinzugefügt",
-        "ru": "Добавлена задержка 0-117",
-        "pt": "Atraso 0-117s adicionado",
-        "nl": "Vertraging 0-117s toegevoegd",
-        "fr": "Délai 0-117s ajoutés",
-        "it": "Ritardo 0-117s aggiunto",
-        "es": "Delay 0-117s añadidos",
-        "pl": "Dodano opóźnienie 0- 117s",
-        "uk": "Додано Delay 0-117s",
-        "zh-cn": "延迟 0-117次"
       }
     },
     "titleLang": {

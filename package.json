@@ -1,6 +1,6 @@
 {
   "name": "iobroker.weathersense",
-  "version": "4.0.3",
+  "version": "4.1.0",
   "description": "Read in data from WeatherSense",
   "author": {
     "name": "Daniel Luginbühl",
@@ -35,7 +35,8 @@
     "@iobroker/adapter-dev": "^1.5.0",
     "@iobroker/dev-server": "^0.8.0",
     "@iobroker/eslint-config": "^2.2.0",
-    "@iobroker/testing": "^5.1.1"
+    "@iobroker/testing": "^5.1.1",
+    "baseline-browser-mapping": "^2.9.19"
   },
   "main": "main.js",
   "files": [
