@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.1.0",
+    "version": "4.2.0",
     "news": {
+      "4.2.0": {
+        "en": "Better log info",
+        "de": "Bessere Log-Info",
+        "ru": "Лучшая лог-информация",
+        "pt": "Melhor informação de registo",
+        "nl": "Betere loginformatie",
+        "fr": "Meilleure information de journal",
+        "it": "Migliori informazioni di log",
+        "es": "Mejor información de registro",
+        "pl": "Lepsze informacje o dzienniku",
+        "uk": "Детальніше про журнал",
+        "zh-cn": "更好的日志信息"
+      },
       "4.1.0": {
         "en": "Better Admin menu",
         "de": "Besseres Admin Menü",
@@ -80,19 +93,6 @@
         "pl": "Zaktualizowano wersje eslint-config oraz testowania",
         "uk": "оновлено версію eslint-config і тестування",
         "zh-cn": "更新eslint-config和测试版本"
-      },
-      "3.0.2": {
-        "en": "Passwords protected, clean convert string > number",
-        "de": "Passworte geschützt, sauber konvertieren String > Anzahl",
-        "ru": "Защищенные пароли, чистая строка преобразования номер",
-        "pt": "Senhas protegidas, converter texto limpo > número",
-        "nl": "Wachtwoorden beschermd, schone convert string > aantal",
-        "fr": "Mots de passe protégés, chaîne de conversion propre > Numéro",
-        "it": "Password protette, stringa di conversione pulita > numero",
-        "es": "Contraseñas protegidas, cadena de conversos limpios Número",
-        "pl": "Hasła chronione, czysty ciąg konwersji > numer",
-        "uk": "Пароль захищений, чистий конвертер рядок > кількість",
-        "zh-cn": "密码保护, 干净转换字符串 > 编号"
       }
     },
     "titleLang": {
