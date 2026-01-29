@@ -328,7 +328,7 @@ class WeatherSense extends utils.Adapter {
                 }
                 this.log.debug(`allStatesOk: ${status}`);
             } else {
-                this.log.error('Error loading data in main()');
+                this.log.warn('No data received');
                 await this.setStateAsync(systemStateId, { val: false, ack: true });
                 //await this.setStateAsync(allStatesOkId, { val: false, ack: true });
             }
