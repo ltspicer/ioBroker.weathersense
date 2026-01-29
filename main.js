@@ -542,7 +542,7 @@ class WeatherSense extends utils.Adapter {
                 this.log.error('Server error');
             }
         } catch (error) {
-            this.log.error('Error during login:', error.message);
+            this.log.error('Error during login:', error.message || 'Reason unknown');
         }
 
         return null;
