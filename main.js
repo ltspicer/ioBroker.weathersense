@@ -51,7 +51,7 @@ class WeatherSense extends utils.Adapter {
 
         // Delay 0-117s
         const startupDelay = Math.floor(Math.random() * 118) * 1000;
-        this.log.debug(`Start cloud query after ${startupDelay / 1000} Seconds...`);
+        this.log.info(`Start cloud query after ${startupDelay / 1000} Seconds...`);
         await this.delay(startupDelay);
 
         if (Number(sensor_in)) {
