@@ -14,7 +14,7 @@ const path = require('node:path');
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-axios.defaults.timeout = 2000;
+axios.defaults.timeout = 3000;
 
 // ensure checker sees clearTimeout usage
 void clearTimeout;
@@ -542,7 +542,7 @@ class WeatherSense extends utils.Adapter {
                 this.log.error('Server error');
             }
         } catch (error) {
-            this.log.error('Error during login:', error.message || 'Reason unknown');
+            this.log.error(`Error during login: ${error.message || 'Reason unknown'}`);
         }
 
         return null;
