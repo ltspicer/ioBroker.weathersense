@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.2.0",
+    "version": "4.2.1",
     "news": {
+      "4.2.1": {
+        "en": "\"Error during login\" message fixed & timeout increased to 3000ms",
+        "de": "\"Error während des Logins\"-Nachricht Fix & Timeout stieg auf 3000m",
+        "ru": "Зафиксировано сообщение «Ошибка во время входа» и увеличено время ожидания до 3000 мс",
+        "pt": "\"Erro durante o login\" mensagem fixa e tempo- limite aumentado para 3000ms",
+        "nl": "\"Fout tijdens aanmelden\" bericht vast & timeout verhoogd tot 3000ms",
+        "fr": "\"Erreur pendant la connexion\" message fixe & timeout augmenté à 3000ms",
+        "it": "\"Errore durante il login\" messaggio fisso & timeout aumentato a 3000ms",
+        "es": "\"Error durante el login\" mensaje fijo \" timeout aumentó a 3000ms",
+        "pl": "Komunikat \"Błąd podczas logowania\" poprawiony & timeout wzrósł do 3000ms",
+        "uk": "\"Посоль під час входу\" повідомлення фіксоване і часовий виїзд збільшено до 3000ms",
+        "zh-cn": "“ 登录时错误” 信件固定超时( T) 至 3000 ms"
+      },
       "4.2.0": {
         "en": "Better log info",
         "de": "Bessere Log-Info",
@@ -80,19 +93,6 @@
         "pl": "Dodano flagę \"All status OK\"\nTemat MQTT zmienił się z WEATHERSENSE na WeatherSense",
         "uk": "\"Весь статус OK\" додано прапор\nТема MQTT змінилася з WEATHERSENSE до погоди",
         "zh-cn": "添加了“ 所有状态确定” 标记\nMQTT 主题从 WEATHERSENSE 改为天气感"
-      },
-      "3.0.3": {
-        "en": "eslint-config & testing version updated",
-        "de": "eslint-Konfiguration und Testversion aktualisiert",
-        "ru": "Обновлены версии eslint-config и тестирования",
-        "pt": "eslint-config e versão de teste atualizadas",
-        "nl": "eslint-config & testing versie bijgewerkt",
-        "fr": "eslint-config et version de test mise à jour",
-        "it": "eslint-config & testing version updated\n\nAggiornata la versione di eslint-config e dei test.",
-        "es": "Se ha actualizado la versión de eslint-config y testing.",
-        "pl": "Zaktualizowano wersje eslint-config oraz testowania",
-        "uk": "оновлено версію eslint-config і тестування",
-        "zh-cn": "更新eslint-config和测试版本"
       }
     },
     "titleLang": {
