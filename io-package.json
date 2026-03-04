@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.2.1",
+    "version": "4.2.2",
     "news": {
+      "4.2.2": {
+        "en": "powerStatus:0 message changed from warn to info",
+        "de": "powerStatus:0 Nachricht von warn zu info geändert",
+        "ru": "сообщение powerStatus:0 изменилось с предупреждения на информацию",
+        "pt": "powerStatus: 0 mensagem alterada de alerta para info",
+        "nl": "powerStatus:0 bericht gewijzigd van warn naar info",
+        "fr": "powerStatus:0 message changé d'avertissement à info",
+        "it": "powerStatus:0 messaggio cambiato da avvertire a info",
+        "es": "powerStatus:0 mensaje cambiado de advierte a info",
+        "pl": "powerStatus: 0 wiadomość zmieniona z ostrzeżenia na info",
+        "uk": "powerStatus:0 повідомлення змінено з попередження",
+        "zh-cn": "电源状态: 0 信件从警告改为信息"
+      },
       "4.2.1": {
         "en": "\"Error during login\" message fixed & timeout increased to 3000ms",
         "de": "\"Error während des Logins\"-Nachricht Fix & Timeout stieg auf 3000m",
@@ -80,19 +93,6 @@
         "pl": "Usunięty duplikat wywołania sukcesu ()",
         "uk": "Вилучено дублікати виклику для єSuccess()",
         "zh-cn": "删除重复调用为 Success ()"
-      },
-      "4.0.0": {
-        "en": "\"All status OK\" flag added\nMQTT topic changed from WEATHERSENSE to WeatherSense",
-        "de": "\"All status OK\"-Flag hinzugefügt\nMQTT-Thema von WEATHERSENSE zu WeatherSense geändert",
-        "ru": "Флаг «All Status OK»\nТема MQTT изменилась с WEATHERSENSE на WeatherSense",
-        "pt": "Bandeira \"Todos os status OK\" adicionada\nO tópico MQTT mudou de Weathersense para WeatherSense",
-        "nl": "\"Alle status OK\" vlag toegevoegd\nMQTT onderwerp veranderd van WEERSENSE naar WeerSense",
-        "fr": "\"Tout le statut OK\" drapeau ajouté\nMQTT sujet changé de WEATHERSENSE à WeatherSense",
-        "it": "\"Tutto lo stato OK\" bandiera aggiunto\nL'argomento MQTT è cambiato da WEATHERSENSE a WeatherSense",
-        "es": "\"Todo el estado OK\" bandera\nTema MQTT cambió de WEATHERSENSE a WeatherSense",
-        "pl": "Dodano flagę \"All status OK\"\nTemat MQTT zmienił się z WEATHERSENSE na WeatherSense",
-        "uk": "\"Весь статус OK\" додано прапор\nТема MQTT змінилася з WEATHERSENSE до погоди",
-        "zh-cn": "添加了“ 所有状态确定” 标记\nMQTT 主题从 WEATHERSENSE 改为天气感"
       }
     },
     "titleLang": {
