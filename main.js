@@ -363,8 +363,7 @@ class WeatherSense extends utils.Adapter {
             }
 
             if (data.content?.powerStatus === 0) {
-                this.log.warn(`content/powerStatus: ${data.content.powerStatus} (must be > 0)`);
-                return false;
+                this.log.info(`content/powerStatus: ${data.content.powerStatus} → Power supply OK?`);
             }
 
             return true;
