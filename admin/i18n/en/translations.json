@@ -9,5 +9,6 @@
     "mqtt_port": "MQTT port",
     "sensor_id": "Sensor ID (1-20)",
     "storeJson": "Save Json",
-    "storeDir": "Folder for Json file"
+    "storeDir": "Folder for Json file",
+    "ignorePowerStatus": "Ignore PowerStatus warning"
 }

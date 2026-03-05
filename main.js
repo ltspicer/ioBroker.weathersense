@@ -48,6 +48,7 @@ class WeatherSense extends utils.Adapter {
         let sensor_id = 1;
         const storeJson = this.config.storeJson;
         const storeDir = this.config.storeDir;
+        const ignorePowerStatus = this.config.ignorePowerStatus;
 
         // Delay 0-117s
         const startupDelay = Math.floor(Math.random() * 118) * 1000;
@@ -134,6 +135,7 @@ class WeatherSense extends utils.Adapter {
                 storeDir,
                 celsius,
                 `${deviceId}.forecast`,
+                ignorePowerStatus,
             );
 
             const dataReceived = mainResult.dataReceived;
@@ -345,7 +347,7 @@ class WeatherSense extends utils.Adapter {
     }
 
     // Alle Statuswerte ok?
-    async isSuccess(data) {
+    async isSuccess(data, ignorePowerStatus) {
         try {
             if (data.status !== 0) {
                 this.log.warn(`status: ${data.status} (0 = OK)`);
@@ -363,7 +365,14 @@ class WeatherSense extends utils.Adapter {
             }
 
             if (data.content?.powerStatus === 0) {
-                this.log.info(`content/powerStatus: ${data.content.powerStatus} → Power supply OK?`);
+                if (ignorePowerStatus) {
+                    this.log.debug(
+                        `content/powerStatus: ${data.content.powerStatus} → Must normally be greater than 0`,
+                    );
+                } else {
+                    this.log.warn(`content/powerStatus: ${data.content.powerStatus} → Power supply OK?`);
+                    return false;
+                }
             }
 
             return true;
@@ -613,7 +622,18 @@ class WeatherSense extends utils.Adapter {
         }
     }
 
-    async main(client, username, passwort, mqtt_active, sensor_id, storeJson, storeDir, celsius, forecastChannelId) {
+    async main(
+        client,
+        username,
+        passwort,
+        mqtt_active,
+        sensor_id,
+        storeJson,
+        storeDir,
+        celsius,
+        forecastChannelId,
+        ignorePowerStatus,
+    ) {
         const token = await this.login(username, passwort);
         if (!token) {
             this.log.error('No token received');
@@ -650,7 +670,7 @@ class WeatherSense extends utils.Adapter {
 
         this.printAllKeys(devdata);
 
-        let status = await this.isSuccess(devdata);
+        let status = await this.isSuccess(devdata, ignorePowerStatus);
 
         if (mqtt_active) {
             for (const [key, value] of Object.entries(devdata)) {
@@ -739,7 +759,7 @@ class WeatherSense extends utils.Adapter {
         this.printAllKeys(forecast);
 
         if (status) {
-            status = await this.isSuccess(forecast);
+            status = await this.isSuccess(forecast, ignorePowerStatus);
         }
 
         const forecasts = forecast?.content?.forecast?.forecasts || [];

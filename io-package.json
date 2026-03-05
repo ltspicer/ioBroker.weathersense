@@ -180,6 +180,7 @@
     "mqtt_port": "1883",
     "sensor_id": "1",
     "storeJson": false,
-    "storeDir": "/home/pi"
+    "storeDir": "/home/pi",
+    "ignorePowerStatus": false
   }
 }
