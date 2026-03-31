@@ -570,7 +570,7 @@ class WeatherSense extends utils.Adapter {
             const response = await axios.get(url, {
                 headers,
                 timeout: 5000,
-                httpsAgent: new (require('https').Agent)({ rejectUnauthorized: false }),
+                httpsAgent: new (require('node:https').Agent)({ rejectUnauthorized: false }),
             });
 
             if (response.status === 200) {
