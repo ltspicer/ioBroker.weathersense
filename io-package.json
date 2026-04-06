@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.3.0",
+    "version": "4.4.0",
     "news": {
+      "4.4.0": {
+        "en": "node > 20",
+        "de": "knoten > 20",
+        "ru": "узел 20",
+        "pt": "nó > 20",
+        "nl": "knooppunt > 20",
+        "fr": "nœud > 20",
+        "it": "> 20",
+        "es": "nodo",
+        "pl": "węzeł > 20",
+        "uk": "вершина > 20",
+        "zh-cn": "节点 > 20"
+      },
       "4.3.0": {
         "en": "\"Ignore PowerStatus warning\" option added",
         "de": "\"Ignore PowerStatus Warnung\" Option hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "Ignoruj zbiór wszystkich stanów Ok, jeśli stan jest niezdefiniowany",
         "uk": "Ignore набір всіх О, якщо держава не визначена",
         "zh-cn": "忽略所有国家的一组 如果状态未定义, 则确定"
-      },
-      "4.0.2": {
-        "en": "DP renamed from allStatesOk to AllStatesOk",
-        "de": "DP umbenannt von allStates Ok zu AllStates Ok",
-        "ru": "DP переименовали из всех штатов Хорошо для всех штатов Хорошо",
-        "pt": "DP renomeado de todos osEstados Ok para todos os estados Está bem",
-        "nl": "DP hernoemd vanuit allStates Oké naar alle staten Goed",
-        "fr": "DP rebaptisé de tous les États D'accord pour tous les États Très bien",
-        "it": "DP rinominato da allStates Ok a AllStates Ok",
-        "es": "DP renombrado de todos los Estados Ok a todos los estados Ok",
-        "pl": "DP przemianowany ze wszystkich państw Ok to AllStates Ok",
-        "uk": "DP перейменовано з всіх Ok до AllStates Навігація",
-        "zh-cn": "从所有国家改名为 DP 向所有国家报告 还好"
       }
     },
     "titleLang": {
