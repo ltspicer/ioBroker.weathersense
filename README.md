@@ -33,6 +33,7 @@ The data can also be sent via MQTT.
 
 ## Changelog
 
+
 ### **WORK IN PROGRESS**
 
 - node > 20
