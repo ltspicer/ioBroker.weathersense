@@ -32,6 +32,9 @@ The weather station data is stored in the weathersense data point.
 The data can also be sent via MQTT.
 
 ## Changelog
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### 4.4.0 (2026-04-06)
 
 - node > 20
