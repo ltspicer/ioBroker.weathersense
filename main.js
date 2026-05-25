@@ -11,9 +11,11 @@ const fs = require('node:fs');
 const crypto = require('node:crypto');
 const https = require('node:https');
 const path = require('node:path');
+const agent = new https.Agent({
+    rejectUnauthorized: false,
+});
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
+axios.defaults.httpsAgent = agent;
 axios.defaults.timeout = 3000;
 
 // ensure checker sees clearTimeout usage
@@ -59,21 +61,19 @@ class WeatherSense extends utils.Adapter {
             sensor_id = parseInt(sensor_in);
             if (sensor_id < 1 || sensor_id > 20) {
                 this.log.error('Sensor ID has no value between 1 and 20');
-                this.terminate ? this.terminate('Sensor ID has no value between 1 and 20', 0) : process.exit(0);
+                this.terminate();
                 return;
             }
         } else {
             this.log.error('Sensor ID has no valid value');
-            this.terminate ? this.terminate('Sensor ID has no valid value', 0) : process.exit(0);
+            this.terminate();
             return;
         }
         this.log.debug(`Sensor ID is ${sensor_id}`);
 
         if (username.trim().length === 0 || passwort.trim().length === 0) {
             this.log.error('User email and/or user password empty - please check instance configuration');
-            this.terminate
-                ? this.terminate('User email and/or user password empty - please check instance configuration', 0)
-                : process.exit(0);
+            this.terminate(0);
             return;
         }
 
@@ -81,9 +81,7 @@ class WeatherSense extends utils.Adapter {
         if (mqtt_active) {
             if (broker_address.trim().length === 0 || broker_address == '0.0.0.0') {
                 this.log.error('MQTT IP address is empty - please check instance configuration');
-                this.terminate
-                    ? this.terminate('MQTT IP address is empty - please check instance configuration', 0)
-                    : process.exit(0);
+                this.terminate();
                 return;
             }
             client = mqtt.connect(`mqtt://${broker_address}:${mqtt_port}`, {
@@ -99,7 +97,7 @@ class WeatherSense extends utils.Adapter {
                 instObj.common.schedule = `*/${Math.floor(Math.random() * 3) + 6} * * * *`;
                 this.log.info(`Default schedule found and adjusted to spread calls better over 6-9 minutes!`);
                 await this.setForeignObjectAsync(`system.adapter.${this.namespace}`, instObj);
-                this.terminate ? this.terminate() : process.exit(0);
+                this.terminate();
                 return;
             }
         } catch (err) {
@@ -340,9 +338,7 @@ class WeatherSense extends utils.Adapter {
             if (client) {
                 client.end();
             }
-            this.terminate
-                ? this.terminate('Everything done. Going to terminate till next schedule', 0)
-                : process.exit(0);
+            this.terminate();
         }
     }
 
@@ -570,7 +566,6 @@ class WeatherSense extends utils.Adapter {
             const response = await axios.get(url, {
                 headers,
                 timeout: 5000,
-                httpsAgent: new (require('node:https').Agent)({ rejectUnauthorized: false }),
             });
 
             if (response.status === 200) {
@@ -603,7 +598,6 @@ class WeatherSense extends utils.Adapter {
             const response = await axios.get(url, {
                 headers,
                 timeout: 5000,
-                httpsAgent: new https.Agent({ rejectUnauthorized: false }), // entspricht verify=False
             });
 
             if (response.status === 200) {

@@ -57,7 +57,7 @@
     "translate": "translate-adapter",
     "build": "echo 'No build needed for JavaScript version'",
     "release": "release-script",
-    "dev": "dev-server"
+    "dev-server": "dev-server"
   },
   "bugs": {
     "url": "https://github.com/ltspicer/ioBroker.weathersense/issues"
