@@ -334,6 +334,7 @@ class WeatherSense extends utils.Adapter {
             }
         } catch (error) {
             this.log.error(`Unexpected error in onReady(): ${error.message}`);
+            this.terminate(1);
         } finally {
             if (client) {
                 client.end();
