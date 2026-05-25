@@ -338,7 +338,7 @@ class WeatherSense extends utils.Adapter {
             if (client) {
                 client.end();
             }
-            this.log.info('Everything done. Going to terminate till next schedule')
+            this.log.info('Everything done. Going to terminate till next schedule');
             this.terminate(0);
         }
     }
