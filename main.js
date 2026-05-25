@@ -61,19 +61,19 @@ class WeatherSense extends utils.Adapter {
             sensor_id = parseInt(sensor_in);
             if (sensor_id < 1 || sensor_id > 20) {
                 this.log.error('Sensor ID has no value between 1 and 20');
-                this.terminate();
+                this.terminate(2);
                 return;
             }
         } else {
             this.log.error('Sensor ID has no valid value');
-            this.terminate();
+            this.terminate(2);
             return;
         }
         this.log.debug(`Sensor ID is ${sensor_id}`);
 
         if (username.trim().length === 0 || passwort.trim().length === 0) {
             this.log.error('User email and/or user password empty - please check instance configuration');
-            this.terminate(0);
+            this.terminate(2);
             return;
         }
 
@@ -81,7 +81,7 @@ class WeatherSense extends utils.Adapter {
         if (mqtt_active) {
             if (broker_address.trim().length === 0 || broker_address == '0.0.0.0') {
                 this.log.error('MQTT IP address is empty - please check instance configuration');
-                this.terminate();
+                this.terminate(2);
                 return;
             }
             client = mqtt.connect(`mqtt://${broker_address}:${mqtt_port}`, {
@@ -97,7 +97,7 @@ class WeatherSense extends utils.Adapter {
                 instObj.common.schedule = `*/${Math.floor(Math.random() * 3) + 6} * * * *`;
                 this.log.info(`Default schedule found and adjusted to spread calls better over 6-9 minutes!`);
                 await this.setForeignObjectAsync(`system.adapter.${this.namespace}`, instObj);
-                this.terminate();
+                this.terminate(0);
                 return;
             }
         } catch (err) {
@@ -338,7 +338,8 @@ class WeatherSense extends utils.Adapter {
             if (client) {
                 client.end();
             }
-            this.terminate();
+            this.log.info('Everything done. Going to terminate till next schedule')
+            this.terminate(0);
         }
     }
 
