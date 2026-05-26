@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.4.0",
+    "version": "4.4.1",
     "news": {
+      "4.4.1": {
+        "en": "process.exit() issue resolved",
+        "de": "process.exit() problem behoben",
+        "ru": "решение проблемы process.exit()",
+        "pt": "problema process.exit () resolvido",
+        "nl": "proces.exit() probleem opgelost",
+        "fr": "process.exit() problème résolu",
+        "it": "process.exit() problema risolto",
+        "es": "cuestión resuelta",
+        "pl": "process.exit () problem rozwiązany",
+        "uk": "process.exit() питання вирішується",
+        "zh-cn": "process.exit() 问题得到解决"
+      },
       "4.4.0": {
         "en": "node > 20",
         "de": "knoten > 20",
@@ -80,19 +93,6 @@
         "pl": "Lepsze menu admin",
         "uk": "Меню адміністратора",
         "zh-cn": "更好的管理菜单"
-      },
-      "4.0.3": {
-        "en": "Ignore set of allStatesOk if state is undefined",
-        "de": "Ignorieren von AllStates Ok, wenn Zustand undefiniert ist",
-        "ru": "Игнорировать все государства Хорошо, если состояние не определено",
-        "pt": "Ignorar o conjunto de todos os estados Ok se o estado é indefinido",
-        "nl": "Alle staten negeren Oké als status ongedefinieerd is",
-        "fr": "Ignorer l'ensemble de tous les États Ok si l'état n'est pas défini",
-        "it": "Ignora insieme di tutti gli Stati Ok se lo stato non è definito",
-        "es": "Ignorar conjunto de todos los Estados Ok si el estado es indefinido",
-        "pl": "Ignoruj zbiór wszystkich stanów Ok, jeśli stan jest niezdefiniowany",
-        "uk": "Ignore набір всіх О, якщо держава не визначена",
-        "zh-cn": "忽略所有国家的一组 如果状态未定义, 则确定"
       }
     },
     "titleLang": {
