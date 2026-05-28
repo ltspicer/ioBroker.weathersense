@@ -1,0 +1,14 @@
+{
+    "broker_address": "MQTT broker IP address",
+    "ignorePowerStatus": "Ignore PowerStatus warning",
+    "mqtt_active": "Use MQTT",
+    "mqtt_pass": "MQTT password",
+    "mqtt_port": "MQTT port",
+    "mqtt_user": "MQTT user",
+    "passwort": "WeatherSense password",
+    "sensor_id": "Sensor ID (1-20)",
+    "storeDir": "Folder for Json file",
+    "storeJson": "Save Json",
+    "username": "WeatherSense username (email)",
+    "weathersense adapter settings": "Adapter settings for WeatherSense"
+}
