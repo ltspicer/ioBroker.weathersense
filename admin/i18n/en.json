@@ -7,7 +7,7 @@
     "MQTT user": "MQTT user",
     "WeatherSense password": "WeatherSense password",
     "Sensor ID (1-20)": "Sensor ID (1-20)",
-    "Folder for Json file": "Folder for Json file",
+    "Folder for JSON file": "Folder for JSON file",
     "Save Json": "Save Json",
     "WeatherSense username (email)": "WeatherSense username (email)",
     "Adapter settings for WeatherSense": "Adapter settings for WeatherSense"

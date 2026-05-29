@@ -1,6 +1,6 @@
 {
     "Adapter settings for WeatherSense": "Налаштування адаптера для WeatherSense",
-    "Folder for Json file": "Папка для файлу Json",
+    "Folder for JSON file": "Папка для файлу JSON",
     "Ignore PowerStatus warning": "Ігноруйте попередження PowerStatus",
     "MQTT broker IP address": "IP-адреса брокера MQTT",
     "MQTT password": "Пароль MQTT",
