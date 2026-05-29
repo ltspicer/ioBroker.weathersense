@@ -1,14 +1,14 @@
 {
-    "broker_address": "Adres IP brokera MQTT",
-    "ignorePowerStatus": "Zignoruj ​​ostrzeżenie o stanie zasilania",
-    "mqtt_active": "Użyj MQTT",
-    "mqtt_pass": "Hasło MQTT",
-    "mqtt_port": "portu MQTT",
-    "mqtt_user": "Użytkownik MQTT",
-    "passwort": "Hasło WeatherSense",
-    "sensor_id": "Identyfikator czujnika (1-20)",
-    "storeDir": "Folder na plik Json",
-    "storeJson": "Uratuj Jsona",
-    "username": "Nazwa użytkownika WeatherSense (e-mail)",
-    "weathersense adapter settings": "Ustawienia adaptera dla WeatherSense"
+    "Adapter settings for WeatherSense": "Ustawienia adaptera dla WeatherSense",
+    "Folder for Json file": "Folder na plik Json",
+    "Ignore PowerStatus warning": "Zignoruj ​​ostrzeżenie o stanie zasilania",
+    "MQTT broker IP address": "Adres IP brokera MQTT",
+    "MQTT password": "Hasło MQTT",
+    "MQTT port": "portu MQTT",
+    "MQTT user": "Użytkownik MQTT",
+    "Save Json": "Uratuj Jsona",
+    "Sensor ID (1-20)": "Identyfikator czujnika (1-20)",
+    "Use MQTT": "Użyj MQTT",
+    "WeatherSense password": "Hasło WeatherSense",
+    "WeatherSense username (email)": "Nazwa użytkownika WeatherSense (e-mail)"
 }

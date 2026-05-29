@@ -1,14 +1,14 @@
 {
-    "broker_address": "MQTT 代理 IP 地址",
-    "ignorePowerStatus": "忽略电源状态警告",
-    "mqtt_active": "使用MQTT",
-    "mqtt_pass": "MQTT 密码",
-    "mqtt_port": "MQTT 端口",
-    "mqtt_user": "MQTT 用户",
-    "passwort": "天气感应密码",
-    "sensor_id": "传感器 ID (1-20)",
-    "storeDir": "Json 文件的文件夹",
-    "storeJson": "保存Json",
-    "username": "WeatherSense 用户名（电子邮件）",
-    "weathersense adapter settings": "WeatherSense 的适配器设置"
+    "Adapter settings for WeatherSense": "WeatherSense 的适配器设置",
+    "Folder for Json file": "Json 文件的文件夹",
+    "Ignore PowerStatus warning": "忽略电源状态警告",
+    "MQTT broker IP address": "MQTT 代理 IP 地址",
+    "MQTT password": "MQTT 密码",
+    "MQTT port": "MQTT 端口",
+    "MQTT user": "MQTT 用户",
+    "Save Json": "保存Json",
+    "Sensor ID (1-20)": "传感器 ID (1-20)",
+    "Use MQTT": "使用MQTT",
+    "WeatherSense password": "天气感应密码",
+    "WeatherSense username (email)": "WeatherSense 用户名（电子邮件）"
 }

@@ -1,14 +1,14 @@
 {
-    "broker_address": "IP-адреса брокера MQTT",
-    "ignorePowerStatus": "Ігноруйте попередження PowerStatus",
-    "mqtt_active": "Використовуйте MQTT",
-    "mqtt_pass": "Пароль MQTT",
-    "mqtt_port": "Порт MQTT",
-    "mqtt_user": "Користувач MQTT",
-    "passwort": "Пароль WeatherSense",
-    "sensor_id": "Ідентифікатор датчика (1-20)",
-    "storeDir": "Папка для файлу Json",
-    "storeJson": "Збережіть Json",
-    "username": "Ім'я користувача WeatherSense (електронна адреса)",
-    "weathersense adapter settings": "Налаштування адаптера для WeatherSense"
+    "Adapter settings for WeatherSense": "Налаштування адаптера для WeatherSense",
+    "Folder for Json file": "Папка для файлу Json",
+    "Ignore PowerStatus warning": "Ігноруйте попередження PowerStatus",
+    "MQTT broker IP address": "IP-адреса брокера MQTT",
+    "MQTT password": "Пароль MQTT",
+    "MQTT port": "Порт MQTT",
+    "MQTT user": "Користувач MQTT",
+    "Save Json": "Збережіть Json",
+    "Sensor ID (1-20)": "Ідентифікатор датчика (1-20)",
+    "Use MQTT": "Використовуйте MQTT",
+    "WeatherSense password": "Пароль WeatherSense",
+    "WeatherSense username (email)": "Ім'я користувача WeatherSense (електронна адреса)"
 }
