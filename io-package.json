@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.4.1",
+    "version": "4.4.2",
     "news": {
+      "4.4.2": {
+        "en": "Translation issues resolved",
+        "de": "Übersetzungsprobleme behoben",
+        "ru": "Вопросы перевода решены",
+        "pt": "Questões de tradução resolvidas",
+        "nl": "Vertaalproblemen opgelost",
+        "fr": "Problèmes de traduction résolus",
+        "it": "Problemi di traduzione risolti",
+        "es": "Cuestiones de traducción resueltas",
+        "pl": "Kwestie tłumaczeń rozwiązane",
+        "uk": "Вирішені питання перекладу",
+        "zh-cn": "翻译问题得到解决"
+      },
       "4.4.1": {
         "en": "process.exit() issue resolved",
         "de": "process.exit() problem behoben",
@@ -80,19 +93,6 @@
         "pl": "Lepsze informacje o dzienniku",
         "uk": "Детальніше про журнал",
         "zh-cn": "更好的日志信息"
-      },
-      "4.1.0": {
-        "en": "Better Admin menu",
-        "de": "Besseres Admin Menü",
-        "ru": "Лучшее меню администратора",
-        "pt": "Melhor menu de administração",
-        "nl": "Beter Admin menu",
-        "fr": "Meilleur menu Admin",
-        "it": "Menu migliore di amministrazione",
-        "es": "Mejor menú de Admin",
-        "pl": "Lepsze menu admin",
-        "uk": "Меню адміністратора",
-        "zh-cn": "更好的管理菜单"
       }
     },
     "titleLang": {
