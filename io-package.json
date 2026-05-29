@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.4.2",
+    "version": "4.4.3",
     "news": {
+      "4.4.3": {
+        "en": "License added",
+        "de": "Lizenz hinzugefügt",
+        "ru": "Лицензия добавлена",
+        "pt": "Licença adicionada",
+        "nl": "Licentie toegevoegd",
+        "fr": "Licence ajoutée",
+        "it": "Licenza aggiunta",
+        "es": "Licencia añadido",
+        "pl": "Licencja dodana",
+        "uk": "Додана ліцензія",
+        "zh-cn": "增加了许可证"
+      },
       "4.4.2": {
         "en": "Translation issues resolved",
         "de": "Übersetzungsprobleme behoben",
@@ -80,19 +93,6 @@
         "pl": "Komunikat \"Błąd podczas logowania\" poprawiony & timeout wzrósł do 3000ms",
         "uk": "\"Посоль під час входу\" повідомлення фіксоване і часовий виїзд збільшено до 3000ms",
         "zh-cn": "“ 登录时错误” 信件固定超时( T) 至 3000 ms"
-      },
-      "4.2.0": {
-        "en": "Better log info",
-        "de": "Bessere Log-Info",
-        "ru": "Лучшая лог-информация",
-        "pt": "Melhor informação de registo",
-        "nl": "Betere loginformatie",
-        "fr": "Meilleure information de journal",
-        "it": "Migliori informazioni di log",
-        "es": "Mejor información de registro",
-        "pl": "Lepsze informacje o dzienniku",
-        "uk": "Детальніше про журнал",
-        "zh-cn": "更好的日志信息"
       }
     },
     "titleLang": {

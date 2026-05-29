@@ -1,4 +1,8 @@
 # Older changes
+## 4.2.2 (2026-03-04)
+
+- powerStatus:0 message changed from warn to info
+
 ## 4.2.1 (2026-02-03)
 
 - "Error during login" message fixed & timeout increased to 3000ms

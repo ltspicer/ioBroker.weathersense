@@ -32,8 +32,7 @@ The weather station data is stored in the weathersense data point.
 The data can also be sent via MQTT.
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 4.4.3 (2026-05-29)
 
 - License added
 
@@ -53,13 +52,7 @@ The data can also be sent via MQTT.
 
 - "Ignore PowerStatus warning" option added
 
-### 4.2.2 (2026-03-04)
-
-- powerStatus:0 message changed from warn to info
-
-[Older changelogs can be found there](CHANGELOG_OLD.md)
-
-## License
+[Older changelogs can be found there](CHANGELOG_OLD.md)## License
 
 MIT License
 
