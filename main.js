@@ -34,7 +34,7 @@ class WeatherSense extends utils.Adapter {
 
     // Delay-Helferfunktion
     delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+        return new Promise(resolve => this.setTimeout(resolve, ms));
     }
 
     async onReady() {
