@@ -4,11 +4,15 @@
     "Ignore PowerStatus warning": "Zignoruj ​​ostrzeżenie o stanie zasilania",
     "MQTT broker IP address": "Adres IP brokera MQTT",
     "MQTT password": "Hasło MQTT",
+    "MQTT password. Leave blank for no-auth": "Hasło MQTT. Pozostaw puste w przypadku braku autoryzacji",
     "MQTT port": "portu MQTT",
     "MQTT user": "Użytkownik MQTT",
+    "MQTT user. Leave blank for no-auth": "Użytkownik MQTT. Pozostaw puste w przypadku braku autoryzacji",
     "Save Json": "Uratuj Jsona",
+    "Save Json file": "Zapisz plik Jsona",
     "Sensor ID (1-20)": "Identyfikator czujnika (1-20)",
     "Use MQTT": "Użyj MQTT",
     "WeatherSense password": "Hasło WeatherSense",
-    "WeatherSense username (email)": "Nazwa użytkownika WeatherSense (e-mail)"
+    "WeatherSense username (email)": "Nazwa użytkownika WeatherSense (e-mail)",
+    "°C (unchecked = °F)": "°C (niezaznaczone = °F)"
 }

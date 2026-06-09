@@ -4,11 +4,15 @@
     "Ignore PowerStatus warning": "Ігноруйте попередження PowerStatus",
     "MQTT broker IP address": "IP-адреса брокера MQTT",
     "MQTT password": "Пароль MQTT",
+    "MQTT password. Leave blank for no-auth": "Пароль MQTT. Залиште поле порожнім для відсутності авторизації",
     "MQTT port": "Порт MQTT",
     "MQTT user": "Користувач MQTT",
+    "MQTT user. Leave blank for no-auth": "Користувач MQTT. Залиште поле порожнім для відсутності авторизації",
     "Save Json": "Збережіть Json",
+    "Save Json file": "Збережіть файл Json",
     "Sensor ID (1-20)": "Ідентифікатор датчика (1-20)",
     "Use MQTT": "Використовуйте MQTT",
     "WeatherSense password": "Пароль WeatherSense",
-    "WeatherSense username (email)": "Ім'я користувача WeatherSense (електронна адреса)"
+    "WeatherSense username (email)": "Ім'я користувача WeatherSense (електронна адреса)",
+    "°C (unchecked = °F)": "°C (не позначено = °F)"
 }
