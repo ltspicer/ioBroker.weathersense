@@ -548,7 +548,7 @@ class WeatherSense extends utils.Adapter {
                 this.log.error('Server error');
             }
         } catch (error) {
-            this.log.error(`Error during login: ${error.message || 'Reason unknown'}`);
+            this.log.warn(`Error during login: ${error.message || 'Reason unknown'}`);
         }
 
         return null;
@@ -632,7 +632,7 @@ class WeatherSense extends utils.Adapter {
     ) {
         const token = await this.login(username, passwort);
         if (!token) {
-            this.log.error('No token received');
+            this.log.warn('No token received');
             if (mqtt_active) {
                 await this.sendMqtt(sensor_id, mqtt_active, client, 'dataReceived', 'false');
                 //await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', 'false');
@@ -646,7 +646,7 @@ class WeatherSense extends utils.Adapter {
         const devdata = await this.devData(token);
         const forecast = await this.foreCast(token);
         if (devdata === 'error' || forecast === 'error') {
-            this.log.error('No data received');
+            this.log.warn('No data received');
             if (mqtt_active) {
                 await this.sendMqtt(sensor_id, mqtt_active, client, 'dataReceived', 'false');
                 //await this.sendMqtt(sensor_id, mqtt_active, client, 'allStatesOk', 'false');

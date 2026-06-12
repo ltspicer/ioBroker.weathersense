@@ -32,6 +32,11 @@ The weather station data is stored in the weathersense data point.
 The data can also be sent via MQTT.
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- 'No data received', 'No token received' and 'Error during login' errors changed to warn
+
 ### 4.4.3 (2026-05-29)
 
 - License added
