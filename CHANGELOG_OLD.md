@@ -1,4 +1,8 @@
 # Older changes
+## 4.3.0 (2026-03-05)
+
+- "Ignore PowerStatus warning" option added
+
 ## 4.2.2 (2026-03-04)
 
 - powerStatus:0 message changed from warn to info

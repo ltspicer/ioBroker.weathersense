@@ -1,6 +1,6 @@
 {
   "name": "iobroker.weathersense",
-  "version": "4.4.3",
+  "version": "4.4.4",
   "description": "Read in data from WeatherSense",
   "author": {
     "name": "Daniel Luginbühl",
@@ -65,5 +65,10 @@
   "bugs": {
     "url": "https://github.com/ltspicer/ioBroker.weathersense/issues"
   },
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "allowScripts": {
+    "esbuild@0.11.23": true,
+    "esbuild@0.25.12": true,
+    "protobufjs@7.6.2": true
+  }
 }

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.4.3",
+    "version": "4.4.4",
     "news": {
+      "4.4.4": {
+        "en": "'No data received', 'No token received' and 'Error during login' errors changed to warn",
+        "de": "Die Fehlermeldungen „Keine Daten empfangen“, „Kein Token empfangen“ und „Fehler beim Anmelden“ wurden in Warnungen geändert.",
+        "ru": "Сообщения об ошибках «Данные не получены», «Токен не получен» и «Ошибка при входе в систему» заменены на предупреждение.",
+        "pt": "Os erros 'Nenhum dado recebido', 'Nenhum token recebido' e 'Erro durante o login' foram alterados para avisos.",
+        "nl": "De foutmeldingen 'Geen gegevens ontvangen', 'Geen token ontvangen' en 'Fout tijdens het inloggen' zijn gewijzigd in waarschuwingen.",
+        "fr": "Les messages d'erreur « Aucune donnée reçue », « Aucun jeton reçu » et « Erreur lors de la connexion » ont été remplacés par des avertissements.",
+        "it": "Gli errori 'Nessun dato ricevuto', 'Nessun token ricevuto' e 'Errore durante l'accesso' sono stati modificati in avviso.",
+        "es": "Los errores 'No se recibieron datos', 'No se recibió token' y 'Error durante el inicio de sesión' se cambiaron a advertencia.",
+        "pl": "Błędy „Brak otrzymanych danych”, „Brak otrzymanego tokena” i „Błąd podczas logowania” zostały zmienione na ostrzeżenia",
+        "uk": "Помилки «Дані не отримано», «Токен не отримано» та «Помилка під час входу» змінено на попередження",
+        "zh-cn": "“未收到数据”、“未收到令牌”和“登录时出错”错误已更改为警告。"
+      },
       "4.4.3": {
         "en": "License added",
         "de": "Lizenz hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "powerStatus: 0 wiadomość zmieniona z ostrzeżenia na info",
         "uk": "powerStatus:0 повідомлення змінено з попередження",
         "zh-cn": "电源状态: 0 信件从警告改为信息"
-      },
-      "4.2.1": {
-        "en": "\"Error during login\" message fixed & timeout increased to 3000ms",
-        "de": "\"Error während des Logins\"-Nachricht Fix & Timeout stieg auf 3000m",
-        "ru": "Зафиксировано сообщение «Ошибка во время входа» и увеличено время ожидания до 3000 мс",
-        "pt": "\"Erro durante o login\" mensagem fixa e tempo- limite aumentado para 3000ms",
-        "nl": "\"Fout tijdens aanmelden\" bericht vast & timeout verhoogd tot 3000ms",
-        "fr": "\"Erreur pendant la connexion\" message fixe & timeout augmenté à 3000ms",
-        "it": "\"Errore durante il login\" messaggio fisso & timeout aumentato a 3000ms",
-        "es": "\"Error durante el login\" mensaje fijo \" timeout aumentó a 3000ms",
-        "pl": "Komunikat \"Błąd podczas logowania\" poprawiony & timeout wzrósł do 3000ms",
-        "uk": "\"Посоль під час входу\" повідомлення фіксоване і часовий виїзд збільшено до 3000ms",
-        "zh-cn": "“ 登录时错误” 信件固定超时( T) 至 3000 ms"
       }
     },
     "titleLang": {
