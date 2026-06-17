@@ -1,6 +1,6 @@
 {
     "Adapter settings for WeatherSense": "Adapterinstellingen voor WeatherSense",
-    "Folder for JSON file": "Map voor JSON-bestand",
+    "Folder for JSON file": "Map voor JSON-bestanden",
     "Ignore PowerStatus warning": "Negeer de PowerStatus-waarschuwing",
     "MQTT broker IP address": "IP-adres van MQTT-makelaar",
     "MQTT password": "MQTT-wachtwoord",
@@ -8,11 +8,12 @@
     "MQTT port": "MQTT-poort",
     "MQTT user": "MQTT-gebruiker",
     "MQTT user. Leave blank for no-auth": "MQTT-gebruiker. Laat dit leeg voor geen verificatie",
-    "Save Json": "Bewaar Json",
-    "Save Json file": "Sla Json-bestand op",
+    "Save Json": "Sla JSON-bestanden op",
+    "Save Json file": "Sla JSON-bestanden op",
     "Sensor ID (1-20)": "Sensor-ID (1-20)",
     "Use MQTT": "Gebruik MQTT",
     "WeatherSense password": "WeatherSense-wachtwoord",
     "WeatherSense username (email)": "WeatherSense-gebruikersnaam (e-mail)",
+    "help_sensor_id": "Gebruikt voor MQTT-onderwerpen en datastructuur. Standaard is 1",
     "°C (unchecked = °F)": "°C (niet aangevinkt = °F)"
 }

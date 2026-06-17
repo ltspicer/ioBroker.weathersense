@@ -7,12 +7,13 @@
     "MQTT user": "MQTT user",
     "WeatherSense password": "WeatherSense password",
     "Sensor ID (1-20)": "Sensor ID (1-20)",
-    "Folder for JSON file": "Folder for JSON file",
-    "Save Json": "Save Json",
+    "Folder for JSON file": "Folder for JSON files",
+    "Save Json": "Save JSON files",
     "WeatherSense username (email)": "WeatherSense username (email)",
     "Adapter settings for WeatherSense": "Adapter settings for WeatherSense",
     "°C (unchecked = °F)": "°C (unchecked = °F)",
     "MQTT password. Leave blank for no-auth": "MQTT password. Leave blank for no-auth",
     "MQTT user. Leave blank for no-auth": "MQTT user. Leave blank for no-auth",
-    "Save Json file": "Save Json file"
+    "Save Json file": "Save JSON files",
+    "help_sensor_id": "Used for MQTT topics and data structure. Default is 1"
 }
