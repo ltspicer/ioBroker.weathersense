@@ -1,4 +1,8 @@
 # Older changes
+## 4.4.0 (2026-04-06)
+
+- node > 20
+
 ## 4.3.0 (2026-03-05)
 
 - "Ignore PowerStatus warning" option added

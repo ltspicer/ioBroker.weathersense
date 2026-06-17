@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "4.4.4",
+    "version": "4.4.5",
     "news": {
+      "4.4.5": {
+        "en": "Added help tooltips to admin configuration page\nDocumented multi-instance setup for multiple weather stations in README",
+        "de": "Zur Administratorkonfigurationsseite wurden Hilfetooltips hinzugefügt.\nDokumentierte Einrichtung mehrerer Instanzen für mehrere Wetterstationen in der README-Datei",
+        "ru": "Добавлены всплывающие подсказки на страницу настроек администратора.\nВ файле README описана настройка нескольких экземпляров метеостанций.",
+        "pt": "Adicionadas dicas de ajuda à página de configuração do administrador.\nConfiguração de múltiplas instâncias para várias estações meteorológicas documentada no arquivo README.",
+        "nl": "Help-tooltips toegevoegd aan de beheerdersconfiguratiepagina.\nDe configuratie voor meerdere instanties van weerstations is gedocumenteerd in het README-bestand.",
+        "fr": "Ajout d'infobulles d'aide à la page de configuration d'administration\nConfiguration multi-instance documentée pour plusieurs stations météorologiques dans le fichier README",
+        "it": "Aggiunti suggerimenti (tooltip) alla pagina di configurazione amministrativa.\nConfigurazione multi-istanza documentata per più stazioni meteorologiche nel file README",
+        "es": "Se agregaron sugerencias de ayuda a la página de configuración de administrador.\nConfiguración documentada de múltiples instancias para varias estaciones meteorológicas en el archivo README.",
+        "pl": "Dodano podpowiedzi pomocy do strony konfiguracji administratora\nUdokumentowana konfiguracja wielu instancji dla wielu stacji pogodowych w pliku README",
+        "uk": "Додано підказки до сторінки конфігурації адміністратора\nЗадокументоване налаштування кількох екземплярів для кількох метеостанцій у файлі README",
+        "zh-cn": "在管理员配置页面添加了帮助工具提示\nREADME 文件中记录了多个气象站的多实例设置方法。"
+      },
       "4.4.4": {
         "en": "'No data received', 'No token received' and 'Error during login' errors changed to warn",
         "de": "Die Fehlermeldungen „Keine Daten empfangen“, „Kein Token empfangen“ und „Fehler beim Anmelden“ wurden in Warnungen geändert.",
@@ -80,19 +93,6 @@
         "pl": "Dodano opcję \"Ignoruj ostrzeżenie PowerStatus\"",
         "uk": "Додано опцію \"Попередження облікового запису\"",
         "zh-cn": "添加“ 忽略电源状态警告” 选项"
-      },
-      "4.2.2": {
-        "en": "powerStatus:0 message changed from warn to info",
-        "de": "powerStatus:0 Nachricht von warn zu info geändert",
-        "ru": "сообщение powerStatus:0 изменилось с предупреждения на информацию",
-        "pt": "powerStatus: 0 mensagem alterada de alerta para info",
-        "nl": "powerStatus:0 bericht gewijzigd van warn naar info",
-        "fr": "powerStatus:0 message changé d'avertissement à info",
-        "it": "powerStatus:0 messaggio cambiato da avvertire a info",
-        "es": "powerStatus:0 mensaje cambiado de advierte a info",
-        "pl": "powerStatus: 0 wiadomość zmieniona z ostrzeżenia na info",
-        "uk": "powerStatus:0 повідомлення змінено з попередження",
-        "zh-cn": "电源状态: 0 信件从警告改为信息"
       }
     },
     "titleLang": {

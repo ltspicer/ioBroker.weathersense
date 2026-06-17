@@ -53,8 +53,7 @@ To successfully read data from multiple stations simultaneously without any conf
 * **Clean MQTT Routing:** If you use the integrated MQTT feature, your topics will be cleanly separated by the Sensor ID (e.g., `weathersense/1/...` and `weathersense/2/...`), preventing data from overwriting on your broker.
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 4.4.5 (2026-06-17)
 
 - Added help tooltips to admin configuration page
 - Documented multi-instance setup for multiple weather stations in README
@@ -74,10 +73,6 @@ To successfully read data from multiple stations simultaneously without any conf
 ### 4.4.1 (2026-05-26)
 
 - process.exit() issue resolved
-
-### 4.4.0 (2026-04-06)
-
-- node > 20
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
