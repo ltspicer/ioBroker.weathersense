@@ -8,12 +8,16 @@
     "MQTT port": "Порт MQTT",
     "MQTT user": "Користувач MQTT",
     "MQTT user. Leave blank for no-auth": "Користувач MQTT. Залиште поле порожнім для відсутності авторизації",
+    "Meter above sea level": "Метр над рівнем моря",
+    "Rain in mm (unchecked = inch)": "Дощ у мм (не позначено = дюйм)",
     "Save Json": "Зберігайте файли JSON",
     "Save Json file": "Зберігайте файли JSON",
     "Sensor ID (1-20)": "Ідентифікатор датчика (1-20)",
+    "The weather station determines the actual wind speed unit. This setting only controls which unit is shown in the data points": "Метеостанція визначає фактичну одиницю швидкості вітру. Цей параметр лише контролює, яка одиниця відображається в точках даних",
     "Use MQTT": "Використовуйте MQTT",
     "WeatherSense password": "Пароль WeatherSense",
     "WeatherSense username (email)": "Ім'я користувача WeatherSense (електронна адреса)",
+    "Wind speed in km/h (unchecked = MPH)": "Швидкість вітру в км/год (не позначено = миль/год)",
     "help_sensor_id": "Використовується для тем і структури даних MQTT. За замовчуванням 1",
     "°C (unchecked = °F)": "°C (не позначено = °F)"
 }

@@ -21,9 +21,43 @@
             "lg": 4,
             "xl": 4
         },
+        "altitude_masl": {
+            "type": "number",
+            "label": "Meter above sea level",
+            "default": 0,
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
         "celsius": {
             "type": "checkbox",
             "label": "°C (unchecked = °F)",
+            "default": true,
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "rain_unit": {
+            "type": "checkbox",
+            "label": "Rain in mm (unchecked = inch)",
+            "default": true,
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "wind_unit": {
+            "type": "checkbox",
+            "label": "Wind speed in km/h (unchecked = MPH)",
+            "help": "The weather station determines the actual wind speed unit. This setting only controls which unit is shown in the data points",
             "default": true,
             "newLine": true,
             "xs": 12,

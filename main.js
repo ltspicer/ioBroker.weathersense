@@ -21,6 +21,42 @@ axios.defaults.timeout = 3000;
 // ensure checker sees clearTimeout usage
 void clearTimeout;
 
+function isInvalidValue(value, type_) {
+    if (value === null || value === undefined) {
+        return true;
+    }
+
+    if (value === 65535) {
+        return true;
+    }
+
+    if (type_ === 1 || type_ === 2) {
+        if (value === 255) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function pressureToSeaLevel(pressure_hPa, altitude_masl) {
+    const tempLapse = 0.0065;
+    const temp0 = 288.15;
+    const exponent = 5.255;
+
+    const factor = 1 - (tempLapse * altitude_masl) / temp0;
+
+    if (factor <= 0) {
+        return pressure_hPa;
+    }
+
+    const seaLevelPressure = pressure_hPa * Math.pow(factor, -exponent);
+
+    const rounded = Math.round(seaLevelPressure);
+
+    return rounded;
+}
+
 class WeatherSense extends utils.Adapter {
     constructor(options) {
         super({
@@ -43,6 +79,10 @@ class WeatherSense extends utils.Adapter {
         const broker_address = this.config.broker_address;
         const mqtt_active = this.config.mqtt_active;
         const celsius = this.config.celsius;
+        const rain_unit_mm = this.config.rain_unit;
+        const wind_unit_kmh = this.config.wind_unit;
+        const altitude_masl_in = this.config.altitude_masl;
+        let altitude_masl = 0;
         const mqtt_user = this.config.mqtt_user;
         const mqtt_pass = this.config.mqtt_pass;
         const mqtt_port = this.config.mqtt_port;
@@ -52,10 +92,34 @@ class WeatherSense extends utils.Adapter {
         const storeDir = this.config.storeDir;
         const ignorePowerStatus = this.config.ignorePowerStatus;
 
-        // Delay 0-117s
-        const startupDelay = Math.floor(Math.random() * 118) * 1000;
+        // Delay 0-55s
+        const startupDelay = Math.floor(Math.random() * 56) * 1000;
         this.log.info(`Start cloud query after ${startupDelay / 1000} Seconds...`);
         await this.delay(startupDelay);
+
+        if (altitude_masl_in !== null && altitude_masl_in !== undefined) {
+            const parsed = parseInt(altitude_masl_in, 10);
+
+            if (isNaN(parsed)) {
+                this.log.error('Meter above sea level has no valid value');
+                this.terminate(2);
+                return;
+            }
+
+            if (parsed < 0 || parsed > 8000) {
+                this.log.error('Meter above sea level has no value between 0 and 8000');
+                this.terminate(2);
+                return;
+            }
+
+            altitude_masl = parsed;
+        } else {
+            this.log.error('Meter above sea level has no valid value');
+            this.log.error(altitude_masl_in);
+            this.terminate(2);
+            return;
+        }
+        this.log.debug(`Meter above sea level ${altitude_masl}`);
 
         if (Number(sensor_in)) {
             sensor_id = parseInt(sensor_in);
@@ -132,6 +196,8 @@ class WeatherSense extends utils.Adapter {
                 storeJson,
                 storeDir,
                 celsius,
+                rain_unit_mm,
+                altitude_masl,
                 `${deviceId}.forecast`,
                 ignorePowerStatus,
             );
@@ -158,6 +224,8 @@ class WeatherSense extends utils.Adapter {
 
                 const devDataChannelId = `${deviceId}.devData`;
                 const tempUnit = celsius ? '°C' : '°F';
+                const rainUnit = rain_unit_mm ? 'mm' : 'inch';
+                const windUnit = wind_unit_kmh ? 'km/h' : 'MPH';
 
                 // Alle Werte aus devdata (außer content)
                 for (const [key, value] of Object.entries(devdata)) {
@@ -185,7 +253,7 @@ class WeatherSense extends utils.Adapter {
                 // Alle Werte aus devdata.content
                 const content = devdata.content || {};
 
-                for (const [key, value] of Object.entries(content)) {
+                for (let [key, value] of Object.entries(content)) {
                     if (value !== null && value !== undefined && key !== 'sensorDatas') {
                         const id = `${devDataChannelId}.${key}`;
 
@@ -227,6 +295,9 @@ class WeatherSense extends utils.Adapter {
                     if (type_ === 2) {
                         prefix = '-Hum';
                     }
+                    if (type_ === 7) {
+                        prefix = '-Atmos';
+                    }
 
                     const key = `Channel${channel}-Type${type_}${prefix}`;
                     const base = `${devDataChannelId}.${key}`;
@@ -234,91 +305,193 @@ class WeatherSense extends utils.Adapter {
                     // current
                     if (cur_val !== null && cur_val !== undefined && cur_val !== 65535 && cur_val !== 255) {
                         const id = `${base}.current`;
+                        const roleMap = {
+                            '-Temp': 'value.temperature',
+                            '-Hum': 'value.humidity',
+                        };
+
+                        const unitMap = {
+                            '-Temp': tempUnit,
+                            '-Hum': '%',
+                            '-Atmos': 'hPa',
+                        };
+
                         await this.setObjectNotExistsAsync(id, {
                             type: 'state',
                             common: {
                                 name: 'current',
                                 type: 'number',
-                                role:
-                                    prefix === '-Temp'
-                                        ? 'value.temperature'
-                                        : prefix === '-Hum'
-                                          ? 'value.humidity'
-                                          : 'value',
-                                unit: prefix === '-Temp' ? tempUnit : prefix === '-Hum' ? '%' : '',
+                                role: roleMap[prefix] || 'value',
+                                unit: unitMap[prefix] || '',
                                 read: true,
                                 write: false,
                             },
                             native: {},
                         });
-                        await this.setStateAsync(id, { val: this.c_f_berechnen(cur_val, prefix, celsius), ack: true });
+
+                        let sendVal = cur_val;
+
+                        if (type_ === 7) {
+                            sendVal = pressureToSeaLevel(cur_val, altitude_masl);
+                        }
+
+                        await this.setStateAsync(id, { val: this.c_f_berechnen(sendVal, prefix, celsius), ack: true });
                     }
                     // high
                     if (high_val !== null && high_val !== undefined && high_val !== 65535 && high_val !== 255) {
                         const id = `${base}.high`;
+                        const roleMap = {
+                            '-Temp': 'value.temperature',
+                            '-Hum': 'value.humidity',
+                        };
+
+                        const unitMap = {
+                            '-Temp': tempUnit,
+                            '-Hum': '%',
+                            '-Atmos': 'hPa',
+                        };
+
                         await this.setObjectNotExistsAsync(id, {
                             type: 'state',
                             common: {
-                                name: 'high',
+                                name: 'current',
                                 type: 'number',
-                                role:
-                                    prefix === '-Temp'
-                                        ? 'value.temperature'
-                                        : prefix === '-Hum'
-                                          ? 'value.humidity'
-                                          : 'value',
-                                unit: prefix === '-Temp' ? tempUnit : prefix === '-Hum' ? '%' : '',
+                                role: roleMap[prefix] || 'value',
+                                unit: unitMap[prefix] || '',
                                 read: true,
                                 write: false,
                             },
                             native: {},
                         });
-                        await this.setStateAsync(id, { val: this.c_f_berechnen(high_val, prefix, celsius), ack: true });
+
+                        let sendVal = high_val;
+
+                        if (type_ === 7) {
+                            sendVal = pressureToSeaLevel(high_val, altitude_masl);
+                        }
+
+                        await this.setStateAsync(id, { val: this.c_f_berechnen(sendVal, prefix, celsius), ack: true });
                     }
                     // low
                     if (low_val !== null && low_val !== undefined && low_val !== 65535 && low_val !== 255) {
                         const id = `${base}.low`;
+                        const roleMap = {
+                            '-Temp': 'value.temperature',
+                            '-Hum': 'value.humidity',
+                        };
+
+                        const unitMap = {
+                            '-Temp': tempUnit,
+                            '-Hum': '%',
+                            '-Atmos': 'hPa',
+                        };
+
                         await this.setObjectNotExistsAsync(id, {
                             type: 'state',
                             common: {
-                                name: 'low',
+                                name: 'current',
                                 type: 'number',
-                                role:
-                                    prefix === '-Temp'
-                                        ? 'value.temperature'
-                                        : prefix === '-Hum'
-                                          ? 'value.humidity'
-                                          : 'value',
-                                unit: prefix === '-Temp' ? tempUnit : prefix === '-Hum' ? '%' : '',
+                                role: roleMap[prefix] || 'value',
+                                unit: unitMap[prefix] || '',
                                 read: true,
                                 write: false,
                             },
                             native: {},
                         });
-                        await this.setStateAsync(id, { val: this.c_f_berechnen(low_val, prefix, celsius), ack: true });
+
+                        let sendVal = low_val;
+
+                        if (type_ === 7) {
+                            sendVal = pressureToSeaLevel(low_val, altitude_masl);
+                        }
+
+                        await this.setStateAsync(id, { val: this.c_f_berechnen(sendVal, prefix, celsius), ack: true });
                     }
 
                     // dev*-Keys im Sensorobjekt
                     for (const [k, v] of Object.entries(s)) {
-                        if (
-                            k.startsWith('dev') &&
-                            v !== null &&
-                            v !== undefined &&
-                            !(typeof v === 'object' && Object.keys(v).length === 0)
-                        ) {
-                            const id = `${base}.${k}`;
+                        if (!k.startsWith('dev')) {
+                            continue;
+                        }
+                        if (isInvalidValue(v, type_)) {
+                            continue;
+                        }
+
+                        if (typeof v === 'object' && Object.keys(v).length === 0) {
+                            continue;
+                        }
+
+                        const baseId = `${base}.${k}`;
+
+                        // Einheit anhand des dev*-Keys bestimmen
+                        let unit = '';
+                        let isRain = false;
+
+                        if (k.startsWith('devRain')) {
+                            unit = rainUnit;
+                            isRain = true;
+                        }
+                        if (k.startsWith('devWind')) {
+                            unit = windUnit;
+                        }
+
+                        // Wenn v ein Objekt ist → Unterwerte einzeln anlegen
+                        if (typeof v === 'object' && Object.keys(v).length > 0) {
+                            for (const [subKey, subVal] of Object.entries(v)) {
+                                if (isInvalidValue(subVal, type_)) {
+                                    continue;
+                                }
+                                const id = `${baseId}.${subKey}`;
+
+                                let val = subVal;
+
+                                if (type_ === 7 || k.toLowerCase().includes('atmos')) {
+                                    if (typeof subVal === 'number') {
+                                        val = pressureToSeaLevel(subVal, altitude_masl);
+                                    }
+                                }
+
+                                // Regenwerte umrechnen
+                                if (isRain && typeof subVal === 'number') {
+                                    val = this.mm_inch_berechnen(subVal, rain_unit_mm);
+                                }
+
+                                await this.setObjectNotExistsAsync(id, {
+                                    type: 'state',
+                                    common: {
+                                        name: `${k} ${subKey}`,
+                                        type: typeof val,
+                                        role: 'value',
+                                        unit: unit,
+                                        read: true,
+                                        write: false,
+                                    },
+                                    native: {},
+                                });
+
+                                await this.setStateAsync(id, { val: val, ack: true });
+                            }
+                        } else {
+                            // Normaler dev*-Wert (kein Objekt)
+                            const id = `${baseId}`;
+
+                            if (isInvalidValue(v, type_)) {
+                                continue;
+                            }
+
                             await this.setObjectNotExistsAsync(id, {
                                 type: 'state',
                                 common: {
                                     name: k,
                                     type: typeof v,
                                     role: 'value',
-                                    unit: '',
+                                    unit: unit,
                                     read: true,
                                     write: false,
                                 },
                                 native: {},
                             });
+
                             await this.setStateAsync(id, { val: v, ack: true });
                         }
                     }
@@ -397,6 +570,14 @@ class WeatherSense extends utils.Adapter {
             }
         }
         return parseFloat(temp);
+    }
+
+    // inch nach mm umwandeln, falls notwendig
+    mm_inch_berechnen(wert, rain_in_mm) {
+        if (rain_in_mm) {
+            wert = (wert * 25.4).toFixed(1);
+        }
+        return parseFloat(wert);
     }
 
     // Forecast Datenpunkte erstellen und schreiben
@@ -627,6 +808,8 @@ class WeatherSense extends utils.Adapter {
         storeJson,
         storeDir,
         celsius,
+        rain_unit_mm,
+        altitude_masl,
         forecastChannelId,
         ignorePowerStatus,
     ) {
@@ -679,6 +862,12 @@ class WeatherSense extends utils.Adapter {
             }
 
             const content = devdata.content || {};
+
+            // Atmos korrigieren
+            if (content.atmos !== null && content.atmos !== undefined) {
+                content.atmos = pressureToSeaLevel(content.atmos, altitude_masl);
+            }
+
             for (const [key, value] of Object.entries(content)) {
                 if (value !== null && value !== undefined) {
                     this.sendMqtt(sensor_id, mqtt_active, client, `devData/${key}`, value);
@@ -694,6 +883,7 @@ class WeatherSense extends utils.Adapter {
                 const high_val = s.hihgVal;
                 const low_val = s.lowVal;
 
+                // --- Prefix bestimmen ---
                 let prefix = '';
                 if (type_ === 1) {
                     prefix = '-Temp';
@@ -701,46 +891,106 @@ class WeatherSense extends utils.Adapter {
                 if (type_ === 2) {
                     prefix = '-Hum';
                 }
+                if (type_ === 7) {
+                    prefix = '-Atmos';
+                }
 
                 const key = `Channel${channel}-Type${type_}${prefix}`;
                 const base = `devData/${key}`;
 
-                if (cur_val !== null && cur_val !== undefined && cur_val !== 65535 && cur_val !== 255) {
-                    this.sendMqtt(
-                        sensor_id,
-                        mqtt_active,
-                        client,
-                        `${base}/current`,
-                        this.c_f_berechnen(cur_val, prefix, celsius),
-                    );
-                }
-                if (high_val !== null && high_val !== undefined && high_val !== 65535 && high_val !== 255) {
-                    this.sendMqtt(
-                        sensor_id,
-                        mqtt_active,
-                        client,
-                        `${base}/high`,
-                        this.c_f_berechnen(high_val, prefix, celsius),
-                    );
-                }
-                if (low_val !== null && low_val !== undefined && low_val !== 65535 && low_val !== 255) {
-                    this.sendMqtt(
-                        sensor_id,
-                        mqtt_active,
-                        client,
-                        `${base}/low`,
-                        this.c_f_berechnen(low_val, prefix, celsius),
-                    );
+                // --- Helper: nur 65535 filtern ---
+                const sendIfValid = (topic, value) => {
+                    if (!isInvalidValue(value, type_)) {
+                        this.sendMqtt(
+                            sensor_id,
+                            mqtt_active,
+                            client,
+                            topic,
+                            this.c_f_berechnen(value, prefix, celsius),
+                        );
+                    }
+                };
+
+                // --- Einzelwerte senden ---
+                let curSend = cur_val;
+                let highSend = high_val;
+                let lowSend = low_val;
+
+                if (type_ === 7) {
+                    if (!isInvalidValue(cur_val, type_)) {
+                        curSend = pressureToSeaLevel(cur_val, altitude_masl);
+                    }
+                    if (!isInvalidValue(high_val, type_)) {
+                        highSend = pressureToSeaLevel(high_val, altitude_masl);
+                    }
+                    if (!isInvalidValue(low_val, type_)) {
+                        lowSend = pressureToSeaLevel(low_val, altitude_masl);
+                    }
                 }
 
+                sendIfValid(`${base}/current`, curSend);
+                sendIfValid(`${base}/high`, highSend);
+                sendIfValid(`${base}/low`, lowSend);
+
+                // --- dev*-Werte senden ---
                 for (const [k, v] of Object.entries(s)) {
-                    if (
-                        k.startsWith('dev') &&
-                        v !== null &&
-                        v !== undefined &&
-                        !(typeof v === 'object' && Object.keys(v).length === 0)
-                    ) {
-                        this.sendMqtt(sensor_id, mqtt_active, client, `${base}/${k}`, v);
+                    if (!k.startsWith('dev')) {
+                        continue;
+                    }
+
+                    // 65535 immer filtern, 255 nur bei Type 1 & 2
+                    if (isInvalidValue(v, type_)) {
+                        continue;
+                    }
+
+                    // leere Objekte filtern
+                    if (typeof v === 'object' && Object.keys(v).length === 0) {
+                        continue;
+                    }
+
+                    const devBase = `${base}/${k}`;
+
+                    // Objekt → Unterwerte senden
+                    if (typeof v === 'object' && Object.keys(v).length > 0) {
+                        for (const [subKey, subVal] of Object.entries(v)) {
+                            if (isInvalidValue(subVal, type_)) {
+                                continue;
+                            }
+
+                            let val = subVal;
+
+                            if (type_ === 7 || k.toLowerCase().includes('atmos')) {
+                                if (typeof subVal === 'number') {
+                                    val = pressureToSeaLevel(subVal, altitude_masl);
+                                }
+                            }
+
+                            // Regenwerte umrechnen (inch → mm)
+                            if (k.startsWith('devRain') && typeof subVal === 'number') {
+                                val = this.mm_inch_berechnen(subVal, rain_unit_mm);
+                            }
+
+                            this.sendMqtt(sensor_id, mqtt_active, client, `${devBase}/${subKey}`, val);
+                        }
+                    } else {
+                        // Einzelwert
+                        if (isInvalidValue(v, type_)) {
+                            continue;
+                        }
+
+                        let val = v;
+
+                        if (type_ === 7 || k.toLowerCase().includes('atmos')) {
+                            if (typeof v === 'number') {
+                                val = pressureToSeaLevel(v, altitude_masl);
+                            }
+                        }
+
+                        if (k.startsWith('devRain') && typeof v === 'number') {
+                            val = this.mm_inch_berechnen(v, rain_unit_mm);
+                        }
+
+                        this.sendMqtt(sensor_id, mqtt_active, client, devBase, val);
                     }
                 }
             }

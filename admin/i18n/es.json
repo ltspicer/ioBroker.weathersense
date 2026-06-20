@@ -8,12 +8,16 @@
     "MQTT port": "Puerto MQTT",
     "MQTT user": "Usuario MQTT",
     "MQTT user. Leave blank for no-auth": "Usuario MQTT. Dejar en blanco para no autenticación",
+    "Meter above sea level": "Metro sobre el nivel del mar",
+    "Rain in mm (unchecked = inch)": "Lluvia en mm (sin marcar = pulgadas)",
     "Save Json": "Guardar archivos JSON",
     "Save Json file": "Guardar archivos JSON",
     "Sensor ID (1-20)": "Identificación del sensor (1-20)",
+    "The weather station determines the actual wind speed unit. This setting only controls which unit is shown in the data points": "La estación meteorológica determina la unidad real de velocidad del viento. Esta configuración solo controla qué unidad se muestra en los puntos de datos",
     "Use MQTT": "Usar MQTT",
     "WeatherSense password": "Contraseña de WeatherSense",
     "WeatherSense username (email)": "Nombre de usuario de WeatherSense (correo electrónico)",
+    "Wind speed in km/h (unchecked = MPH)": "Velocidad del viento en km/h (sin marcar = MPH)",
     "help_sensor_id": "Se utiliza para temas MQTT y estructura de datos. El valor predeterminado es 1",
     "°C (unchecked = °F)": "°C (sin marcar = °F)"
 }

@@ -8,12 +8,16 @@
     "MQTT port": "MQTT 端口",
     "MQTT user": "MQTT 用户",
     "MQTT user. Leave blank for no-auth": "MQTT 用户。留空表示无授权",
+    "Meter above sea level": "海拔米",
+    "Rain in mm (unchecked = inch)": "雨量，单位：毫米（未选中 = 英寸）",
     "Save Json": "保存 JSON 文件",
     "Save Json file": "保存 JSON 文件",
-    "Sensor ID (1-20)": "Sensor ID (1-20)",
+    "Sensor ID (1-20)": "传感器 ID (1-20)",
+    "The weather station determines the actual wind speed unit. This setting only controls which unit is shown in the data points": "气象站确定实际风速单位。此设置仅控制数据点中显示的单位",
     "Use MQTT": "使用MQTT",
     "WeatherSense password": "天气感应密码",
     "WeatherSense username (email)": "WeatherSense 用户名（电子邮件）",
+    "Wind speed in km/h (unchecked = MPH)": "风速（公里/小时）（未选中 = MPH）",
     "help_sensor_id": "用于 MQTT 主题和数据结构。默认值为 1",
     "°C (unchecked = °F)": "°C（未选中 = °F）"
 }

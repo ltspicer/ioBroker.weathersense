@@ -15,5 +15,9 @@
     "MQTT password. Leave blank for no-auth": "MQTT password. Leave blank for no-auth",
     "MQTT user. Leave blank for no-auth": "MQTT user. Leave blank for no-auth",
     "Save Json file": "Save JSON files",
-    "help_sensor_id": "Used for MQTT topics and data structure. Default is 1"
+    "help_sensor_id": "Used for MQTT topics and data structure. Default is 1",
+    "The weather station determines the actual wind speed unit. This setting only controls which unit is shown in the data points": "The weather station determines the actual wind speed unit. This setting only controls which unit is shown in the data points",
+    "Rain in mm (unchecked = inch)": "Rain in mm (unchecked = inch)",
+    "Wind speed in km/h (unchecked = MPH)": "Wind speed in km/h (unchecked = MPH)",
+    "Meter above sea level": "Meter above sea level"
 }
