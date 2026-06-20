@@ -53,6 +53,10 @@ To successfully read data from multiple stations simultaneously without any conf
 * **Clean MQTT Routing:** If you use the integrated MQTT feature, your topics will be cleanly separated by the Sensor ID (e.g., `weathersense/1/...` and `weathersense/2/...`), preventing data from overwriting on your broker.
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+- No termination on "Meter above sea level has no valid value"
+
 ### 5.0.0 (2026-06-20)
 
 - Added automatic sea‑level pressure correction for atmos values based on the configured altitude (altitude_masl).
