@@ -98,26 +98,21 @@ class WeatherSense extends utils.Adapter {
         await this.delay(startupDelay);
 
         if (altitude_masl_in !== null && altitude_masl_in !== undefined) {
-            const parsed = parseInt(altitude_masl_in, 10);
+            let parsed = parseInt(altitude_masl_in, 10);
 
             if (isNaN(parsed)) {
-                this.log.error('Meter above sea level has no valid value');
-                this.terminate(2);
-                return;
+                this.log.error('Meter above sea level has no valid value. Set it to 0');
+                parsed = 0;
             }
 
             if (parsed < 0 || parsed > 8000) {
-                this.log.error('Meter above sea level has no value between 0 and 8000');
-                this.terminate(2);
-                return;
+                this.log.error('Meter above sea level has no value between 0 and 8000. Set it to 0');
+                parsed = 0;
             }
 
             altitude_masl = parsed;
         } else {
-            this.log.error('Meter above sea level has no valid value');
-            this.log.error(altitude_masl_in);
-            this.terminate(2);
-            return;
+            this.log.error('Meter above sea level has no valid value. Set it to 0');
         }
         this.log.debug(`Meter above sea level ${altitude_masl}`);
 
