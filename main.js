@@ -422,12 +422,27 @@ class WeatherSense extends utils.Adapter {
                         let unit = '';
                         let isRain = false;
 
-                        if (k.startsWith('devRain')) {
+                        const keyLower = k.toLowerCase();
+
+                        // Regen
+                        if (keyLower.startsWith('devrain')) {
                             unit = rainUnit;
                             isRain = true;
                         }
-                        if (k.startsWith('devWind')) {
+
+                        // Wind
+                        if (keyLower.startsWith('devwind')) {
                             unit = windUnit;
+                        }
+
+                        // Light → kLux (aber UV NICHT)
+                        if (keyLower.includes('light') && !keyLower.includes('ultraviolet')) {
+                            unit = 'kLux';
+                        }
+
+                        // UV → UVI
+                        if (keyLower.includes('ultraviolet')) {
+                            unit = 'UVI';
                         }
 
                         // Wenn v ein Objekt ist → Unterwerte einzeln anlegen
@@ -439,16 +454,37 @@ class WeatherSense extends utils.Adapter {
                                 const id = `${baseId}.${subKey}`;
 
                                 let val = subVal;
+                                const subLower = subKey.toLowerCase();
 
-                                if (type_ === 7 || k.toLowerCase().includes('atmos')) {
-                                    if (typeof subVal === 'number') {
-                                        val = pressureToSeaLevel(subVal, altitude_masl);
-                                    }
+                                // --- Light → /1000, aber UV NICHT ---
+                                if (
+                                    subLower.includes('light') &&
+                                    !subLower.includes('ultraviolet') &&
+                                    typeof val === 'number'
+                                ) {
+                                    val = val / 1000;
                                 }
 
-                                // Regenwerte umrechnen
-                                if (isRain && typeof subVal === 'number') {
-                                    val = this.mm_inch_berechnen(subVal, rain_unit_mm);
+                                // --- Atmos ---
+                                if ((type_ === 7 || k.toLowerCase().includes('atmos')) && typeof val === 'number') {
+                                    val = pressureToSeaLevel(val, altitude_masl);
+                                }
+
+                                // --- Rain ---
+                                if (isRain && typeof val === 'number') {
+                                    val = this.mm_inch_berechnen(val, rain_unit_mm);
+                                }
+
+                                let finalUnit = unit;
+
+                                // Light → kLux
+                                if (subLower.includes('light') && !subLower.includes('ultraviolet')) {
+                                    finalUnit = 'kLux';
+                                }
+
+                                // UV → UVI
+                                if (subLower.includes('ultraviolet')) {
+                                    finalUnit = 'UVI';
                                 }
 
                                 await this.setObjectNotExistsAsync(id, {
@@ -457,7 +493,7 @@ class WeatherSense extends utils.Adapter {
                                         name: `${k} ${subKey}`,
                                         type: typeof val,
                                         role: 'value',
-                                        unit: unit,
+                                        unit: finalUnit,
                                         read: true,
                                         write: false,
                                     },
@@ -474,20 +510,54 @@ class WeatherSense extends utils.Adapter {
                                 continue;
                             }
 
+                            let finalUnit = unit;
+                            const endKey = k.toLowerCase();
+
+                            // Light → kLux
+                            if (endKey.includes('light') && !endKey.includes('ultraviolet')) {
+                                finalUnit = 'kLux';
+                            }
+
+                            // UV → UVI
+                            if (endKey.includes('ultraviolet')) {
+                                finalUnit = 'UVI';
+                            }
+
                             await this.setObjectNotExistsAsync(id, {
                                 type: 'state',
                                 common: {
                                     name: k,
                                     type: typeof v,
                                     role: 'value',
-                                    unit: unit,
+                                    unit: finalUnit,
                                     read: true,
                                     write: false,
                                 },
                                 native: {},
                             });
 
-                            await this.setStateAsync(id, { val: v, ack: true });
+                            let val2 = v;
+
+                            // Atmos
+                            if ((type_ === 7 || endKey.includes('atmos')) && typeof val2 === 'number') {
+                                val2 = pressureToSeaLevel(val2, altitude_masl);
+                            }
+
+                            // Rain
+                            if (endKey.startsWith('devrain') && typeof val2 === 'number') {
+                                val2 = this.mm_inch_berechnen(val2, rain_unit_mm);
+                            }
+
+                            // Light → /1000, aber UV NICHT
+                            if (
+                                endKey.includes('light') &&
+                                !endKey.includes('ultraviolet') &&
+                                typeof val2 === 'number'
+                            ) {
+                                val2 = Math.round((val2 / 1000) * 100) / 100;
+                            }
+
+                            await this.setStateAsync(id, { val: val2, ack: true });
                         }
                     }
                 }
@@ -953,16 +1023,25 @@ class WeatherSense extends utils.Adapter {
                             }
 
                             let val = subVal;
+                            const endKey = subKey.toLowerCase();
 
-                            if (type_ === 7 || k.toLowerCase().includes('atmos')) {
-                                if (typeof subVal === 'number') {
-                                    val = pressureToSeaLevel(subVal, altitude_masl);
-                                }
+                            // --- Atmos ---
+                            if ((type_ === 7 || k.toLowerCase().includes('atmos')) && typeof val === 'number') {
+                                val = pressureToSeaLevel(val, altitude_masl);
                             }
 
-                            // Regenwerte umrechnen (inch → mm)
-                            if (k.startsWith('devRain') && typeof subVal === 'number') {
-                                val = this.mm_inch_berechnen(subVal, rain_unit_mm);
+                            // --- Rain ---
+                            if (k.startsWith('devRain') && typeof val === 'number') {
+                                val = this.mm_inch_berechnen(val, rain_unit_mm);
+                            }
+
+                            // --- Light → /1000, aber UV NICHT ---
+                            if (
+                                endKey.includes('light') &&
+                                !endKey.includes('ultraviolet') &&
+                                typeof val === 'number'
+                            ) {
+                                val = Math.round((val / 1000) * 100) / 100;
                             }
 
                             this.sendMqtt(sensor_id, mqtt_active, client, `${devBase}/${subKey}`, val);
@@ -974,15 +1053,21 @@ class WeatherSense extends utils.Adapter {
                         }
 
                         let val = v;
+                        const endKey = k.toLowerCase();
 
-                        if (type_ === 7 || k.toLowerCase().includes('atmos')) {
-                            if (typeof v === 'number') {
-                                val = pressureToSeaLevel(v, altitude_masl);
-                            }
+                        // --- Atmos ---
+                        if ((type_ === 7 || endKey.includes('atmos')) && typeof val === 'number') {
+                            val = pressureToSeaLevel(val, altitude_masl);
                         }
 
-                        if (k.startsWith('devRain') && typeof v === 'number') {
-                            val = this.mm_inch_berechnen(v, rain_unit_mm);
+                        // --- Rain ---
+                        if (k.startsWith('devRain') && typeof val === 'number') {
+                            val = this.mm_inch_berechnen(val, rain_unit_mm);
+                        }
+
+                        // --- Light → /1000, aber UV NICHT ---
+                        if (endKey.includes('light') && !endKey.includes('ultraviolet') && typeof val === 'number') {
+                            val = Math.round((val / 1000) * 100) / 100;
                         }
 
                         this.sendMqtt(sensor_id, mqtt_active, client, devBase, val);
