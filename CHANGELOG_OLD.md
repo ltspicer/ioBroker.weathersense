@@ -1,4 +1,8 @@
 # Older changes
+## 4.4.1 (2026-05-26)
+
+- process.exit() issue resolved
+
 ## 4.4.0 (2026-04-06)
 
 - node > 20
