@@ -1,4 +1,8 @@
 # Older changes
+## 4.4.3 (2026-05-29)
+
+- License added
+
 ## 4.4.2 (2026-05-29)
 
 - Translation issues resolved

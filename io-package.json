@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "news": {
+      "5.0.2": {
+        "en": "kLux & UVI units added. Bug fix: Division by 1000 in light DPs",
+        "de": "kLux- und UVI-Einheiten hinzugefügt. Fehlerbehebung: Division durch 1000 bei Licht-DPs.",
+        "ru": "Добавлены единицы измерения kLux и UVI. Исправлена ошибка: деление на 1000 в схемах распределения света.",
+        "pt": "Adicionadas unidades kLux e UVI. Correção de bug: Divisão por 1000 em DPs de luz.",
+        "nl": "kLux- en UVI-eenheden toegevoegd. Bugfix: Deling door 1000 in licht-DP's.",
+        "fr": "Ajout des unités kLux et UVI. Correction d'un bug : division par 1000 dans les DP lumineux",
+        "it": "Aggiunte unità kLux e UVI. Correzione bug: divisione per 1000 nei DP della luce.",
+        "es": "Se agregaron unidades kLux y UVI. Corrección de errores: División por 1000 en DP de luz.",
+        "pl": "Dodano jednostki kLux i UVI. Naprawiono błąd: dzielenie przez 1000 w DP światła.",
+        "uk": "Додано одиниці вимірювання kLux та UVI. Виправлення помилки: Ділення на 1000 у світлових DP.",
+        "zh-cn": "新增 kLux 和 UVI 单位。错误修复：光照 DP 中除以 1000 的错误。"
+      },
       "5.0.1": {
         "en": "No termination on \"Meter above sea level has no valid value\"",
         "de": "Kein Abbruch bei \"Meter über dem Meeresspiegel hat keinen gültigen Wert\"",
@@ -80,19 +93,6 @@
         "pl": "Kwestie tłumaczeń rozwiązane",
         "uk": "Вирішені питання перекладу",
         "zh-cn": "翻译问题得到解决"
-      },
-      "4.4.1": {
-        "en": "process.exit() issue resolved",
-        "de": "process.exit() problem behoben",
-        "ru": "решение проблемы process.exit()",
-        "pt": "problema process.exit () resolvido",
-        "nl": "proces.exit() probleem opgelost",
-        "fr": "process.exit() problème résolu",
-        "it": "process.exit() problema risolto",
-        "es": "cuestión resuelta",
-        "pl": "process.exit () problem rozwiązany",
-        "uk": "process.exit() питання вирішується",
-        "zh-cn": "process.exit() 问题得到解决"
       }
     },
     "titleLang": {
