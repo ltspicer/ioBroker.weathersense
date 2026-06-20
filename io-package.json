@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "news": {
+      "5.0.1": {
+        "en": "No termination on \"Meter above sea level has no valid value\"",
+        "de": "Kein Abbruch bei \"Meter über dem Meeresspiegel hat keinen gültigen Wert\"",
+        "ru": "Отключение по причине «Показания счетчика выше уровня моря недействительны» не допускается.",
+        "pt": "Não há terminação em \"Metro acima do nível do mar não possui valor válido\"",
+        "nl": "Geen beëindiging op \"Meter boven zeeniveau heeft geen geldige waarde\"",
+        "fr": "Aucune interruption sur « Le mètre au-dessus du niveau de la mer n'a pas de valeur valide »",
+        "it": "Nessuna terminazione per \"Il metro sul livello del mare non ha valore valido\"",
+        "es": "No hay terminación en \"El metro sobre el nivel del mar no tiene un valor válido\".",
+        "pl": "Brak zakończenia w przypadku komunikatu „Metr nad poziomem morza nie ma prawidłowej wartości”",
+        "uk": "Немає завершення на \"Метр над рівнем моря не має дійсного значення\"",
+        "zh-cn": "“海拔高度没有有效值” 不终止"
+      },
       "5.0.0": {
         "en": "Added automatic sea‑level pressure correction for atmos values based on the configured altitude (altitude_masl).\nAdded configuration options for:\nWind speed unit (km/h or MPH)\nRain unit (mm or inch)\nTemperature unit (°C or °F)\nPrevious combined JSON objects are now stored as separate, individual data points to improve clarity and reduce parsing overhead.",
         "de": "Automatische Korrektur des Luftdrucks auf Meereshöhe für atmosphärische Werte basierend auf der konfigurierten Höhe (altitude_masl) hinzugefügt.\nHinzugefügte Konfigurationsoptionen für:\nEinheit der Windgeschwindigkeit (km/h oder MPH)\nRegeneinheit (mm oder Zoll)\nTemperatureinheit (°C oder °F)\nZuvor wurden kombinierte JSON-Objekte nun als separate, einzelne Datenpunkte gespeichert, um die Übersichtlichkeit zu verbessern und den Aufwand für die Datenanalyse zu reduzieren.",
@@ -80,19 +93,6 @@
         "pl": "process.exit () problem rozwiązany",
         "uk": "process.exit() питання вирішується",
         "zh-cn": "process.exit() 问题得到解决"
-      },
-      "4.4.0": {
-        "en": "node > 20",
-        "de": "knoten > 20",
-        "ru": "узел 20",
-        "pt": "nó > 20",
-        "nl": "knooppunt > 20",
-        "fr": "nœud > 20",
-        "it": "> 20",
-        "es": "nodo",
-        "pl": "węzeł > 20",
-        "uk": "вершина > 20",
-        "zh-cn": "节点 > 20"
       }
     },
     "titleLang": {

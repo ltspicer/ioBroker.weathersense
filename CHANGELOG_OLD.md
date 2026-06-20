@@ -1,4 +1,8 @@
 # Older changes
+## 4.4.2 (2026-05-29)
+
+- Translation issues resolved
+
 ## 4.4.1 (2026-05-26)
 
 - process.exit() issue resolved
