@@ -1,4 +1,8 @@
 # Older changes
+## 4.4.4 (2026-06-12)
+
+- 'No data received', 'No token received' and 'Error during login' errors changed to warn
+
 ## 4.4.3 (2026-05-29)
 
 - License added

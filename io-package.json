@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "5.0.2",
+    "version": "5.0.3",
     "news": {
+      "5.0.3": {
+        "en": "Set existing data point to 0 if not provided by the cloud",
+        "de": "Setzen Sie vorhandene Datenpunkte auf 0, falls diese nicht von der Cloud bereitgestellt werden.",
+        "ru": "Если точка данных не предоставлена облаком, установите ее значение равным 0.",
+        "pt": "Defina o ponto de dados existente como 0 se ele não for fornecido pela nuvem.",
+        "nl": "Stel het bestaande datapunt in op 0 als het niet door de cloud wordt aangeleverd.",
+        "fr": "Mettez à zéro le point de données existant s'il n'est pas fourni par le cloud.",
+        "it": "Imposta il punto dati esistente a 0 se non fornito dal cloud.",
+        "es": "Establezca el punto de datos existente en 0 si no lo proporciona la nube.",
+        "pl": "Ustaw istniejący punkt danych na 0, jeśli nie jest on dostarczany przez chmurę",
+        "uk": "Встановіть існуючу точку даних на 0, якщо вона не надається хмарою",
+        "zh-cn": "如果云端未提供现有数据点，则将其设置为 0。"
+      },
       "5.0.2": {
         "en": "kLux & UVI units added. Bug fix: Division by 1000 in light DPs",
         "de": "kLux- und UVI-Einheiten hinzugefügt. Fehlerbehebung: Division durch 1000 bei Licht-DPs.",
@@ -80,19 +93,6 @@
         "pl": "Licencja dodana",
         "uk": "Додана ліцензія",
         "zh-cn": "增加了许可证"
-      },
-      "4.4.2": {
-        "en": "Translation issues resolved",
-        "de": "Übersetzungsprobleme behoben",
-        "ru": "Вопросы перевода решены",
-        "pt": "Questões de tradução resolvidas",
-        "nl": "Vertaalproblemen opgelost",
-        "fr": "Problèmes de traduction résolus",
-        "it": "Problemi di traduzione risolti",
-        "es": "Cuestiones de traducción resueltas",
-        "pl": "Kwestie tłumaczeń rozwiązane",
-        "uk": "Вирішені питання перекладу",
-        "zh-cn": "翻译问题得到解决"
       }
     },
     "titleLang": {
