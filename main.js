@@ -502,6 +502,20 @@ class WeatherSense extends utils.Adapter {
 
                                 await this.setStateAsync(id, { val: val, ack: true });
                             }
+
+                            // --- Fehlende Subkeys auf 0 setzen ---
+                            const existingStates = await this.getStatesAsync(`${baseId}.*`);
+
+                            // Existierende Subkeys holen
+                            for (const fullId of Object.keys(existingStates)) {
+                                const existingSubKey = fullId.split('.').pop();
+
+                                // Wenn dieser Subkey NICHT in der JSON vorkommt
+                                if (!Object.keys(v).includes(existingSubKey)) {
+                                    this.log.debug(`DP ${fullId} exists but is not in JSON. Set it to 0`);
+                                    await this.setStateAsync(fullId, { val: 0, ack: true });
+                                }
+                            }
                         } else {
                             // Normaler dev*-Wert (kein Objekt)
                             const id = `${baseId}`;
