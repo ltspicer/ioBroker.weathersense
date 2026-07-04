@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "5.0.3",
+    "version": "5.0.4",
     "news": {
+      "5.0.4": {
+        "en": "If object is empty & DPs exists set all existent DPs to 0",
+        "de": "Wenn das Objekt leer ist und DPs existieren, werden alle vorhandenen DPs auf 0 gesetzt.",
+        "ru": "Если объект пуст и существуют DP, установите для всех существующих DP значение 0.",
+        "pt": "Se o objeto estiver vazio e existirem pontos de dependência (DPs), defina todos os DPs existentes como 0.",
+        "nl": "Als het object leeg is en er DP's bestaan, stel dan alle bestaande DP's in op 0.",
+        "fr": "Si l'objet est vide et que des DP existent, mettez à 0 tous les DP existants.",
+        "it": "Se l'oggetto è vuoto e i DP esistono, imposta tutti i DP esistenti a 0",
+        "es": "Si el objeto está vacío y existen DP, establezca todos los DP existentes en 0.",
+        "pl": "Jeśli obiekt jest pusty i DP istnieją, ustaw wszystkie istniejące DP na 0",
+        "uk": "Якщо об'єкт порожній, а DP існує, встановити всі існуючі DP на 0.",
+        "zh-cn": "如果对象为空且存在动态规划符，则将所有存在的动态规划符设置为 0。"
+      },
       "5.0.3": {
         "en": "Set existing data point to 0 if not provided by the cloud",
         "de": "Setzen Sie vorhandene Datenpunkte auf 0, falls diese nicht von der Cloud bereitgestellt werden.",
@@ -80,19 +93,6 @@
         "pl": "Błędy „Brak otrzymanych danych”, „Brak otrzymanego tokena” i „Błąd podczas logowania” zostały zmienione na ostrzeżenia",
         "uk": "Помилки «Дані не отримано», «Токен не отримано» та «Помилка під час входу» змінено на попередження",
         "zh-cn": "“未收到数据”、“未收到令牌”和“登录时出错”错误已更改为警告。"
-      },
-      "4.4.3": {
-        "en": "License added",
-        "de": "Lizenz hinzugefügt",
-        "ru": "Лицензия добавлена",
-        "pt": "Licença adicionada",
-        "nl": "Licentie toegevoegd",
-        "fr": "Licence ajoutée",
-        "it": "Licenza aggiunta",
-        "es": "Licencia añadido",
-        "pl": "Licencja dodana",
-        "uk": "Додана ліцензія",
-        "zh-cn": "增加了许可证"
       }
     },
     "titleLang": {

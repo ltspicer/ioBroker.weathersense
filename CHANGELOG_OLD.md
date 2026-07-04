@@ -1,4 +1,9 @@
 # Older changes
+## 4.4.5 (2026-06-17)
+
+- Added help tooltips to admin configuration page
+- Documented multi-instance setup for multiple weather stations in README
+
 ## 4.4.4 (2026-06-12)
 
 - 'No data received', 'No token received' and 'Error during login' errors changed to warn
