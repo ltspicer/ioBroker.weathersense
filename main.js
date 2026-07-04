@@ -412,11 +412,19 @@ class WeatherSense extends utils.Adapter {
                             continue;
                         }
 
+                        const baseId = `${base}.${k}`;
+
                         if (typeof v === 'object' && Object.keys(v).length === 0) {
+                            // LEERES dev*-Objekt → alle existierenden Subkeys auf 0 setzen
+                            const existingStates = await this.getStatesAsync(`${baseId}.*`);
+
+                            // Existierende Subkeys holen und auf 0 setzen
+                            for (const fullId of Object.keys(existingStates)) {
+                                this.log.debug(`DP ${fullId} exists but JSON is empty. Set it to 0`);
+                                await this.setStateAsync(fullId, { val: 0, ack: true });
+                            }
                             continue;
                         }
-
-                        const baseId = `${base}.${k}`;
 
                         // Einheit anhand des dev*-Keys bestimmen
                         let unit = '';
@@ -503,7 +511,7 @@ class WeatherSense extends utils.Adapter {
                                 await this.setStateAsync(id, { val: val, ack: true });
                             }
 
-                            // --- Fehlende Subkeys auf 0 setzen ---
+                            // Fehlende Subkeys auf 0 setzen
                             const existingStates = await this.getStatesAsync(`${baseId}.*`);
 
                             // Existierende Subkeys holen
