@@ -931,7 +931,7 @@ class WeatherSense extends utils.Adapter {
         if (storeJson) {
             this.log.debug(`Save devData.json to ${storeDir}`);
             const json_object = JSON.stringify(devdata, null, 4);
-            fs.writeFileSync(path.join(storeDir, 'devData.json'), json_object, 'utf-8');
+            fs.writeFileSync(path.join(storeDir, `weathersense.${sensor_id}.devData.json`), json_object, 'utf-8');
         }
 
         this.printAllKeys(devdata);
@@ -1101,7 +1101,7 @@ class WeatherSense extends utils.Adapter {
         if (storeJson) {
             this.log.debug(`Save forecast.json to ${storeDir}`);
             const json_object = JSON.stringify(forecast, null, 4);
-            fs.writeFileSync(path.join(storeDir, 'forecast.json'), json_object, 'utf-8');
+            fs.writeFileSync(path.join(storeDir, `weathersense.${sensor_id}.forecast.json`), json_object, 'utf-8');
         }
 
         this.printAllKeys(forecast);
