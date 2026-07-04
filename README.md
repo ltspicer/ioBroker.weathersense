@@ -53,8 +53,7 @@ To successfully read data from multiple stations simultaneously without any conf
 * **Clean MQTT Routing:** If you use the integrated MQTT feature, your topics will be cleanly separated by the Sensor ID (e.g., `weathersense/1/...` and `weathersense/2/...`), preventing data from overwriting on your broker.
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 5.1.0 (2026-07-04)
 
 - Now filenames of JSON files beginning with weathersense.{sensor_id}...
 
@@ -72,15 +71,6 @@ To successfully read data from multiple stations simultaneously without any conf
 
 ### 5.0.1 (2026-06-20)
 - No termination on "Meter above sea level has no valid value"
-
-### 5.0.0 (2026-06-20)
-
-- Added automatic sea‑level pressure correction for atmos values based on the configured altitude (altitude_masl).
-- Added configuration options for:
-  - Wind speed unit (km/h or MPH)
-  - Rain unit (mm or inch)
-  - Temperature unit (°C or °F)
-- Previous combined JSON objects are now stored as separate, individual data points to improve clarity and reduce parsing overhead.
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

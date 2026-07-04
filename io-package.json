@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "5.0.4",
+    "version": "5.1.0",
     "news": {
+      "5.1.0": {
+        "en": "Now filenames of JSON files beginning with weathersense.{sensor_id}...",
+        "de": "Nun beginnen die Dateinamen der JSON-Dateien mit weathersense.{sensor_id}...",
+        "ru": "Теперь имена файлов JSON, начинающиеся с weathersense.{sensor_id}...",
+        "pt": "Agora, os nomes dos arquivos JSON começam com weathersense.{sensor_id}...",
+        "nl": "Nu beginnen de bestandsnamen van JSON-bestanden met weathersense.{sensor_id}...",
+        "fr": "Les noms de fichiers JSON commencent désormais par weathersense.{sensor_id}...",
+        "it": "Ora i nomi dei file JSON che iniziano con weathersense.{sensor_id}...",
+        "es": "Ahora, los nombres de archivo de los archivos JSON comienzan con weathersense.{sensor_id}...",
+        "pl": "Teraz nazwy plików JSON zaczynające się od weathersense.{sensor_id}...",
+        "uk": "Тепер імена файлів JSON, що починаються з weathersense.{sensor_id}...",
+        "zh-cn": "现在文件名以 weathersense.{sensor_id} 开头的 JSON 文件..."
+      },
       "5.0.4": {
         "en": "If object is empty & DPs exists set all existent DPs to 0",
         "de": "Wenn das Objekt leer ist und DPs existieren, werden alle vorhandenen DPs auf 0 gesetzt.",
@@ -80,19 +93,6 @@
         "pl": "Dodano podpowiedzi pomocy do strony konfiguracji administratora\nUdokumentowana konfiguracja wielu instancji dla wielu stacji pogodowych w pliku README",
         "uk": "Додано підказки до сторінки конфігурації адміністратора\nЗадокументоване налаштування кількох екземплярів для кількох метеостанцій у файлі README",
         "zh-cn": "在管理员配置页面添加了帮助工具提示\nREADME 文件中记录了多个气象站的多实例设置方法。"
-      },
-      "4.4.4": {
-        "en": "'No data received', 'No token received' and 'Error during login' errors changed to warn",
-        "de": "Die Fehlermeldungen „Keine Daten empfangen“, „Kein Token empfangen“ und „Fehler beim Anmelden“ wurden in Warnungen geändert.",
-        "ru": "Сообщения об ошибках «Данные не получены», «Токен не получен» и «Ошибка при входе в систему» заменены на предупреждение.",
-        "pt": "Os erros 'Nenhum dado recebido', 'Nenhum token recebido' e 'Erro durante o login' foram alterados para avisos.",
-        "nl": "De foutmeldingen 'Geen gegevens ontvangen', 'Geen token ontvangen' en 'Fout tijdens het inloggen' zijn gewijzigd in waarschuwingen.",
-        "fr": "Les messages d'erreur « Aucune donnée reçue », « Aucun jeton reçu » et « Erreur lors de la connexion » ont été remplacés par des avertissements.",
-        "it": "Gli errori 'Nessun dato ricevuto', 'Nessun token ricevuto' e 'Errore durante l'accesso' sono stati modificati in avviso.",
-        "es": "Los errores 'No se recibieron datos', 'No se recibió token' y 'Error durante el inicio de sesión' se cambiaron a advertencia.",
-        "pl": "Błędy „Brak otrzymanych danych”, „Brak otrzymanego tokena” i „Błąd podczas logowania” zostały zmienione na ostrzeżenia",
-        "uk": "Помилки «Дані не отримано», «Токен не отримано» та «Помилка під час входу» змінено на попередження",
-        "zh-cn": "“未收到数据”、“未收到令牌”和“登录时出错”错误已更改为警告。"
       }
     },
     "titleLang": {

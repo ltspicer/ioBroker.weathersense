@@ -1,4 +1,13 @@
 # Older changes
+## 5.0.0 (2026-06-20)
+
+- Added automatic sea‑level pressure correction for atmos values based on the configured altitude (altitude_masl).
+- Added configuration options for:
+  - Wind speed unit (km/h or MPH)
+  - Rain unit (mm or inch)
+  - Temperature unit (°C or °F)
+- Previous combined JSON objects are now stored as separate, individual data points to improve clarity and reduce parsing overhead.
+
 ## 4.4.5 (2026-06-17)
 
 - Added help tooltips to admin configuration page
