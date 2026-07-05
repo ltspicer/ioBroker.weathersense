@@ -495,6 +495,11 @@ class WeatherSense extends utils.Adapter {
                                     finalUnit = 'UVI';
                                 }
 
+                                // Wind direction → °
+                                if (subLower.includes('direction')) {
+                                    finalUnit = '°';
+                                }
+
                                 await this.setObjectNotExistsAsync(id, {
                                     type: 'state',
                                     common: {
