@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "5.1.0",
+    "version": "5.1.1",
     "news": {
+      "5.1.1": {
+        "en": "Bugfix: Unit windDirection km/h → °",
+        "de": "Bugfix: Einheit Windrichtung km/h → °",
+        "ru": "Исправлена ошибка: Единица измерения направления ветра км/ч → °",
+        "pt": "Correção de erro: Unidade de direção do vento km/h → °",
+        "nl": "Bugfix: Eenheid windrichting km/u → °",
+        "fr": "Correction de bug : Unité de direction du vent km/h → °",
+        "it": "Correzione bug: Unità windDirection km/h → °",
+        "es": "Corrección de errores: Unidad windDirection km/h → °",
+        "pl": "Naprawiono błąd: Jednostka kierunku wiatru km/h → °",
+        "uk": "Виправлення помилки: Одиниця вимірювання вітру, напрямок км/год → °",
+        "zh-cn": "错误修复：单位风向（公里/小时 → 度）"
+      },
       "5.1.0": {
         "en": "Now filenames of JSON files beginning with weathersense.{sensor_id}...",
         "de": "Nun beginnen die Dateinamen der JSON-Dateien mit weathersense.{sensor_id}...",
@@ -80,19 +93,6 @@
         "pl": "Dodano automatyczną korektę ciśnienia na poziomie morza dla wartości atmosferycznych na podstawie skonfigurowanej wysokości (altitude_masl).\nDodano opcje konfiguracji dla:\nJednostka prędkości wiatru (km/h lub MPH)\nJednostka deszczu (mm lub cale)\nJednostka temperatury (°C lub °F)\nPoprzednie połączone obiekty JSON są teraz przechowywane jako oddzielne, pojedyncze punkty danych, co zwiększa przejrzystość i zmniejsza obciążenie związane z analizą składniową.",
         "uk": "Додано автоматичну корекцію тиску на рівні моря для значень атмосфери на основі налаштованої висоти (altitude_masl).\nДодано опції конфігурації для:\nОдиниця вимірювання швидкості вітру (км/год або милі/год)\nОдиниця вимірювання дощу (мм або дюйми)\nОдиниця вимірювання температури (°C або °F)\nПопередні об'єднані JSON-об'єкти тепер зберігаються як окремі точки даних для покращення зрозумілості та зменшення накладних витрат на синтаксичний аналіз.",
         "zh-cn": "增加了根据配置的海拔高度（altitude_masl）自动海平面气压校正功能，用于校正大气压力值。\n新增配置选项：\n风速单位（公里/小时或英里/小时）\n降雨量单位（毫米或英寸）\n温度单位（摄氏度或华氏度）\n为了提高清晰度并减少解析开销，以前合并的 JSON 对象现在存储为单独的数据点。"
-      },
-      "4.4.5": {
-        "en": "Added help tooltips to admin configuration page\nDocumented multi-instance setup for multiple weather stations in README",
-        "de": "Zur Administratorkonfigurationsseite wurden Hilfetooltips hinzugefügt.\nDokumentierte Einrichtung mehrerer Instanzen für mehrere Wetterstationen in der README-Datei",
-        "ru": "Добавлены всплывающие подсказки на страницу настроек администратора.\nВ файле README описана настройка нескольких экземпляров метеостанций.",
-        "pt": "Adicionadas dicas de ajuda à página de configuração do administrador.\nConfiguração de múltiplas instâncias para várias estações meteorológicas documentada no arquivo README.",
-        "nl": "Help-tooltips toegevoegd aan de beheerdersconfiguratiepagina.\nDe configuratie voor meerdere instanties van weerstations is gedocumenteerd in het README-bestand.",
-        "fr": "Ajout d'infobulles d'aide à la page de configuration d'administration\nConfiguration multi-instance documentée pour plusieurs stations météorologiques dans le fichier README",
-        "it": "Aggiunti suggerimenti (tooltip) alla pagina di configurazione amministrativa.\nConfigurazione multi-istanza documentata per più stazioni meteorologiche nel file README",
-        "es": "Se agregaron sugerencias de ayuda a la página de configuración de administrador.\nConfiguración documentada de múltiples instancias para varias estaciones meteorológicas en el archivo README.",
-        "pl": "Dodano podpowiedzi pomocy do strony konfiguracji administratora\nUdokumentowana konfiguracja wielu instancji dla wielu stacji pogodowych w pliku README",
-        "uk": "Додано підказки до сторінки конфігурації адміністратора\nЗадокументоване налаштування кількох екземплярів для кількох метеостанцій у файлі README",
-        "zh-cn": "在管理员配置页面添加了帮助工具提示\nREADME 文件中记录了多个气象站的多实例设置方法。"
       }
     },
     "titleLang": {

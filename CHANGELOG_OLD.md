@@ -1,4 +1,7 @@
 # Older changes
+## 5.0.1 (2026-06-20)
+- No termination on "Meter above sea level has no valid value"
+
 ## 5.0.0 (2026-06-20)
 
 - Added automatic sea‑level pressure correction for atmos values based on the configured altitude (altitude_masl).

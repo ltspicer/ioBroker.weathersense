@@ -53,8 +53,7 @@ To successfully read data from multiple stations simultaneously without any conf
 * **Clean MQTT Routing:** If you use the integrated MQTT feature, your topics will be cleanly separated by the Sensor ID (e.g., `weathersense/1/...` and `weathersense/2/...`), preventing data from overwriting on your broker.
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 5.1.1 (2026-07-05)
 
 - Bugfix: Unit windDirection km/h → °
 
@@ -73,9 +72,6 @@ To successfully read data from multiple stations simultaneously without any conf
 ### 5.0.2 (2026-06-20)
 
 - kLux & UVI units added. Bug fix: Division by 1000 in light DPs
-
-### 5.0.1 (2026-06-20)
-- No termination on "Meter above sea level has no valid value"
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
