@@ -1,7 +1,7 @@
 {
     "Adapter settings for WeatherSense": "Adaptereinstellungen für WeatherSense",
     "Folder for JSON file": "Ordner für JSON-Dateien",
-    "Ignore PowerStatus warning": "Ignoriere die PowerStatus-Warnung",
+    "Inverse PowerStatus warning": "Powerstatus Warnung umkehren (0 = OK)",
     "MQTT broker IP address": "IP-Adresse des MQTT-Brokers",
     "MQTT password": "MQTT-Passwort",
     "MQTT password. Leave blank for no-auth": "MQTT-Passwort. Für „Keine Authentifizierung“ leer lassen",
@@ -18,6 +18,6 @@
     "WeatherSense password": "WeatherSense-Passwort",
     "WeatherSense username (email)": "WeatherSense-Benutzername (E-Mail)",
     "Wind speed in km/h (unchecked = MPH)": "Windgeschwindigkeit in km/h (nicht angewählt = MPH)",
-    "help_sensor_id": "Wird für MQTT-Präfix und Datenstruktur verwendet. Der Standardwert ist 1",
+    "help_sensor_id": "Wird als MQTT-Präfix und für Datenstruktur verwendet. Der Standardwert ist 1",
     "°C (unchecked = °F)": "°C (nicht angewählt = °F)"
 }

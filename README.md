@@ -53,6 +53,11 @@ To successfully read data from multiple stations simultaneously without any conf
 * **Clean MQTT Routing:** If you use the integrated MQTT feature, your topics will be cleanly separated by the Sensor ID (e.g., `weathersense/1/...` and `weathersense/2/...`), preventing data from overwriting on your broker.
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- Invert PowerStatus flag added
+
 ### 5.1.1 (2026-07-05)
 
 - Bugfix: Unit windDirection km/h → °

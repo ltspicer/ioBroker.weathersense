@@ -154,9 +154,9 @@
             "xl": 4,
             "hidden": "data.storeJson == false"
         },
-        "ignorePowerStatus": {
+        "inversePowerStatus": {
             "type": "checkbox",
-            "label": "Ignore PowerStatus warning",
+            "label": "Inverse PowerStatus warning",
             "default": false,
             "newLine": true,
             "xs": 12,

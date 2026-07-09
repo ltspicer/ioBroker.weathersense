@@ -1,7 +1,7 @@
 {
     "Adapter settings for WeatherSense": "Configuración del adaptador para WeatherSense",
     "Folder for JSON file": "Carpeta para archivos JSON",
-    "Ignore PowerStatus warning": "Ignorar la advertencia PowerStatus",
+    "Inverse PowerStatus warning": "Advertencia de estado de energía inversa",
     "MQTT broker IP address": "Dirección IP del corredor MQTT",
     "MQTT password": "contraseña MQTT",
     "MQTT password. Leave blank for no-auth": "Contraseña MQTT. Dejar en blanco para no autenticación",

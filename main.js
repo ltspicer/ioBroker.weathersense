@@ -90,7 +90,7 @@ class WeatherSense extends utils.Adapter {
         let sensor_id = 1;
         const storeJson = this.config.storeJson;
         const storeDir = this.config.storeDir;
-        const ignorePowerStatus = this.config.ignorePowerStatus;
+        const inversePowerStatus = this.config.inversePowerStatus;
 
         // Delay 0-55s
         const startupDelay = Math.floor(Math.random() * 56) * 1000;
@@ -194,7 +194,7 @@ class WeatherSense extends utils.Adapter {
                 rain_unit_mm,
                 altitude_masl,
                 `${deviceId}.forecast`,
-                ignorePowerStatus,
+                inversePowerStatus,
             );
 
             const dataReceived = mainResult.dataReceived;
@@ -610,7 +610,7 @@ class WeatherSense extends utils.Adapter {
     }
 
     // Alle Statuswerte ok?
-    async isSuccess(data, ignorePowerStatus) {
+    async isSuccess(data, inversePowerStatus) {
         try {
             if (data.status !== 0) {
                 this.log.warn(`status: ${data.status} (0 = OK)`);
@@ -627,17 +627,14 @@ class WeatherSense extends utils.Adapter {
                 return false;
             }
 
-            if (data.content?.powerStatus === 0) {
-                if (ignorePowerStatus) {
-                    this.log.debug(
-                        `content/powerStatus: ${data.content.powerStatus} → Must normally be greater than 0`,
-                    );
-                } else {
-                    this.log.warn(`content/powerStatus: ${data.content.powerStatus} → Power supply OK?`);
-                    return false;
-                }
+            if (data.content?.powerStatus === 0 && !inversePowerStatus) {
+                // inversePowerStatus = false and powerStatus = 0 → Power supply not OK
+                this.log.warn(`content/powerStatus: ${data.content.powerStatus} → Power supply OK?`);
+                return false;
             }
 
+            // inversePowerStatus = true and powerStatus > 0 → Power supply OK
+            //this.log.warn(`content/powerStatus: ${data.content.powerStatus} → Power supply OK?`);
             return true;
         } catch {
             return false;
@@ -903,7 +900,7 @@ class WeatherSense extends utils.Adapter {
         rain_unit_mm,
         altitude_masl,
         forecastChannelId,
-        ignorePowerStatus,
+        inversePowerStatus,
     ) {
         const token = await this.login(username, passwort);
         if (!token) {
@@ -941,7 +938,7 @@ class WeatherSense extends utils.Adapter {
 
         this.printAllKeys(devdata);
 
-        let status = await this.isSuccess(devdata, ignorePowerStatus);
+        let status = await this.isSuccess(devdata, inversePowerStatus);
 
         if (mqtt_active) {
             for (const [key, value] of Object.entries(devdata)) {
@@ -1112,7 +1109,7 @@ class WeatherSense extends utils.Adapter {
         this.printAllKeys(forecast);
 
         if (status) {
-            status = await this.isSuccess(forecast, ignorePowerStatus);
+            status = await this.isSuccess(forecast, inversePowerStatus);
         }
 
         const forecasts = forecast?.content?.forecast?.forecasts || [];
