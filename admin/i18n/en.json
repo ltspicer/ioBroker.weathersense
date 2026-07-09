@@ -1,6 +1,6 @@
 {
     "MQTT broker IP address": "MQTT broker IP address",
-    "Inverse PowerStatus warning": "Invert power status warning (0 = OK)",
+    "Invert PowerStatus warning": "Invert power status warning (0 = OK)",
     "Use MQTT": "Use MQTT",
     "MQTT password": "MQTT password",
     "MQTT port": "MQTT port",

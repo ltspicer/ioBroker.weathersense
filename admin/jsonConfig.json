@@ -156,7 +156,7 @@
         },
         "inversePowerStatus": {
             "type": "checkbox",
-            "label": "Inverse PowerStatus warning",
+            "label": "Invert PowerStatus warning",
             "default": false,
             "newLine": true,
             "xs": 12,
