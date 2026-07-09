@@ -1,4 +1,8 @@
 # Older changes
+## 5.0.4 (2026-07-04)
+
+- If object is empty & DPs exists set all existent DPs to 0
+
 ## 5.0.3 (2026-07-03)
 
 - Set existing data point to 0 if not provided by the cloud

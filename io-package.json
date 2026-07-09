@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "5.2.1",
+    "version": "5.2.2",
     "news": {
+      "5.2.2": {
+        "en": "Typo corrected",
+        "de": "Tippfehler korrigiert",
+        "ru": "Опечатка исправлена.",
+        "pt": "Erro de digitação corrigido",
+        "nl": "Typfout gecorrigeerd",
+        "fr": "Faute de frappe corrigée",
+        "it": "Errore di battitura corretto",
+        "es": "Error tipográfico corregido",
+        "pl": "Poprawiono literówkę",
+        "uk": "Виправлено друкарську помилку",
+        "zh-cn": "已更正拼写错误"
+      },
       "5.2.1": {
         "en": "Typo corrected",
         "de": "Tippfehler korrigiert",
@@ -80,19 +93,6 @@
         "pl": "Ustaw istniejący punkt danych na 0, jeśli nie jest on dostarczany przez chmurę",
         "uk": "Встановіть існуючу точку даних на 0, якщо вона не надається хмарою",
         "zh-cn": "如果云端未提供现有数据点，则将其设置为 0。"
-      },
-      "5.0.2": {
-        "en": "kLux & UVI units added. Bug fix: Division by 1000 in light DPs",
-        "de": "kLux- und UVI-Einheiten hinzugefügt. Fehlerbehebung: Division durch 1000 bei Licht-DPs.",
-        "ru": "Добавлены единицы измерения kLux и UVI. Исправлена ошибка: деление на 1000 в схемах распределения света.",
-        "pt": "Adicionadas unidades kLux e UVI. Correção de bug: Divisão por 1000 em DPs de luz.",
-        "nl": "kLux- en UVI-eenheden toegevoegd. Bugfix: Deling door 1000 in licht-DP's.",
-        "fr": "Ajout des unités kLux et UVI. Correction d'un bug : division par 1000 dans les DP lumineux",
-        "it": "Aggiunte unità kLux e UVI. Correzione bug: divisione per 1000 nei DP della luce.",
-        "es": "Se agregaron unidades kLux y UVI. Corrección de errores: División por 1000 en DP de luz.",
-        "pl": "Dodano jednostki kLux i UVI. Naprawiono błąd: dzielenie przez 1000 w DP światła.",
-        "uk": "Додано одиниці вимірювання kLux та UVI. Виправлення помилки: Ділення на 1000 у світлових DP.",
-        "zh-cn": "新增 kLux 和 UVI 单位。错误修复：光照 DP 中除以 1000 的错误。"
       }
     },
     "titleLang": {
