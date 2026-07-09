@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "5.1.1",
+    "version": "5.2.0",
     "news": {
+      "5.2.0": {
+        "en": "Invert PowerStatus flag added",
+        "de": "Flag „PowerStatus umkehren“ hinzugefügt",
+        "ru": "Добавлен флаг инвертирования состояния питания.",
+        "pt": "Adicionada a flag Inverter PowerStatus",
+        "nl": "Vlag 'PowerStatus omkeren' toegevoegd",
+        "fr": "Ajout de l'indicateur Inverser l'état de l'alimentation",
+        "it": "Aggiunto il flag Invert PowerStatus",
+        "es": "Se agregó el indicador Invertir estado de energía",
+        "pl": "Dodano flagę „Invert PowerStatus”",
+        "uk": "Додано прапорець «Інвертувати стан живлення»",
+        "zh-cn": "已添加反转电源状态标志"
+      },
       "5.1.1": {
         "en": "Bugfix: Unit windDirection km/h → °",
         "de": "Bugfix: Einheit Windrichtung km/h → °",
@@ -80,19 +93,6 @@
         "pl": "Brak zakończenia w przypadku komunikatu „Metr nad poziomem morza nie ma prawidłowej wartości”",
         "uk": "Немає завершення на \"Метр над рівнем моря не має дійсного значення\"",
         "zh-cn": "“海拔高度没有有效值” 不终止"
-      },
-      "5.0.0": {
-        "en": "Added automatic sea‑level pressure correction for atmos values based on the configured altitude (altitude_masl).\nAdded configuration options for:\nWind speed unit (km/h or MPH)\nRain unit (mm or inch)\nTemperature unit (°C or °F)\nPrevious combined JSON objects are now stored as separate, individual data points to improve clarity and reduce parsing overhead.",
-        "de": "Automatische Korrektur des Luftdrucks auf Meereshöhe für atmosphärische Werte basierend auf der konfigurierten Höhe (altitude_masl) hinzugefügt.\nHinzugefügte Konfigurationsoptionen für:\nEinheit der Windgeschwindigkeit (km/h oder MPH)\nRegeneinheit (mm oder Zoll)\nTemperatureinheit (°C oder °F)\nZuvor wurden kombinierte JSON-Objekte nun als separate, einzelne Datenpunkte gespeichert, um die Übersichtlichkeit zu verbessern und den Aufwand für die Datenanalyse zu reduzieren.",
-        "ru": "Добавлена автоматическая коррекция атмосферного давления на уровне моря на основе заданной высоты (altitude_masl).\nДобавлены параметры конфигурации для:\nЕдиница измерения скорости ветра (км/ч или миль/ч)\nЕдиница измерения дождя (мм или дюйм)\nЕдиница измерения температуры (°C или °F)\nРанее объединенные JSON-объекты теперь хранятся как отдельные, индивидуальные точки данных для повышения ясности и снижения накладных расходов на синтаксический анализ.",
-        "pt": "Adicionada correção automática da pressão atmosférica ao nível do mar com base na altitude configurada (altitude_masl).\nAdicionadas opções de configuração para:\nUnidade de velocidade do vento (km/h ou MPH)\nUnidade de precipitação (mm ou polegada)\nUnidade de temperatura (°C ou °F)\nOs objetos JSON anteriormente combinados agora são armazenados como pontos de dados individuais separados para melhorar a clareza e reduzir a sobrecarga de análise.",
-        "nl": "Er is een automatische correctie voor de luchtdruk op zeeniveau toegevoegd voor de atmosferische waarden, gebaseerd op de geconfigureerde hoogte (altitude_masl).\nToegevoegde configuratieopties voor:\nEenheid voor windsnelheid (km/u of mph)\nRegeneenheid (mm of inch)\nTemperatuureenheid (°C of °F)\nVoorheen werden gecombineerde JSON-objecten opgeslagen als afzonderlijke, individuele datapunten om de leesbaarheid te verbeteren en de verwerkingskosten te verlagen.",
-        "fr": "Ajout d'une correction automatique de la pression au niveau de la mer pour les valeurs atmosphériques en fonction de l'altitude configurée (altitude_masl).\nOptions de configuration ajoutées pour :\nUnité de vitesse du vent (km/h ou MPH)\nUnité de pluie (mm ou pouce)\nUnité de température (°C ou °F)\nLes objets JSON précédemment combinés sont désormais stockés sous forme de points de données individuels distincts afin d'améliorer la clarté et de réduire la charge de traitement.",
-        "it": "Aggiunta la correzione automatica della pressione atmosferica a livello del mare in base all'altitudine configurata (altitude_masl).\nSono state aggiunte le seguenti opzioni di configurazione:\nUnità di misura della velocità del vento (km/h o mph)\nUnità di misura della pioggia (mm o pollici)\nUnità di temperatura (°C o °F)\nGli oggetti JSON precedentemente combinati vengono ora memorizzati come punti dati individuali separati per migliorare la chiarezza e ridurre il sovraccarico di analisi.",
-        "es": "Se ha añadido una corrección automática de la presión a nivel del mar para los valores atmos en función de la altitud configurada (altitude_masl).\nSe agregaron opciones de configuración para:\nUnidad de velocidad del viento (km/h o MPH)\nUnidad de lluvia (mm o pulgada)\nUnidad de temperatura (°C o °F)\nLos objetos JSON combinados anteriormente ahora se almacenan como puntos de datos individuales y separados para mejorar la claridad y reducir la sobrecarga de análisis.",
-        "pl": "Dodano automatyczną korektę ciśnienia na poziomie morza dla wartości atmosferycznych na podstawie skonfigurowanej wysokości (altitude_masl).\nDodano opcje konfiguracji dla:\nJednostka prędkości wiatru (km/h lub MPH)\nJednostka deszczu (mm lub cale)\nJednostka temperatury (°C lub °F)\nPoprzednie połączone obiekty JSON są teraz przechowywane jako oddzielne, pojedyncze punkty danych, co zwiększa przejrzystość i zmniejsza obciążenie związane z analizą składniową.",
-        "uk": "Додано автоматичну корекцію тиску на рівні моря для значень атмосфери на основі налаштованої висоти (altitude_masl).\nДодано опції конфігурації для:\nОдиниця вимірювання швидкості вітру (км/год або милі/год)\nОдиниця вимірювання дощу (мм або дюйми)\nОдиниця вимірювання температури (°C або °F)\nПопередні об'єднані JSON-об'єкти тепер зберігаються як окремі точки даних для покращення зрозумілості та зменшення накладних витрат на синтаксичний аналіз.",
-        "zh-cn": "增加了根据配置的海拔高度（altitude_masl）自动海平面气压校正功能，用于校正大气压力值。\n新增配置选项：\n风速单位（公里/小时或英里/小时）\n降雨量单位（毫米或英寸）\n温度单位（摄氏度或华氏度）\n为了提高清晰度并减少解析开销，以前合并的 JSON 对象现在存储为单独的数据点。"
       }
     },
     "titleLang": {
