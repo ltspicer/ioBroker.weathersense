@@ -1,7 +1,7 @@
 {
     "Adapter settings for WeatherSense": "WeatherSense 的适配器设置",
     "Folder for JSON file": "JSON 文件的文件夹",
-    "Inverse PowerStatus warning": "逆功率状态警告",
+    "Inverse PowerStatus warning": "逆功率状态警告 (0 = OK)",
     "MQTT broker IP address": "MQTT 代理 IP 地址",
     "MQTT password": "MQTT 密码",
     "MQTT password. Leave blank for no-auth": "MQTT 密码。留空表示无授权",
