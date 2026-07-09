@@ -1,7 +1,7 @@
 {
     "Adapter settings for WeatherSense": "Adapterinstellingen voor WeatherSense",
     "Folder for JSON file": "Map voor JSON-bestanden",
-    "Inverse PowerStatus warning": "Waarschuwing voor omgekeerde voedingsstatus (0 = OK)",
+    "Inverse PowerStatus warning": "Waarschuwing stroomstatus omkeren (0 = OK)",
     "MQTT broker IP address": "IP-adres van MQTT-makelaar",
     "MQTT password": "MQTT-wachtwoord",
     "MQTT password. Leave blank for no-auth": "MQTT-wachtwoord. Laat dit leeg voor geen verificatie",

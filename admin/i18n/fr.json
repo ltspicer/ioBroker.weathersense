@@ -1,7 +1,7 @@
 {
     "Adapter settings for WeatherSense": "Paramètres de l'adaptateur pour WeatherSense",
     "Folder for JSON file": "Dossier pour les fichiers JSON",
-    "Inverse PowerStatus warning": "Avertissement d'état d'alimentation inverse (0 = OK)",
+    "Inverse PowerStatus warning": "Inverser l'avertissement PowerStatus (0 = OK)",
     "MQTT broker IP address": "Adresse IP du courtier MQTT",
     "MQTT password": "Mot de passe MQTT",
     "MQTT password. Leave blank for no-auth": "Mot de passe MQTT. Laisser vide pour non-authentification",
