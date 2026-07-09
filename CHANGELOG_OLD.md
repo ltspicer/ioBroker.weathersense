@@ -1,4 +1,8 @@
 # Older changes
+## 5.0.3 (2026-07-03)
+
+- Set existing data point to 0 if not provided by the cloud
+
 ## 5.0.2 (2026-06-20)
 
 - kLux & UVI units added. Bug fix: Division by 1000 in light DPs
