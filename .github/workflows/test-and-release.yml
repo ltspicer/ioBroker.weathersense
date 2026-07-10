@@ -87,8 +87,8 @@ jobs:
                   # Enter this token as a GitHub secret (with name SENTRY_AUTH_TOKEN) in the repository options
                   # Then uncomment and customize the following block:
                   sentry: false
-                  sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-                  sentry-project: 'iobroker-heizoel24-mex'
-                  sentry-version-prefix: 'iobroker.heizoel24-mex'
+                  # sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
+                  # sentry-project: 'iobroker-weathersense'
+                  # sentry-version-prefix: 'iobroker.weathersense'
                   # If your sentry project is linked to a GitHub repository, you can enable the following option
                   # sentry-github-integration: true
