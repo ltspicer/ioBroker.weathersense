@@ -16,7 +16,7 @@
         "passwort": {
             "type": "text",
             "label": "WeatherSense password",
-            "default": "HeizOel24-Password",
+            "default": "WeatherSense-Password",
             "xs": 12,
             "sm": 12,
             "md": 6,
