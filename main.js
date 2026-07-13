@@ -132,7 +132,7 @@ class WeatherSense extends utils.Adapter {
 
         if (username.trim().length === 0 || passwort.trim().length === 0) {
             this.log.error('User email and/or user password empty - please check instance configuration');
-            this.terminate(2);
+            this.stop(2);
             return;
         }
 
