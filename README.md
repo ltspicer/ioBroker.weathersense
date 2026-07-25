@@ -25,6 +25,11 @@ For example, this WiFi weather stations from Ideoon (Pearl):
 
 ![Screenshot](https://github.com/ltspicer/WeatherSense/blob/main/casativo_ideoon_weatherstation.png)
 
+ioBroker data points:
+
+![Screenshot](https://github.com/ltspicer/WeatherSense/blob/main/iobroker_dps.png)
+
+
 ## Use:
 
 Simply enter your WeatherSense account login details (email and password).
