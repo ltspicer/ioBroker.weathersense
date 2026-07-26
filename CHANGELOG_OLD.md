@@ -1,4 +1,8 @@
 # Older changes
+## 5.1.0 (2026-07-04)
+
+- Now filenames of JSON files beginning with weathersense.{sensor_id}...
+
 ## 5.0.4 (2026-07-04)
 
 - If object is empty & DPs exists set all existent DPs to 0

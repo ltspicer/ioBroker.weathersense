@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "weathersense",
-    "version": "5.2.2",
+    "version": "5.2.3",
     "news": {
+      "5.2.3": {
+        "en": "Div error messages moved to warn messages",
+        "de": "Div-Fehlermeldungen verschoben, um Nachrichten zu warnen",
+        "ru": "Сообщения об ошибках Div перемещаются для предупреждения сообщений",
+        "pt": "Mensagens de erro Div movidas para alertar mensagens",
+        "nl": "Div foutmeldingen verplaatst om berichten te waarschuwen",
+        "fr": "Messages d'erreur Div déplacés pour avertir les messages",
+        "it": "Messaggi di errore Div spostati per avvertire i messaggi",
+        "es": "Mensajes de error Div movidos para advertir mensajes",
+        "pl": "Komunikaty błędów div przeniesione, aby ostrzec wiadomości",
+        "uk": "Дайдже повідомлення про помилку, які перенесли повідомлення",
+        "zh-cn": "Div 错误消息移动以警告信件"
+      },
       "5.2.2": {
         "en": "Typo corrected",
         "de": "Tippfehler korrigiert",
@@ -80,19 +93,6 @@
         "pl": "Jeśli obiekt jest pusty i DP istnieją, ustaw wszystkie istniejące DP na 0",
         "uk": "Якщо об'єкт порожній, а DP існує, встановити всі існуючі DP на 0.",
         "zh-cn": "如果对象为空且存在动态规划符，则将所有存在的动态规划符设置为 0。"
-      },
-      "5.0.3": {
-        "en": "Set existing data point to 0 if not provided by the cloud",
-        "de": "Setzen Sie vorhandene Datenpunkte auf 0, falls diese nicht von der Cloud bereitgestellt werden.",
-        "ru": "Если точка данных не предоставлена облаком, установите ее значение равным 0.",
-        "pt": "Defina o ponto de dados existente como 0 se ele não for fornecido pela nuvem.",
-        "nl": "Stel het bestaande datapunt in op 0 als het niet door de cloud wordt aangeleverd.",
-        "fr": "Mettez à zéro le point de données existant s'il n'est pas fourni par le cloud.",
-        "it": "Imposta il punto dati esistente a 0 se non fornito dal cloud.",
-        "es": "Establezca el punto de datos existente en 0 si no lo proporciona la nube.",
-        "pl": "Ustaw istniejący punkt danych na 0, jeśli nie jest on dostarczany przez chmurę",
-        "uk": "Встановіть існуючу точку даних на 0, якщо вона не надається хмарою",
-        "zh-cn": "如果云端未提供现有数据点，则将其设置为 0。"
       }
     },
     "titleLang": {
