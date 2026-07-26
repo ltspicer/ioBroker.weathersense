@@ -815,7 +815,7 @@ class WeatherSense extends utils.Adapter {
                 }
                 this.log.error('Login failed:', data.message);
             } else {
-                this.log.error('Server error');
+                this.log.error('WeatherSense server error');
             }
         } catch (error) {
             this.log.warn(`Error during login: ${error.message || 'Reason unknown'}`);
@@ -844,13 +844,13 @@ class WeatherSense extends utils.Adapter {
                 this.log.debug('Data was received');
                 return response.data;
             }
-            this.log.error(`devData > Status Code: ${response.status}`);
+            this.log.warn(`devData > Status Code: ${response.status}`);
             return 'error';
         } catch (error) {
             if (error.response) {
-                this.log.error(`devData > Status Code: ${error.response.status}`);
+                this.log.warn(`devData > Status Code: ${error.response.status}`);
             } else {
-                this.log.error(`Error during request: ${error.message}`);
+                this.log.warn(`Error during request: ${error.message}`);
             }
             return 'error';
         }
@@ -876,13 +876,13 @@ class WeatherSense extends utils.Adapter {
                 this.log.debug('Data was received');
                 return response.data;
             }
-            this.log.error(`foreCast > Status Code: ${response.status}`);
+            this.log.warn(`foreCast > Status Code: ${response.status}`);
             return 'error';
         } catch (error) {
             if (error.response) {
-                this.log.error(`foreCast > Status Code: ${error.response.status}`);
+                this.log.warn(`foreCast > Status Code: ${error.response.status}`);
             } else {
-                this.log.error(`Error during request: ${error.message}`);
+                this.log.warn(`Error during request: ${error.message}`);
             }
             return 'error';
         }
